@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
-import useToastMessage from "@tennis/components/hooks/useToastMessage";
+import useToastMessage from "@/components/hooks/useToastMessage";
 
-import { RANKING_TAB } from "@tennis/lib/constants";
-import { getApi } from "@tennis/lib/fetch";
+import { RANKING_TAB } from "@/lib/constants";
+import { getApi } from "@/lib/fetch";
 import { Ranking } from "./table/columns";
 import RankingList from "./ranking-list";
 

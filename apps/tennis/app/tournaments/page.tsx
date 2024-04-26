@@ -10,10 +10,10 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import { TOURNAMENTS, YEARS } from '@tennis/lib/constants';
-import { getApi } from '@tennis/lib/fetch';
+import { TOURNAMENTS, YEARS } from '@/lib/constants';
+import { getApi } from '@/lib/fetch';
 import Spinner from '@repo/ui/components/ui/spinner';
-import useToastMessage from '@tennis/components/hooks/useToastMessage';
+import useToastMessage from '@/components/hooks/useToastMessage';
 import CardTournament from './card';
 import { useAuthContext } from '../context/auth-context';
 

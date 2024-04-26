@@ -2,15 +2,15 @@ import { useState } from "react";
 import { format, parse } from "date-fns";
 import { Pencil, Check, X, CalendarPlus } from "lucide-react";
 
-import { useAuthContext } from "@tennis/app/context/auth-context";
+import { useAuthContext } from "@/app/context/auth-context";
 import { DatePicker } from "@repo/ui/components/ui/date-picker";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { Button } from "@repo/ui/components/ui/button";
 import Spinner from "@repo/ui/components/ui/spinner";
-import useToastMessage from "@tennis/components/hooks/useToastMessage";
-import { DATE_FORMAT } from "@tennis/lib/constants";
-import { type GameWeekProps } from "@tennis/lib/definitions";
-import { putApiWithCredentials } from "@tennis/lib/fetchWithCredentials";
+import useToastMessage from "@/components/hooks/useToastMessage";
+import { DATE_FORMAT } from "@/lib/constants";
+import { type GameWeekProps } from "@/lib/definitions";
+import { putApiWithCredentials } from "@/lib/fetchWithCredentials";
 
 export default function GameWeek({ id, week }: GameWeekProps) {
     const { signed, isAdmin } = useAuthContext();

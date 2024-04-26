@@ -1,7 +1,7 @@
 "use client"
 
 import { Dispatch, SetStateAction, createContext, useContext, useMemo, useState } from "react";
-import { type GameDetailsProps } from "@tennis/lib/definitions";
+import { type GameDetailsProps } from "@/lib/definitions";
 
 type AppProviderProps = {
     children?: React.ReactNode;

@@ -15,8 +15,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@repo/ui/components/ui/dropdown-menu"
-import { ProfileProps } from "@tennis/lib/definitions"
-import { getInitialLetterName } from "@tennis/lib/utils"
+import { ProfileProps } from "@/lib/definitions"
+import { getInitialLetterName } from "@/lib/utils"
 import { useAuthContext } from "../context/auth-context"
 
 export function Profile({ handleLogout }: { handleLogout: () => {} }) {

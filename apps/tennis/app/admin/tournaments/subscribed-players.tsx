@@ -5,7 +5,7 @@ import {
     AccordionTrigger,
 } from "@repo/ui/components/ui/accordion"
 import PlayerTable from "./player-table"
-import { SubscribedPlayersProps } from "@tennis/lib/definitions"
+import { SubscribedPlayersProps } from "@/lib/definitions"
 
 function SubscribedPlayers({ players, ...rest }: { players: SubscribedPlayersProps, tournament: string, year:string }) {
     return (

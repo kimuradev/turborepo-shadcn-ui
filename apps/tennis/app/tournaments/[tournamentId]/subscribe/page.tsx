@@ -1,10 +1,10 @@
 'use client'
 
-import { TOURNAMENTS, TOURNAMENT_DICTIONARY } from "@tennis/lib/constants";
+import { TOURNAMENTS, TOURNAMENT_DICTIONARY } from "@/lib/constants";
 import SubscribeForm from "./subscribe-form";
 import { Alert } from "@repo/ui/components/ui/alert";
 import { Trophy } from "lucide-react";
-import isAuth from "@repo/ui/components/hooks/isAuth";
+import isAuth from "@/components/hooks/isAuth";
 
 function Page({ params, searchParams }: { params: any, searchParams: any }) {
   const { tournamentId } = params;

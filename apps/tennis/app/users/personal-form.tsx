@@ -2,7 +2,7 @@ import { Input } from "@repo/ui/components/ui/input";
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
 import { Separator } from '@repo/ui/components/ui/separator';
 import { PhoneInput } from "@repo/ui/components/ui/phone-input";
-import { formatCpf } from "@tennis/lib/utils";
+import { formatCpf } from "@/lib/utils";
 
 type PersonalFormProps = {
     form: any,

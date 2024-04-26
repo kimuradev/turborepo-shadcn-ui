@@ -1,4 +1,4 @@
-import { getApi } from "@tennis/lib/fetch";
+import { getApi } from "@/lib/fetch";
 import Monthly from "./monthly"
 
 export default async function MonthlyGames() {

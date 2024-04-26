@@ -17,15 +17,15 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import useToastMessage from '@tennis/components/hooks/useToastMessage';
+import useToastMessage from '@/components/hooks/useToastMessage';
 
-import { SHIRT_SIZE, TOURNAMENT_ID } from '@tennis/lib/constants';
+import { SHIRT_SIZE, TOURNAMENT_ID } from '@/lib/constants';
 import { Alert, AlertDescription, AlertTitle } from '@repo/ui/components/ui/alert';
 import { Terminal } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@repo/ui/components/ui/radio-group';
-import { useAuthContext } from '@tennis/app/context/auth-context';
-import { formatCpf } from '@tennis/lib/utils';
-import { tournamentSubscribe } from '@tennis/lib/actions';
+import { useAuthContext } from '@/app/context/auth-context';
+import { formatCpf } from '@/lib/utils';
+import { tournamentSubscribe } from '@/lib/actions';
 
 const formSchema = z.object({
     name: z.string().min(1, { message: 'Campo obrigatório' }),

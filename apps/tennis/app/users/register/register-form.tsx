@@ -9,8 +9,8 @@ import { redirect } from "next/navigation";
 import { Button } from "@repo/ui/components/ui/button";
 import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
 import { Form } from "@repo/ui/components/ui/form";
-import useToastMessage from '@tennis/components/hooks/useToastMessage';
-import { registerUser } from '@tennis/lib/actions';
+import useToastMessage from '@/components/hooks/useToastMessage';
+import { registerUser } from '@/lib/actions';
 
 
 import LoginForm from '../login-form';

@@ -1,7 +1,7 @@
 "use client"
 
 import PlayerForm from "./PlayerForm";
-import isAuth from "@repo/ui/components/hooks/isAuth";
+import isAuth from "@/components/hooks/isAuth";
 
 function Player({ player = { id : ''} }: { player?: any }) {
   return (

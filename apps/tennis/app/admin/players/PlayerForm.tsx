@@ -18,11 +18,11 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import useToastMessage from '@tennis/components/hooks/useToastMessage';
+import useToastMessage from '@/components/hooks/useToastMessage';
 
-import { STATUS_OPTIONS } from '@tennis/lib/constants';
-import { type PlayersProps } from '@tennis/lib/definitions';
-import { addPlayer, editPlayer } from '@tennis/lib/actions';
+import { STATUS_OPTIONS } from '@/lib/constants';
+import { type PlayersProps } from '@/lib/definitions';
+import { addPlayer, editPlayer } from '@/lib/actions';
 
 const formSchema = z.object({
     name: z.string().nonempty('Campo obrigatório'),

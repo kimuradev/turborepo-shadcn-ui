@@ -10,7 +10,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import { TOURNAMENT_DICTIONARY, YEARS } from '@tennis/lib/constants';
+import { TOURNAMENT_DICTIONARY, YEARS } from '@/lib/constants';
 import { useState } from "react";
 import { Separator } from "@repo/ui/components/ui/separator";
 

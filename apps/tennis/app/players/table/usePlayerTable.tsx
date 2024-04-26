@@ -15,9 +15,9 @@ import {
 } from "@repo/ui/components/ui/dropdown-menu"
 import { Button } from "@repo/ui/components/ui/button"
 
-import { formatPhoneNumber } from "@tennis/lib/utils";
-import { useAuthContext } from "@tennis/app/context/auth-context";
-import { type Players } from "@tennis/lib/definitions";
+import { formatPhoneNumber } from "@/lib/utils";
+import { useAuthContext } from "@/app/context/auth-context";
+import { type Players } from "@/lib/definitions";
 
 export function usePlayerTable() {
   const router = useRouter();

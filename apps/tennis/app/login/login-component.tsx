@@ -10,7 +10,7 @@ import {
 
 import LoginForm from './login-form';
 import { useAuthContext } from '../context/auth-context';
-import { userLogout } from '@tennis/lib/actions';
+import { userLogout } from '@/lib/actions';
 import { useState } from 'react';
 import { Profile } from './profile';
 

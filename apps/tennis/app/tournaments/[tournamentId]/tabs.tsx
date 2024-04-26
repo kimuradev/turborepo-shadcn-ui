@@ -5,11 +5,11 @@ import orderBy from 'lodash/orderBy';
 
 import Spinner from "@repo/ui/components/ui/spinner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
-import useToastMessage from "@tennis/components/hooks/useToastMessage";
-import { useAppContext } from "@tennis/app/context/app-context";
-import { CLASSIFICATION } from "@tennis/lib/constants";
-import { getApi } from "@tennis/lib/fetch";
-import { type TournamentTabs } from "@tennis/lib/definitions";
+import useToastMessage from "@/components/hooks/useToastMessage";
+import { useAppContext } from "@/app/context/app-context";
+import { CLASSIFICATION } from "@/lib/constants";
+import { getApi } from "@/lib/fetch";
+import { type TournamentTabs } from "@/lib/definitions";
 
 import Card from "./card";
 import GameWeek from "./game-week";

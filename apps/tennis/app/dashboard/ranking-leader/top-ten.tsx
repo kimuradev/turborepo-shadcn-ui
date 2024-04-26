@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import Spinner from "@repo/ui/components/ui/spinner"
 import TopTenCard from "./top-ten-card"
-import { type TopTenDataProps } from "@tennis/lib/definitions"
+import { type TopTenDataProps } from "@/lib/definitions"
 
 export default function TopTen({ data, isLoading }: TopTenDataProps) {
     if (isLoading) {

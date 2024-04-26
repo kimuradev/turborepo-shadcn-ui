@@ -1,5 +1,5 @@
 // import Login from './login/login';
-import Login from '@tennis/app/login/login-component';
+import Login from '@/app/login/login-component';
 import NavbarMobile from './navbar-mobile';
 import Link from 'next/link';
 

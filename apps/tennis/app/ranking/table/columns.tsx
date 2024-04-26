@@ -2,11 +2,11 @@ import Image from 'next/image';
 import { Button } from "@repo/ui/components/ui/button"
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
-import AOCircle from '@tennis/public/static/ao-circle.png';
-import RGCircle from '@tennis/public/static/rg-circle.png';
-import WimbledonCircle from '@tennis/public/static/wimb-circle.png';
-import USCircle from '@tennis/public/static/us-circle.png';
-import FinalsCircle from '@tennis/public/static/finals-circle.png';
+import AOCircle from '@/public/static/ao-circle.png';
+import RGCircle from '@/public/static/rg-circle.png';
+import WimbledonCircle from '@/public/static/wimb-circle.png';
+import USCircle from '@/public/static/us-circle.png';
+import FinalsCircle from '@/public/static/finals-circle.png';
 
 export type Ranking = {
     id: string

@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { Home, Trophy, Medal, Users, BookOpen, CalendarDays, UserCog, CircleDollarSign, Settings } from 'lucide-react';
-import { Button } from './ui/button';
-import { Separator } from './ui/separator';
-import { useAuthContext } from '@tennis/app/context/auth-context';
-import { URL } from '@tennis/lib/constants';
-import { FinanceNavigation } from '@tennis/app/admin/finance/navigation';
+import { Button } from '@repo/ui/components/ui/button';
+import { Separator } from '@repo/ui/components/ui/separator';
+import { useAuthContext } from '@/app/context/auth-context';
+import { URL } from '@/lib/constants';
+import { FinanceNavigation } from '@/app/admin/finance/navigation';
 
 const navigation = [
     { link: URL.dashboard, label: 'Home', icon: <Home className='w-4 h-4 mr-2' /> },

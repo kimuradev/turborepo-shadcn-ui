@@ -6,9 +6,13 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@tennis/*": [
+      "@/*": [
         "./*"
+      ],
+      "@ui/*": [
+        "../../packages/ui/src/*"
       ]
     }
   },

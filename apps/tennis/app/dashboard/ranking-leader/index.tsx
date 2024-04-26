@@ -1,4 +1,4 @@
-import { getApi } from "@tennis/lib/fetch";
+import { getApi } from "@/lib/fetch";
 import TopTen from "./top-ten";
 
 export default async function RankingLeader() {

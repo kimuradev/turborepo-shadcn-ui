@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Home, Trophy, Medal, Users, BookOpen } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from "@tennis/components/ui/button";
+import { Button } from "@repo/ui/components/ui/button";
 import { cva } from "class-variance-authority"
-import { cn } from "@tennis/lib/utils"
-import { URL } from "@tennis/lib/constants";
+import { cn } from "@/lib/utils"
+import { URL } from "@/lib/constants";
 
 const navigation = [
     { link: URL.dashboard, label: 'Home', icon: <Home className='w-4 h-4 mr-2' /> },

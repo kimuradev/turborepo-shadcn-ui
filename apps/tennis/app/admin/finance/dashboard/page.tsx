@@ -1,6 +1,6 @@
 'use client'
 
-import isAuth from "@repo/ui/components/hooks/isAuth"
+import isAuth from "@/components/hooks/isAuth"
 import { CardsStats } from "./card-stats"
 
 function Page() {

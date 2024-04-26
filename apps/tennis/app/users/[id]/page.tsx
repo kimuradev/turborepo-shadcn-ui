@@ -1,11 +1,11 @@
 "use client"
 
-import { getApi } from "@tennis/lib/fetch"
-import isAuth from "@repo/ui/components/hooks/isAuth"
+import { getApi } from "@/lib/fetch"
+import isAuth from "@/components/hooks/isAuth"
 import { useEffect, useState } from "react"
-import useToastMessage from "@tennis/components/hooks/useToastMessage"
+import useToastMessage from "@/components/hooks/useToastMessage"
 import Spinner from "@repo/ui/components/ui/spinner"
-import { useAuthContext } from "@tennis/app/context/auth-context"
+import { useAuthContext } from "@/app/context/auth-context"
 import EditUserForm from "./edit-form"
 import Payment from "./payment"
 

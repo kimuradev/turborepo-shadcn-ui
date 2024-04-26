@@ -21,14 +21,14 @@ import { MultiSelect } from "@repo/ui/components/ui/multi-select";
 import { Button } from "@repo/ui/components/ui/button";
 import { useEffect, useState } from "react";
 import { ButtonLoading } from "@repo/ui/components/ui/button-loading";
-import { useAppContext } from "@tennis/app/context/app-context";
-import { FINALS_CLASS_ID, TOURNAMENT_DICTIONARY, TOURNAMENT_ID, YEARS } from "@tennis/lib/constants";
-import { addTournament } from "@tennis/lib/actions";
-import useToastMessage from "@tennis/components/hooks/useToastMessage";
-import { getApi } from "@tennis/lib/fetch";
+import { useAppContext } from "@/app/context/app-context";
+import { FINALS_CLASS_ID, TOURNAMENT_DICTIONARY, TOURNAMENT_ID, YEARS } from "@/lib/constants";
+import { addTournament } from "@/lib/actions";
+import useToastMessage from "@/components/hooks/useToastMessage";
+import { getApi } from "@/lib/fetch";
 import Spinner from "@repo/ui/components/ui/spinner";
 import SubscribedPlayers from "./subscribed-players";
-import { SubscribedPlayersProps } from "@tennis/lib/definitions";
+import { SubscribedPlayersProps } from "@/lib/definitions";
 
 export default function TournamentForm() {
     const [players, setPlayers] = useState({

@@ -21,8 +21,8 @@ import {
 } from 'lucide-react'
 import StarterKit from '@tiptap/starter-kit'
 
-import { addRule } from '@tennis/lib/actions'
-import useToastMessage from '@tennis/components/hooks/useToastMessage'
+import { addRule } from '@/lib/actions'
+import useToastMessage from '@/components/hooks/useToastMessage'
 import { useAuthContext } from '../context/auth-context'
 import { BubbleButton } from './bubble-button'
 import { initialContent } from './initial-content'

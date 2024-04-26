@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import Spinner from "@repo/ui/components/ui/spinner";
 import Tiptap from './tiptap';
-import { getApi } from '@tennis/lib/fetch';
+import { getApi } from '@/lib/fetch';
 
 export default async function Page() {
     const response = await getApi('/rules', { cache: 'no-store' });

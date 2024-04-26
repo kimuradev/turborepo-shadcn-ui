@@ -10,9 +10,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@repo/ui/components/ui/dialog";
-import { ButtonLoading } from "../../components/ui/button-loading";
-import { type DialogDemoProps } from "@tennis/lib/definitions";
-import { removePlayer } from "@tennis/lib/actions";
+import { ButtonLoading } from "@repo/ui/components/ui/button-loading";
+import { type DialogDemoProps } from "@/lib/definitions";
+import { removePlayer } from "@/lib/actions";
 
 export default function DialogDemo({ isOpen = false, isLoading, data, handleCancel, handleRemovePlayer }: DialogDemoProps) {
   return (

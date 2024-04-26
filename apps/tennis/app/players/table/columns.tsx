@@ -9,8 +9,8 @@
 //   DropdownMenuSeparator,
 //   DropdownMenuTrigger,
 // } from "@repo/ui/components/ui/dropdown-menu"
-// import { api } from "@tennis/lib/axios"
-// import DialogDemo from "@tennis/app/players/dialog"
+// import { api } from "@/lib/axios"
+// import DialogDemo from "@/app/players/dialog"
 // import { useMemo, useState } from "react"
 
 // export type Players = {

@@ -3,14 +3,14 @@ import { ArrowUpDown } from "lucide-react"
 import { ColumnDef } from "@tanstack/react-table"
 import sortBy from 'lodash/sortBy';
 
-import useToastMessage from "@tennis/components/hooks/useToastMessage"
+import useToastMessage from "@/components/hooks/useToastMessage"
 import { Button } from "@repo/ui/components/ui/button"
 import { Switch } from "@repo/ui/components/ui/switch"
 import Tag from "@repo/ui/components/ui/tag"
 
-import { getApi } from "@tennis/lib/fetch"
-import { putApiWithCredentials } from "@tennis/lib/fetchWithCredentials"
-import { type PaymentStatus } from "@tennis/lib/definitions"
+import { getApi } from "@/lib/fetch"
+import { putApiWithCredentials } from "@/lib/fetchWithCredentials"
+import { type PaymentStatus } from "@/lib/definitions"
 
 export type UserProps = {
     player_id: string

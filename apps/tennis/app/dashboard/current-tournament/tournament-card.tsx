@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { useAuthContext } from "@tennis/app/context/auth-context";
-import CardTournament from "@tennis/app/tournaments/card";
-import { TOURNAMENTS } from "@tennis/lib/constants";
-import { getApi } from "@tennis/lib/fetch";
+import { useAuthContext } from "@/app/context/auth-context";
+import CardTournament from "@/app/tournaments/card";
+import { TOURNAMENTS } from "@/lib/constants";
+import { getApi } from "@/lib/fetch";
 import isEmpty from 'lodash/isEmpty'
 import Spinner from "@repo/ui/components/ui/spinner";
 
@@ -45,10 +45,10 @@ function TournamentCard({ data, tournamentIndex }: any) {
                             id={data.id}
                             title={data.name}
                             subtitle={data.description}
-                            headerSrcImg={TOURNAMENTS[tournamentIndex].headerSrcImg}
-                            contentSrcImg={TOURNAMENTS[tournamentIndex].contentSrcImg}
-                            bgColor={TOURNAMENTS[tournamentIndex].bgColor}
-                            link={TOURNAMENTS[tournamentIndex].link}
+                            headerSrcImg={TOURNAMENTS[tournamentIndex]?.headerSrcImg || ''}
+                            contentSrcImg={TOURNAMENTS[tournamentIndex]?.contentSrcImg || { src: '', alt: '' }}
+                            bgColor={TOURNAMENTS[tournamentIndex]?.bgColor|| ''}
+                            link={TOURNAMENTS[tournamentIndex]?.link|| ''}
                             year={data.year}
                             subscriptionIsOpen={data.active}
                             started={data.started}

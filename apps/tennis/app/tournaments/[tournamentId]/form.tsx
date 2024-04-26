@@ -11,13 +11,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import { GAME_RESULTS } from '@tennis/lib/constants';
+import { GAME_RESULTS } from '@/lib/constants';
 import { Button } from '@repo/ui/components/ui/button';
 import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
-import useToastMessage from '@tennis/components/hooks/useToastMessage';
-import { useAppContext } from '@tennis/app/context/app-context';
-import { type TournamentResultProps } from '@tennis/lib/definitions';
-import { putApiWithCredentials } from '@tennis/lib/fetchWithCredentials';
+import useToastMessage from '@/components/hooks/useToastMessage';
+import { useAppContext } from '@/app/context/app-context';
+import { type TournamentResultProps } from '@/lib/definitions';
+import { putApiWithCredentials } from '@/lib/fetchWithCredentials';
 
 const formSchema = z.object({
     player1_score: z.string().nonempty('Campo obrigatório'),

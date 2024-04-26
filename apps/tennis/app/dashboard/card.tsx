@@ -7,7 +7,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@repo/ui/components/ui/card"
-import { type DashboardCardProps } from "@tennis/lib/definitions"
+import { type DashboardCardProps } from "@/lib/definitions"
 import { useAuthContext } from "../context/auth-context"
 import TournamentModal from "./current-tournament/tournament-modal"
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { RANKING_TAB } from "@tennis/lib/constants";
+import { RANKING_TAB } from "@/lib/constants";
 import { columns } from "./table/columns"
 import { columns as generalColumns } from "./table/columns-general"
 import { DataTable } from "@repo/ui/components/table/data-table";

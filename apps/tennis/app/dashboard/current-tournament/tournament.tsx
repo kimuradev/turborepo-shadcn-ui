@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { editActiveTournament } from "@tennis/lib/actions";
-import useToastMessage from "@tennis/components/hooks/useToastMessage";
+import { editActiveTournament } from "@/lib/actions";
+import useToastMessage from "@/components/hooks/useToastMessage";
 
 import TournamentForm from "./tournament-form";
 

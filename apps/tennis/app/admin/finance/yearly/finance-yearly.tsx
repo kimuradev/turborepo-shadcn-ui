@@ -9,7 +9,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import { YEARS } from '@tennis/lib/constants';
+import { YEARS } from '@/lib/constants';
 import { useState } from "react";
 
 const filterType = [

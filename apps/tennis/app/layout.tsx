@@ -3,8 +3,8 @@ import { Inter } from 'next/font/google'
 import type { Viewport } from 'next'
  
 import { Toaster } from '@repo/ui/components/ui/toaster'
-import Header from '@repo/ui/components/header'
-import Navbar from '@repo/ui/components/navbar'
+import Header from '@/components/header'
+import Navbar from '@/components/navbar'
 
 import { AuthProvider } from './context/auth-context'
 import { AppProvider } from './context/app-context'
