@@ -12,12 +12,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
+} from "@repo/ui/components/ui/dropdown-menu"
+import { Button } from "@repo/ui/components/ui/button"
 
-import { formatPhoneNumber } from "@/lib/utils";
-import { useAuthContext } from "@/app/context/auth-context";
-import { type Players } from "@/lib/definitions";
+import { formatPhoneNumber } from "@tennis/lib/utils";
+import { useAuthContext } from "@tennis/app/context/auth-context";
+import { type Players } from "@tennis/lib/definitions";
 
 export function usePlayerTable() {
   const router = useRouter();

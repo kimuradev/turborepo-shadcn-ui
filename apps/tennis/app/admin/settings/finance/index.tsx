@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Separator } from "@/components/ui/separator"
-import Spinner from "@/components/ui/spinner";
-import { getApi } from "@/lib/fetch";
+import { Separator } from "@repo/ui/components/ui/separator"
+import Spinner from "@repo/ui/components/ui/spinner";
+import { getApi } from "@tennis/lib/fetch";
 
 import FinanceForm from "./finance-form";
 

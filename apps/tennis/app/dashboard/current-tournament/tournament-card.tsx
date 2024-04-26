@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { useAuthContext } from "@/app/context/auth-context";
-import CardTournament from "@/app/tournaments/card";
-import { TOURNAMENTS } from "@/lib/constants";
-import { getApi } from "@/lib/fetch";
+import { useAuthContext } from "@tennis/app/context/auth-context";
+import CardTournament from "@tennis/app/tournaments/card";
+import { TOURNAMENTS } from "@tennis/lib/constants";
+import { getApi } from "@tennis/lib/fetch";
 import isEmpty from 'lodash/isEmpty'
-import Spinner from "@/components/ui/spinner";
+import Spinner from "@repo/ui/components/ui/spinner";
 
 function TournamentCard({ data, tournamentIndex }: any) {
     const [isLoading, setIsLoading] = useState(false);

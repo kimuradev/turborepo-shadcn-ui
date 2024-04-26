@@ -1,4 +1,4 @@
-import { getApi } from "@/lib/fetch";
+import { getApi } from "@tennis/lib/fetch";
 
 export async function generateStaticParams() {
     const players = await getApi('/players');

@@ -5,7 +5,7 @@ import {
     NavigationMenuItem,
     NavigationMenuList,
     navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@repo/ui/components/ui/navigation-menu"
 
 import { Link } from 'react-scroll';
 

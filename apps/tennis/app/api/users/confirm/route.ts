@@ -1,4 +1,4 @@
-import { postApi } from "@/lib/fetch";
+import { postApi } from "@tennis/lib/fetch";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

@@ -1,6 +1,6 @@
 "use client"
 
-import { DataTable } from "@/components/table/data-table";
+import { DataTable } from "@repo/ui/components/table/data-table";
 import { useTournamentTable } from "./table/useTournamentTable";
 
 import {
@@ -9,10 +9,10 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
-import { TOURNAMENT_DICTIONARY, YEARS } from '@/lib/constants';
+} from "@repo/ui/components/ui/select"
+import { TOURNAMENT_DICTIONARY, YEARS } from '@tennis/lib/constants';
 import { useState } from "react";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@repo/ui/components/ui/separator";
 
 const filterType = [
     {
@@ -26,6 +26,7 @@ const filterType = [
 export default function FinanceTournament() {
     const [tournamentId, setTournamentId] = useState('');
     const [year, setYear] = useState('');
+    // @ts-ignore
     const [{ data, isLoading, columns },] = useTournamentTable({ tournamentId, year });
 
     return (

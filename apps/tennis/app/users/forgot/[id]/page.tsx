@@ -1,4 +1,4 @@
-import { getApi } from "@/lib/fetch"
+import { getApi } from "@tennis/lib/fetch"
 import ForgotPassword from "./forgot-password";
 
 type ForgotProps = {

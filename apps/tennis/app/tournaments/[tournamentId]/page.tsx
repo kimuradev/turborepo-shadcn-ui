@@ -1,4 +1,4 @@
-import { TOURNAMENT_DICTIONARY, TOURNAMENT_ID } from "@/lib/constants";
+import { TOURNAMENT_DICTIONARY, TOURNAMENT_ID } from "@tennis/lib/constants";
 import TournamentDetails from "./details";
 
 export async function generateStaticParams() {

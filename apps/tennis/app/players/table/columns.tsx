@@ -1,4 +1,4 @@
-// import { Button } from "@/components/ui/button"
+// import { Button } from "@repo/ui/components/ui/button"
 // import { ColumnDef } from "@tanstack/react-table"
 // import { ArrowUpDown, MoreHorizontal, UserCog, XCircle } from "lucide-react"
 // import {
@@ -8,9 +8,9 @@
 //   DropdownMenuLabel,
 //   DropdownMenuSeparator,
 //   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu"
-// import { api } from "@/lib/axios"
-// import DialogDemo from "@/app/players/dialog"
+// } from "@repo/ui/components/ui/dropdown-menu"
+// import { api } from "@tennis/lib/axios"
+// import DialogDemo from "@tennis/app/players/dialog"
 // import { useMemo, useState } from "react"
 
 // export type Players = {

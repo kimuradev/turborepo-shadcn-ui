@@ -1,4 +1,4 @@
-import { getApi } from "@/lib/fetch";
+import { getApi } from "@tennis/lib/fetch";
 import Player from "../Player";
 
 async function Page({ params }: { params: { id: string } }) {

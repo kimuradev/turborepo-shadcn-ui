@@ -1,9 +1,9 @@
 "use client"
 
-import { RANKING_TAB } from "@/lib/constants";
+import { RANKING_TAB } from "@tennis/lib/constants";
 import { columns } from "./table/columns"
 import { columns as generalColumns } from "./table/columns-general"
-import { DataTable } from "@/components/table/data-table";
+import { DataTable } from "@repo/ui/components/table/data-table";
 
 const input = {
     input: {

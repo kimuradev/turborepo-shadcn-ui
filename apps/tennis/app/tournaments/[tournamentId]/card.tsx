@@ -1,13 +1,13 @@
 import { useState } from "react"
 import Image from "next/image"
 
-import { useAuthContext } from "@/app/context/auth-context"
-// import JapanFlag from "@/public/static/japan-flag.svg"
-import BrazilFlag from "@/public/static/br-flag.svg"
-import { type CardProps } from "@/lib/definitions"
+import { useAuthContext } from "@tennis/app/context/auth-context"
+// import JapanFlag from "@tennis/public/static/japan-flag.svg"
+import BrazilFlag from "@tennis/public/static/br-flag.svg"
+import { type CardProps } from "@tennis/lib/definitions"
 import DialogResult from "./dialog"
 import TournamentDatePicker from "../datepicker"
-import { getNameWithAbbreviation } from "@/lib/utils"
+import { getNameWithAbbreviation } from "@tennis/lib/utils"
 
 export default function Card({ data, classification }: CardProps) {
     const { signed, isAdmin } = useAuthContext();

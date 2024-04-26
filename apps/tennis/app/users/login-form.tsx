@@ -1,7 +1,7 @@
-import { Input } from "@/components/ui/input";
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Separator } from '@/components/ui/separator';
-import { formatCpf } from "@/lib/utils";
+import { Input } from "@repo/ui/components/ui/input";
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
+import { Separator } from '@repo/ui/components/ui/separator';
+import { formatCpf } from "@tennis/lib/utils";
 
 type LoginFormProps = {
     disableEmailField?: boolean,

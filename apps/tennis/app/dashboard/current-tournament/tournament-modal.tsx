@@ -2,12 +2,12 @@
 
 import { Pencil } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@repo/ui/components/ui/button"
 import {
     Dialog,
     DialogContent,
-} from "@/components/ui/dialog"
-import Spinner from '@/components/ui/spinner';
+} from "@repo/ui/components/ui/dialog"
+import Spinner from '@repo/ui/components/ui/spinner';
 
 import Tournament from './tournament';
 import { Suspense, useState } from 'react';

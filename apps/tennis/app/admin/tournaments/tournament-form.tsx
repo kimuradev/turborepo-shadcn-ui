@@ -7,28 +7,28 @@ import { useFormStatus } from "react-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import isEmpty from 'lodash/isEmpty';
 
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+} from "@repo/ui/components/ui/select"
+import { RadioGroup, RadioGroupItem } from "@repo/ui/components/ui/radio-group"
 
-import { MultiSelect } from "@/components/ui/multi-select";
-import { Button } from "@/components/ui/button";
+import { MultiSelect } from "@repo/ui/components/ui/multi-select";
+import { Button } from "@repo/ui/components/ui/button";
 import { useEffect, useState } from "react";
-import { ButtonLoading } from "@/components/ui/button-loading";
-import { useAppContext } from "@/app/context/app-context";
-import { FINALS_CLASS_ID, TOURNAMENT_DICTIONARY, TOURNAMENT_ID, YEARS } from "@/lib/constants";
-import { addTournament } from "@/lib/actions";
-import useToastMessage from "@/components/hooks/useToastMessage";
-import { getApi } from "@/lib/fetch";
-import Spinner from "@/components/ui/spinner";
+import { ButtonLoading } from "@repo/ui/components/ui/button-loading";
+import { useAppContext } from "@tennis/app/context/app-context";
+import { FINALS_CLASS_ID, TOURNAMENT_DICTIONARY, TOURNAMENT_ID, YEARS } from "@tennis/lib/constants";
+import { addTournament } from "@tennis/lib/actions";
+import useToastMessage from "@tennis/components/hooks/useToastMessage";
+import { getApi } from "@tennis/lib/fetch";
+import Spinner from "@repo/ui/components/ui/spinner";
 import SubscribedPlayers from "./subscribed-players";
-import { SubscribedPlayersProps } from "@/lib/definitions";
+import { SubscribedPlayersProps } from "@tennis/lib/definitions";
 
 export default function TournamentForm() {
     const [players, setPlayers] = useState({

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
-import { useAuthContext } from "@/app/context/auth-context";
+import { useAuthContext } from "@tennis/app/context/auth-context";
 
 
 export default function isAuth(Component: any) {

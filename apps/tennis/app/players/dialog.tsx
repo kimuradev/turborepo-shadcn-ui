@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormStatus } from "react-dom";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@repo/ui/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -9,10 +9,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@repo/ui/components/ui/dialog";
 import { ButtonLoading } from "../../components/ui/button-loading";
-import { type DialogDemoProps } from "@/lib/definitions";
-import { removePlayer } from "@/lib/actions";
+import { type DialogDemoProps } from "@tennis/lib/definitions";
+import { removePlayer } from "@tennis/lib/actions";
 
 export default function DialogDemo({ isOpen = false, isLoading, data, handleCancel, handleRemovePlayer }: DialogDemoProps) {
   return (

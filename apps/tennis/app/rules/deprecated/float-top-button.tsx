@@ -2,7 +2,7 @@
 
 import { animateScroll as scroll } from 'react-scroll';
 import { ArrowBigUpDash } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/components/ui/button';
 
 export default function FloatTopButton() {
     return (

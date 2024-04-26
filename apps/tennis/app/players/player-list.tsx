@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { DataTable } from "@/components/table/data-table";
-import useToastMessage from "@/components/hooks/useToastMessage";
-import { STATUS_OPTIONS } from "@/lib/constants";
-import { type DialogProps, type Players } from "@/lib/definitions";
+import { DataTable } from "@repo/ui/components/table/data-table";
+import useToastMessage from "@tennis/components/hooks/useToastMessage";
+import { STATUS_OPTIONS } from "@tennis/lib/constants";
+import { type DialogProps, type Players } from "@tennis/lib/definitions";
 
-import DialogDemo from "@/app/players/dialog"
-import { useWindowSize } from "@/components/hooks/useWindowSize";
+import DialogDemo from "@tennis/app/players/dialog"
+import { useWindowSize } from "@tennis/components/hooks/useWindowSize";
 import { usePlayerTable } from "./table/usePlayerTable";
 
 const input = {
@@ -52,6 +52,7 @@ export default function PlayerList({ players: data }: { players: any }) {
     }))
   }, [isDesktop])
 
+  // @ts-ignore
   const [{ columns },] = usePlayerTable();
 
   const handleCancel = () => {

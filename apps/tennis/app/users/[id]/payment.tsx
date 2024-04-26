@@ -2,12 +2,12 @@ import { useState } from "react";
 import clsx from 'clsx';
 import { Check, Clock, X } from "lucide-react";
 
-import { Alert } from "@/components/ui/alert";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import useToastMessage from "@/components/hooks/useToastMessage";
-import Spinner from "@/components/ui/spinner";
-import { putApiWithCredentials } from "@/lib/fetchWithCredentials";
+import { Alert } from "@repo/ui/components/ui/alert";
+import { Switch } from "@repo/ui/components/ui/switch";
+import { Label } from "@repo/ui/components/ui/label";
+import useToastMessage from "@tennis/components/hooks/useToastMessage";
+import Spinner from "@repo/ui/components/ui/spinner";
+import { putApiWithCredentials } from "@tennis/lib/fetchWithCredentials";
 
 function Payment({ userId, status }: { userId: string, status: "paid" | "pending" | "irregular" }) {
     const { errorMessage, successMessage } = useToastMessage();

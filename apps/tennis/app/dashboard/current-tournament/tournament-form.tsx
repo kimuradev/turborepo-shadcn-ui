@@ -1,6 +1,6 @@
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { TOURNAMENT_DICTIONARY } from "@/lib/constants";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@repo/ui/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@repo/ui/components/ui/select';
+import { TOURNAMENT_DICTIONARY } from "@tennis/lib/constants";
 import SaveButton from './tournament-button';
 
 function TournamentForm({ form, formAction } : any) {

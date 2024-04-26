@@ -3,9 +3,9 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@repo/ui/components/ui/accordion"
 import PlayerTable from "./player-table"
-import { SubscribedPlayersProps } from "@/lib/definitions"
+import { SubscribedPlayersProps } from "@tennis/lib/definitions"
 
 function SubscribedPlayers({ players, ...rest }: { players: SubscribedPlayersProps, tournament: string, year:string }) {
     return (

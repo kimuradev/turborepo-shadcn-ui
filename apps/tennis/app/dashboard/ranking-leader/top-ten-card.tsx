@@ -1,5 +1,5 @@
-import { TopTenProps } from "@/lib/definitions";
-import { getInitialLetterName } from "@/lib/utils";
+import { TopTenProps } from "@tennis/lib/definitions";
+import { getInitialLetterName } from "@tennis/lib/utils";
 
 export default function TopTenCard({ player_name, class_id: currentClass, points, index}: TopTenProps) {
     const getBackgroundClass = (position: number) => {

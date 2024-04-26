@@ -3,21 +3,21 @@ import { useForm } from 'react-hook-form';
 import z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
-import { GAME_RESULTS } from '@/lib/constants';
-import { Button } from '@/components/ui/button';
-import { ButtonLoading } from '@/components/ui/button-loading';
-import useToastMessage from '@/components/hooks/useToastMessage';
-import { useAppContext } from '@/app/context/app-context';
-import { type TournamentResultProps } from '@/lib/definitions';
-import { putApiWithCredentials } from '@/lib/fetchWithCredentials';
+} from "@repo/ui/components/ui/select"
+import { GAME_RESULTS } from '@tennis/lib/constants';
+import { Button } from '@repo/ui/components/ui/button';
+import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
+import useToastMessage from '@tennis/components/hooks/useToastMessage';
+import { useAppContext } from '@tennis/app/context/app-context';
+import { type TournamentResultProps } from '@tennis/lib/definitions';
+import { putApiWithCredentials } from '@tennis/lib/fetchWithCredentials';
 
 const formSchema = z.object({
     player1_score: z.string().nonempty('Campo obrigatório'),

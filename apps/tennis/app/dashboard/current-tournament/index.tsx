@@ -1,7 +1,7 @@
 import { Frown } from "lucide-react";
 
-import { TOURNAMENTS } from "@/lib/constants";
-import { getApi } from "@/lib/fetch";
+import { TOURNAMENTS } from "@tennis/lib/constants";
+import { getApi } from "@tennis/lib/fetch";
 import TournamentCard from "./tournament-card";
 
 export default async function CurrentTournament() {

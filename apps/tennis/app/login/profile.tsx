@@ -4,8 +4,8 @@ import { BarChartBig, LogOut, User } from "lucide-react"
 import {
     Avatar,
     AvatarFallback,
-} from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+} from "@repo/ui/components/ui/avatar"
+import { Button } from "@repo/ui/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -14,9 +14,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { ProfileProps } from "@/lib/definitions"
-import { getInitialLetterName } from "@/lib/utils"
+} from "@repo/ui/components/ui/dropdown-menu"
+import { ProfileProps } from "@tennis/lib/definitions"
+import { getInitialLetterName } from "@tennis/lib/utils"
 import { useAuthContext } from "../context/auth-context"
 
 export function Profile({ handleLogout }: { handleLogout: () => {} }) {

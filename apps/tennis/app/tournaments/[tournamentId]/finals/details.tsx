@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-import Spinner from "@/components/ui/spinner";
-import useToastMessage from "@/components/hooks/useToastMessage";
-import { CLASSIFICATION, FINALS_CLASS_ID } from "@/lib/constants";
-import { type FinalsDetailsProps } from "@/lib/definitions";
-import { getApi } from "@/lib/fetch";
-import { useAppContext } from "@/app/context/app-context";
+import Spinner from "@repo/ui/components/ui/spinner";
+import useToastMessage from "@tennis/components/hooks/useToastMessage";
+import { CLASSIFICATION, FINALS_CLASS_ID } from "@tennis/lib/constants";
+import { type FinalsDetailsProps } from "@tennis/lib/definitions";
+import { getApi } from "@tennis/lib/fetch";
+import { useAppContext } from "@tennis/app/context/app-context";
 
 import GameWeek from "../game-week";
 import Card from "../card";

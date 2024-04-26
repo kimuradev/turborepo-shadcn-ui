@@ -13,10 +13,10 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { type CardTournamentProps } from "@/lib/definitions";
+} from "@repo/ui/components/ui/card"
+import { Button } from "@repo/ui/components/ui/button";
+import { Dialog, DialogContent } from "@repo/ui/components/ui/dialog";
+import { type CardTournamentProps } from "@tennis/lib/definitions";
 
 
 import LoginForm from "../login/login-form";

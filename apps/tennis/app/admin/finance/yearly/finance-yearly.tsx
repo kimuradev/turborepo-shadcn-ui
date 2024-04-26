@@ -1,6 +1,6 @@
 "use client"
 
-import { DataTable } from "@/components/table/data-table";
+import { DataTable } from "@repo/ui/components/table/data-table";
 import { useYearlyTable } from "./table/useYearlyTable";
 import {
     Select,
@@ -8,8 +8,8 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
-import { YEARS } from '@/lib/constants';
+} from "@repo/ui/components/ui/select"
+import { YEARS } from '@tennis/lib/constants';
 import { useState } from "react";
 
 const filterType = [
@@ -23,7 +23,8 @@ const filterType = [
 
 export default function FinanceYearly() {
     const [year, setYear] = useState('2024');
-    const [{ data, isLoading, columns },] = useYearlyTable({ year });
+    // @ts-ignore
+    const [{ data, isLoading, columns }] = useYearlyTable({ year });
 
     return (
         <div className="container mx-auto p-0 w-[700px]">

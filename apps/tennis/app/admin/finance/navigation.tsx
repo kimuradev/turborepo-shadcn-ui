@@ -9,7 +9,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+} from "@repo/ui/components/ui/navigation-menu"
 
 export function FinanceNavigation() {
     return (

@@ -2,8 +2,8 @@
 
 import { Dispatch, SetStateAction, createContext, useContext, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ROLE_ADMIN } from "@/lib/constants";
-import { type ProfileProps } from "@/lib/definitions";
+import { ROLE_ADMIN } from "@tennis/lib/constants";
+import { type ProfileProps } from "@tennis/lib/definitions";
 
 type AuthProviderProps = {
   children?: React.ReactNode;

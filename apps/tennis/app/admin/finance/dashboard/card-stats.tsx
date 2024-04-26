@@ -10,17 +10,17 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
+} from "@repo/ui/components/ui/select"
 import {
     Card,
     CardContent,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
-import { YEARS } from "@/lib/constants"
+} from "@repo/ui/components/ui/card"
+import { YEARS } from "@tennis/lib/constants"
 import AnuityPieChart from "./charts/anuity-pie-chart"
 import { TournamentBarChart } from "./charts/tournament-bar-chart"
-import { getApi } from "@/lib/fetch"
+import { getApi } from "@tennis/lib/fetch"
 
 export function CardsStats() {
     const [year, setYear] = useState('2024')

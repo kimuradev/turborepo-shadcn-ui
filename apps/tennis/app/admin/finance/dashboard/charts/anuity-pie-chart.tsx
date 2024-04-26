@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
-import Spinner from '@/components/ui/spinner';
-import { getApi } from '@/lib/fetch';
-import { formattedBrazilianCurrency } from '@/lib/utils';
+import Spinner from '@repo/ui/components/ui/spinner';
+import { getApi } from '@tennis/lib/fetch';
+import { formattedBrazilianCurrency } from '@tennis/lib/utils';
 
 const COLORS = ['#00C49F', '#FF8042', 'red'];
 

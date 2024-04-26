@@ -2,15 +2,15 @@
 
 import { UserCircle2 } from 'lucide-react';
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@repo/ui/components/ui/button"
 import {
     Dialog,
     DialogContent,
-} from "@/components/ui/dialog"
+} from "@repo/ui/components/ui/dialog"
 
 import LoginForm from './login-form';
 import { useAuthContext } from '../context/auth-context';
-import { userLogout } from '@/lib/actions';
+import { userLogout } from '@tennis/lib/actions';
 import { useState } from 'react';
 import { Profile } from './profile';
 

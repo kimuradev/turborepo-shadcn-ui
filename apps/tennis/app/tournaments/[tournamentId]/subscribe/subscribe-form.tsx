@@ -4,28 +4,28 @@ import { useForm } from 'react-hook-form';
 import { useFormStatus } from 'react-dom';
 import z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PhoneInput } from "@/components/ui/phone-input";
+import { PhoneInput } from "@repo/ui/components/ui/phone-input";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ButtonLoading } from '@/components/ui/button-loading';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Button } from "@repo/ui/components/ui/button";
+import { Input } from "@repo/ui/components/ui/input";
+import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
-import useToastMessage from '@/components/hooks/useToastMessage';
+} from "@repo/ui/components/ui/select"
+import useToastMessage from '@tennis/components/hooks/useToastMessage';
 
-import { SHIRT_SIZE, TOURNAMENT_ID } from '@/lib/constants';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { SHIRT_SIZE, TOURNAMENT_ID } from '@tennis/lib/constants';
+import { Alert, AlertDescription, AlertTitle } from '@repo/ui/components/ui/alert';
 import { Terminal } from 'lucide-react';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useAuthContext } from '@/app/context/auth-context';
-import { formatCpf } from '@/lib/utils';
-import { tournamentSubscribe } from '@/lib/actions';
+import { RadioGroup, RadioGroupItem } from '@repo/ui/components/ui/radio-group';
+import { useAuthContext } from '@tennis/app/context/auth-context';
+import { formatCpf } from '@tennis/lib/utils';
+import { tournamentSubscribe } from '@tennis/lib/actions';
 
 const formSchema = z.object({
     name: z.string().min(1, { message: 'Campo obrigatório' }),

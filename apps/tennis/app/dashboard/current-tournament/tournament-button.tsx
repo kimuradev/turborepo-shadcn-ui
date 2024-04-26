@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button"
-import { ButtonLoading } from "@/components/ui/button-loading"
+import { Button } from "@repo/ui/components/ui/button"
+import { ButtonLoading } from "@repo/ui/components/ui/button-loading"
 import { useFormStatus } from "react-dom"
 
 export default function SaveButton() {

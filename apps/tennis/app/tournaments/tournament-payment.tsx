@@ -2,11 +2,11 @@ import { useState } from "react";
 import clsx from 'clsx';
 import { Check, Clock, X } from "lucide-react";
 
-import { Alert } from "@/components/ui/alert";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import useToastMessage from "@/components/hooks/useToastMessage";
-import { postApiWithCredentials } from "@/lib/fetchWithCredentials";
+import { Alert } from "@repo/ui/components/ui/alert";
+import { Switch } from "@repo/ui/components/ui/switch";
+import { Label } from "@repo/ui/components/ui/label";
+import useToastMessage from "@tennis/components/hooks/useToastMessage";
+import { postApiWithCredentials } from "@tennis/lib/fetchWithCredentials";
 
 type TournamentPaymentProps = {
     email: string | undefined, tournamentId: string, year: string, status: "paid" | "pending" | "irregular", isActive: boolean

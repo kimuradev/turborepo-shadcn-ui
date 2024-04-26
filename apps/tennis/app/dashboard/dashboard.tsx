@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import Spinner from "@/components/ui/spinner"
+import Spinner from "@repo/ui/components/ui/spinner"
 import { Button } from "@repo/ui/components/ui/button";
 
 import MonthlyGames from "./monthly-games"

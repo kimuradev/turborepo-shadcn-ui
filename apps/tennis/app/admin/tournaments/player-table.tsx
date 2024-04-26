@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Spinner from "@/components/ui/spinner";
+import Spinner from "@repo/ui/components/ui/spinner";
 import {
     Table,
     TableBody,
@@ -7,11 +7,11 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table"
-import Tag from "@/components/ui/tag";
-import { Switch } from "@/components/ui/switch";
-import { postApiWithCredentials } from '@/lib/fetchWithCredentials';
-import useToastMessage from '@/components/hooks/useToastMessage';
+} from "@repo/ui/components/ui/table"
+import Tag from "@repo/ui/components/ui/tag";
+import { Switch } from "@repo/ui/components/ui/switch";
+import { postApiWithCredentials } from '@tennis/lib/fetchWithCredentials';
+import useToastMessage from '@tennis/components/hooks/useToastMessage';
 
 function PlayerTable({ players, isLoading, tournament, year }: { players: any, isLoading: boolean, tournament: string, year: string }) {
     const [playerData, setPlayerData] = useState([]);

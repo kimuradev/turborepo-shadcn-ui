@@ -1,4 +1,4 @@
-import { useToast } from "./use-toast"
+import { useToast } from "../ui/use-toast";
 
 export default function useToastMessage() {
 

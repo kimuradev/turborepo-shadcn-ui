@@ -1,9 +1,9 @@
 import { Users } from "lucide-react"
 import Link from "next/link"
 
-import Spinner from "@/components/ui/spinner"
+import Spinner from "@repo/ui/components/ui/spinner"
 import TopTenCard from "./top-ten-card"
-import { type TopTenDataProps } from "@/lib/definitions"
+import { type TopTenDataProps } from "@tennis/lib/definitions"
 
 export default function TopTen({ data, isLoading }: TopTenDataProps) {
     if (isLoading) {

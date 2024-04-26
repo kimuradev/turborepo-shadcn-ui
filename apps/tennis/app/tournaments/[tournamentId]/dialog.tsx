@@ -4,8 +4,8 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { type DialogResultProps } from "@/lib/definitions";
+} from "@repo/ui/components/ui/dialog";
+import { type DialogResultProps } from "@tennis/lib/definitions";
 import TournamentResultForm from "./form";
 
 export default function DialogResult({ isOpen = false, data, handleCancel }: DialogResultProps) {

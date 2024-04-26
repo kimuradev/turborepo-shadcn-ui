@@ -1,7 +1,7 @@
 'use client'
 
 import { Save } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/components/ui/button';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { useFormStatus } from 'react-dom';
 
