@@ -8,7 +8,7 @@ import { STATUS_OPTIONS } from "@/lib/constants";
 import { type DialogProps, type Players } from "@/lib/definitions";
 
 import DialogDemo from "@/app/players/dialog"
-import { useWindowSize } from "@/components/hooks/useWindowSize";
+import { useWindowSize } from "@repo/ui/components/hooks/useWindowSize";
 import { usePlayerTable } from "./table/usePlayerTable";
 
 const input = {
