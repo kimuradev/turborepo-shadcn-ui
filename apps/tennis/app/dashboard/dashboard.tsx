@@ -15,8 +15,7 @@ export default function Dashboard() {
             <div>
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
                     <DashboardCard title="Torneio ativo" isEditable >
-                        {/* <CurrentTournament /> */}
-                        <div> current tournament</div>
+                        <CurrentTournament />
                     </DashboardCard>
                     <DashboardCard title="Jogos realizados/mês" className="flex flex-col justify-between">
                         <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
