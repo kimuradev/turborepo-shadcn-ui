@@ -22,7 +22,9 @@ export const formatCpf = (number: string) => {
 }
 
 export const getInitialLetterName = (player: string) => {
-  const names = player?.split(' ');
+  if (player) return ;
+
+  const names = player.split(' ');
 
   if (names.length <= 2) {
     return names.map(word => word.charAt(0)).join('');
@@ -60,7 +62,7 @@ export function getNameWithAbbreviation(name: string) {
   const trimmedName = name.trim();
 
   // Split the name into words
-  const nameParts = trimmedName?.split(/\s+/);
+  const nameParts = trimmedName.split(/\s+/);
 
   // Identify pronouns (case-insensitive)
   const pronouns = ["do", "da", "de", "dos", "das"];
@@ -70,7 +72,7 @@ export function getNameWithAbbreviation(name: string) {
     const namePart: any = nameParts[i];
 
     // Check for special character followed by a number (indicating an ID)
-    if (namePart?.match(/^\([0-9]+\)$/)) {
+    if (namePart.match(/^\([0-9]+\)$/)) {
       abbreviation += namePart + " ";
       hasSeed = true;
     } else {
@@ -82,7 +84,7 @@ export function getNameWithAbbreviation(name: string) {
 
       if (hasSeed) {
         if (i > 1 && i < nameParts.length - 1) {
-          abbreviation += namePart?.charAt(0) + ". ";
+          abbreviation += namePart.charAt(0) + ". ";
         } else {
           abbreviation += namePart + " ";
         }
