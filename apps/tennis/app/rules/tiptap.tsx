@@ -22,7 +22,7 @@ import {
 import StarterKit from '@tiptap/starter-kit'
 
 import { addRule } from '@/lib/actions'
-import useToastMessage from '@/components/hooks/useToastMessage'
+import useToastMessage from '@repo/ui/components/hooks/useToastMessage'
 import { useAuthContext } from '../context/auth-context'
 import { BubbleButton } from './bubble-button'
 import { initialContent } from './initial-content'

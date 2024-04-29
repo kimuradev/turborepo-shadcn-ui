@@ -5,7 +5,7 @@ import { Check, Clock, X } from "lucide-react";
 import { Alert } from "@repo/ui/components/ui/alert";
 import { Switch } from "@repo/ui/components/ui/switch";
 import { Label } from "@repo/ui/components/ui/label";
-import useToastMessage from "@/components/hooks/useToastMessage";
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { postApiWithCredentials } from "@/lib/fetchWithCredentials";
 
 type TournamentPaymentProps = {

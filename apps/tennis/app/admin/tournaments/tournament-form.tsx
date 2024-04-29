@@ -24,7 +24,7 @@ import { ButtonLoading } from "@repo/ui/components/ui/button-loading";
 import { useAppContext } from "@/app/context/app-context";
 import { FINALS_CLASS_ID, TOURNAMENT_DICTIONARY, TOURNAMENT_ID, YEARS } from "@/lib/constants";
 import { addTournament } from "@/lib/actions";
-import useToastMessage from "@/components/hooks/useToastMessage";
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { getApi } from "@/lib/fetch";
 import Spinner from "@repo/ui/components/ui/spinner";
 import SubscribedPlayers from "./subscribed-players";

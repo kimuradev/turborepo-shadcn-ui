@@ -7,7 +7,7 @@ import { DatePicker } from "@repo/ui/components/ui/date-picker";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { Button } from "@repo/ui/components/ui/button";
 import Spinner from "@repo/ui/components/ui/spinner";
-import useToastMessage from "@/components/hooks/useToastMessage";
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { DATE_FORMAT } from "@/lib/constants";
 import { type GameWeekProps } from "@/lib/definitions";
 import { putApiWithCredentials } from "@/lib/fetchWithCredentials";
@@ -106,7 +106,7 @@ export default function GameWeek({ id, week }: GameWeekProps) {
                             <div className="flex justify-center items-center">
                                 {isEditing[index] ? (
                                     <>
-                                        <DatePicker pickDate={parse(currentWeek[index], DATE_FORMAT, new Date())} setCurrentDate={setCurrentDate} />
+                                        <DatePicker pickDate={parse(currentWeek[index] || '', DATE_FORMAT, new Date())} setCurrentDate={setCurrentDate} />
                                         {isLoading ? (<div className="pl-3"><Spinner size="sm" /></div>) : (
                                             <div>
                                                 <Button variant="ghost" className="m-1 p-0 pl-1" onClick={() => { handleSubmit(index) }} disabled={!currentDate}>

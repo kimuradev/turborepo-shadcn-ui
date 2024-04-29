@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from 'react';
 import { UserCircle2 } from 'lucide-react';
 
 import { Button } from "@repo/ui/components/ui/button"
@@ -7,12 +8,11 @@ import {
     Dialog,
     DialogContent,
 } from "@repo/ui/components/ui/dialog"
+import { userLogout } from '@/lib/actions';
 
 import LoginForm from './login-form';
-import { useAuthContext } from '../context/auth-context';
-import { userLogout } from '@/lib/actions';
-import { useState } from 'react';
 import { Profile } from './profile';
+import { useAuthContext } from '../context/auth-context';
 
 export default function Login() {
     const [isOpen, setIsOpen] = useState(false);

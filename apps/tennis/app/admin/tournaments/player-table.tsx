@@ -11,7 +11,7 @@ import {
 import Tag from "@repo/ui/components/ui/tag";
 import { Switch } from "@repo/ui/components/ui/switch";
 import { postApiWithCredentials } from '@/lib/fetchWithCredentials';
-import useToastMessage from '@/components/hooks/useToastMessage';
+import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 
 function PlayerTable({ players, isLoading, tournament, year }: { players: any, isLoading: boolean, tournament: string, year: string }) {
     const [playerData, setPlayerData] = useState([]);

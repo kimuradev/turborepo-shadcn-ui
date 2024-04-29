@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
-import useToastMessage from "@/components/hooks/useToastMessage";
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 
 import { RANKING_TAB } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";

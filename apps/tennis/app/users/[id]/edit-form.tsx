@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 import { Button } from "@repo/ui/components/ui/button";
 import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
-import useToastMessage from '@/components/hooks/useToastMessage';
+import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 import { changePassword, updateUserPassword } from '@/lib/actions';
 
 import LoginForm from '../login-form';

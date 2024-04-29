@@ -3,7 +3,7 @@
 import { getApi } from "@/lib/fetch"
 import isAuth from "@/components/hooks/isAuth"
 import { useEffect, useState } from "react"
-import useToastMessage from "@/components/hooks/useToastMessage"
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage"
 import Spinner from "@repo/ui/components/ui/spinner"
 import { useAuthContext } from "@/app/context/auth-context"
 import EditUserForm from "./edit-form"

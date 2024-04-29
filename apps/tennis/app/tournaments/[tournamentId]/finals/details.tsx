@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import Spinner from "@repo/ui/components/ui/spinner";
-import useToastMessage from "@/components/hooks/useToastMessage";
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { CLASSIFICATION, FINALS_CLASS_ID } from "@/lib/constants";
 import { type FinalsDetailsProps } from "@/lib/definitions";
 import { getApi } from "@/lib/fetch";
@@ -44,7 +44,7 @@ export default function FinalsDetails({ tournament, year }: FinalsDetailsProps) 
       {
         games.data?.length > 0 ? (
           <div className="flex flex-col mt-4">
-            <GameWeek id={games.data[0].unique_id} week={games.game_week} />
+            {games.data[0] && <GameWeek id={games.data[0].unique_id} week={games.game_week} />}
 
             <div className="flex items-center">
               <div className="flex flex-col justify-center items-center">

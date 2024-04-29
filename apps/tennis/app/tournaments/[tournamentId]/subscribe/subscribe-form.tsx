@@ -17,7 +17,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import useToastMessage from '@/components/hooks/useToastMessage';
+import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 
 import { SHIRT_SIZE, TOURNAMENT_ID } from '@/lib/constants';
 import { Alert, AlertDescription, AlertTitle } from '@repo/ui/components/ui/alert';

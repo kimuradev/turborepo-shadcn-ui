@@ -9,7 +9,7 @@ import { Button } from "@repo/ui/components/ui/button";
 import { Input } from "@repo/ui/components/ui/input";
 import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
-import useToastMessage from '@/components/hooks/useToastMessage';
+import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 import { forgotUser } from '@/lib/actions';
 
 const formSchema = z.object({

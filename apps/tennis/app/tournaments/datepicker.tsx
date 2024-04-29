@@ -3,7 +3,7 @@ import { useState } from "react"
 import { DateTimePicker } from "@repo/ui/components/ui/datetime-picker"
 import { Separator } from "@repo/ui/components/ui/separator"
 import { deleteApi, putApi } from "@/lib/fetch"
-import useToastMessage from "@/components/hooks/useToastMessage"
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage"
 
 export default function TournamentDatePicker({ id, schedule }: { id: Number, schedule: Date | null }) {
     const [dateTime, setDateTime] = useState<any>({

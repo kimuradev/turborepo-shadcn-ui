@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { DataTable } from "@repo/ui/components/table/data-table";
-import useToastMessage from "@/components/hooks/useToastMessage";
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { STATUS_OPTIONS } from "@/lib/constants";
 import { type DialogProps, type Players } from "@/lib/definitions";
 

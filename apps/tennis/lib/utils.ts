@@ -27,8 +27,8 @@ export const getInitialLetterName = (player: string) => {
   if (names.length <= 2) {
     return names.map(word => word.charAt(0)).join('');
   } else {
-    const firstLetter = names[0].charAt(0);
-    const lastLetter = names[names.length - 1].charAt(0);
+    const firstLetter = names[0]?.charAt(0);
+    const lastLetter = names[names.length - 1]?.charAt(0);
     return `${firstLetter}${lastLetter}`;
   }
 };
@@ -67,10 +67,10 @@ export function getNameWithAbbreviation(name: string) {
 
   let abbreviation = "";
   for (let i = 0; i < nameParts.length; i++) {
-    const namePart = nameParts[i];
+    const namePart: any = nameParts[i];
 
     // Check for special character followed by a number (indicating an ID)
-    if (namePart.match(/^\([0-9]+\)$/)) {
+    if (namePart?.match(/^\([0-9]+\)$/)) {
       abbreviation += namePart + " ";
       hasSeed = true;
     } else {
@@ -82,7 +82,7 @@ export function getNameWithAbbreviation(name: string) {
 
       if (hasSeed) {
         if (i > 1 && i < nameParts.length - 1) {
-          abbreviation += namePart.charAt(0) + ". ";
+          abbreviation += namePart?.charAt(0) + ". ";
         } else {
           abbreviation += namePart + " ";
         }

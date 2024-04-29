@@ -14,7 +14,7 @@ import {
 import { GAME_RESULTS } from '@/lib/constants';
 import { Button } from '@repo/ui/components/ui/button';
 import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
-import useToastMessage from '@/components/hooks/useToastMessage';
+import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 import { useAppContext } from '@/app/context/app-context';
 import { type TournamentResultProps } from '@/lib/definitions';
 import { putApiWithCredentials } from '@/lib/fetchWithCredentials';

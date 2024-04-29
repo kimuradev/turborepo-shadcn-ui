@@ -1,9 +1,11 @@
 "use client"
 
+import Spinner from "@repo/ui/components/ui/spinner";
 import { ShieldAlert, ShieldCheck } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function Page() {
+function Confirm() {
     const searchParams = useSearchParams()
     const valid = searchParams.get('valid')
 
@@ -12,8 +14,8 @@ export default function Page() {
             <div className="flex w-full h-full items-center justify-center">
                 <ShieldCheck className="w-16 h-16 stroke-green-300 mr-2" />
                 <div className="flex flex-col">
-                <p className="text-green-600">Usuário validado com sucesso. </p>
-                <p>Faça o seu login e atualize seu cadastro.</p>
+                    <p className="text-green-600">Usuário validado com sucesso. </p>
+                    <p>Faça o seu login e atualize seu cadastro.</p>
                 </div>
             </div>
         )
@@ -24,5 +26,13 @@ export default function Page() {
             <ShieldAlert className="w-8 h-8 stroke-red-400 mr-2" />
             <span>Não foi possível validar seu usuário. Tente normalmente mais tarde.</span>
         </div>
+    )
+}
+
+export default function Page() {
+    return (
+        <Suspense fallback={<Spinner />}>
+            <Confirm />
+        </Suspense>
     )
 }

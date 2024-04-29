@@ -5,7 +5,7 @@ import orderBy from 'lodash/orderBy';
 
 import Spinner from "@repo/ui/components/ui/spinner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
-import useToastMessage from "@/components/hooks/useToastMessage";
+import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { useAppContext } from "@/app/context/app-context";
 import { CLASSIFICATION } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
@@ -72,7 +72,7 @@ export default function TournamentTabs({ classes, tournament, year, classId }: T
                             {
                                 data.length > 0 ? (
                                     <div className="flex flex-col mt-4">
-                                        <GameWeek id={games.data[0].unique_id} week={games.game_week} />
+                                        {games.data[0] && <GameWeek id={games.data[0].unique_id} week={games.game_week} />}
 
                                         <div className="flex items-center">
                                             <div className="flex flex-col gap-4">

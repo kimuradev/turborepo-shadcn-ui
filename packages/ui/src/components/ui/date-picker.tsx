@@ -13,7 +13,7 @@ import {
     PopoverTrigger,
 } from "@ui/components/ui/popover"
 
-export function DatePicker({ pickDate, setCurrentDate, dateFormat = "dd/MM/yyyy"  }: { pickDate: any, setCurrentDate: any, dateFormat: string}) {
+export function DatePicker({ pickDate, setCurrentDate, dateFormat = "dd/MM/yyyy"  }: { pickDate: any, setCurrentDate: any, dateFormat?: string}) {
     const [date, setDate] = React.useState(pickDate)
 
     const handleChange = (value: any) => {
