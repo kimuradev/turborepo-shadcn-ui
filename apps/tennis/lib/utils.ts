@@ -22,7 +22,7 @@ export const formatCpf = (number: string) => {
 }
 
 export const getInitialLetterName = (player: string) => {
-  if (player) return ;
+  if (player) return '';
 
   const names = player.split(' ');
 
@@ -55,7 +55,7 @@ export const formatCurrencyInput = (value: any) => {
 
 
 export function getNameWithAbbreviation(name: string) {
-  if (!name) return;
+  if (!name) return '';
 
   let hasSeed = false;
   // Trim leading and trailing spaces

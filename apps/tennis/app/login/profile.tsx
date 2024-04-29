@@ -35,7 +35,7 @@ export function Profile({ handleLogout }: { handleLogout: () => {} }) {
             <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">{profile?.user?.split('@')[0]}</p>
+                        <p className="text-sm font-medium leading-none">{profile.user? profile?.user?.split('@')[0] : ''}</p>
                         <p className="text-xs leading-none text-muted-foreground">
                             {profile.user}
                         </p>
