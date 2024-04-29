@@ -74,16 +74,15 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.1.1",
+    "@next/eslint-plugin-next": "^14.0.4",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/eslint": "^8.56.5",
+    "@types/eslint": "^8.56.1",
     "@types/node": "^20",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "autoprefixer": "^10",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.3",
+    "eslint": "^8.56.0",
     "postcss": "^8",
     "tailwindcss": "^3",
     "typescript": "^5"

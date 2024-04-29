@@ -15,17 +15,20 @@ export default function Dashboard() {
             <div>
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
                     <DashboardCard title="Torneio ativo" isEditable >
-                        <CurrentTournament />
+                        {/* <CurrentTournament /> */}
+                        <div> current tournament</div>
                     </DashboardCard>
                     <DashboardCard title="Jogos realizados/mês" className="flex flex-col justify-between">
                         <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
-                            <MonthlyGames />
+                            {/* <MonthlyGames /> */}
+                            <div> montlhly games</div>
                         </Suspense>
                     </DashboardCard>
                     <DashboardCard title="Líderes do ranking" description={`Top 10 - Geral`}
                         className="flex flex-col md:col-start-2 md:row-start-1 md:row-end-3">
                         <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
-                            <RankingLeader />
+                            {/* <RankingLeader /> */}
+                            <div> ranking leader</div>
                         </Suspense>
                     </DashboardCard>
                 </div >
