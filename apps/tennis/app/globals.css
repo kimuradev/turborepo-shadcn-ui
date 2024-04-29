@@ -62,6 +62,13 @@ button[data-state='active'] {
   background: #fdba74 !important;
 }
 
+.data-checkbox-\[state\=checked\]\:bg-primary[data-state=checked] {
+  background-color: hsl(var(--primary))
+}
+.data-checkbox-\[state\=checked\]\:text-primary-foreground[data-state=checked] {
+  color: hsl(var(--primary-foreground));
+}
+
 .data-\[state\=checked\]\:bg-primary[data-state=checked] {
   background-color: #16a34a !important;
 }

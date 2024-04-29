@@ -58,11 +58,19 @@ export default function Card({ data, classification }: CardProps) {
         return {}
     }
 
+    const getPlayerScore = ({ flow, score }: { flow: string, score: number }) => {
+        if (flow === 'wo') {
+            if (score === 2) return 'W';
+            return 'L'
+        }
+        return score
+    }
+
     return (
         <>
             {data.map((game: any, index) => (
-                <div key={game.game_number} 
-                className={`flex flex-col items-center ${game.round === 'final' ? 'border' : cardBackground(game.type)} w-60 rounded-sm m-4 p-1 ${enableHover(game)}} w-[270px]`}
+                <div key={game.game_number}
+                    className={`flex flex-col items-center ${game.round === 'final' ? 'border' : cardBackground(game.type)} w-60 rounded-sm m-4 p-1 ${enableHover(game)}} w-[270px]`}
                 >
                     <TournamentDatePicker id={game.id} schedule={game.schedule} />
 
@@ -91,15 +99,19 @@ export default function Card({ data, classification }: CardProps) {
                         </div>
                         <div className="flex flex-col justify-center items-center gap-2">
                             <div className="flex w-6 h-6 bg-slate-100 rounded justify-center items-center">
-                                <p>{game.player1_score}</p>
+                                <p>{getPlayerScore({ flow: game.flow, score: game.player1_score })}</p>
                             </div>
                             <div className="flex w-6 h-6 bg-slate-100 rounded justify-center items-center">
-                                <p>{game.player2_score}</p>
+                                <p>{getPlayerScore({ flow: game.flow, score: game.player2_score })}</p>
                             </div>
-
                         </div>
                     </div>
 
+                    {game.flow === 'wo' && (
+                        <div className="text-xs text-muted-foreground">
+                            * W.O.
+                        </div>
+                    )}
                 </div>
             ))}
             <DialogResult isOpen={dialog.isOpen} data={dialog.data} handleCancel={handleCancel} />

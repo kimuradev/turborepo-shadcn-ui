@@ -4,6 +4,7 @@ import z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
+import { Checkbox } from "@repo/ui/components/ui/checkbox";
 import {
     Select,
     SelectContent,
@@ -18,60 +19,105 @@ import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 import { useAppContext } from '@/app/context/app-context';
 import { type TournamentResultProps } from '@/lib/definitions';
 import { putApiWithCredentials } from '@/lib/fetchWithCredentials';
+import { getNameWithAbbreviation } from '@/lib/utils';
 
-const formSchema = z.object({
-    player1_score: z.string().nonempty('Campo obrigatório'),
-    player2_score: z.string().nonempty('Campo obrigatório'),
-}).superRefine((arg, ctx) => {
-    if (arg.player1_score === arg.player2_score) {
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "Placar não pode ser igual.",
-            path: ["player2_score"]
-        });
-    }
-
-    const scoreSum = parseInt(arg.player1_score || '0', 10) + parseInt(arg.player2_score || '0', 10);
-
-    if (scoreSum < 2) {
-        ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "Resultado não pode ter menos de 2 sets.",
-            path: ["player2_score"]
-        });
-    }
-
-    return z.NEVER;
-})
+const WO_WIN_SCORE = "2";
+const WO_LOSE_SCORE = "0";
 
 export default function TournamentResultForm({ data, handleCloseDialog }: TournamentResultProps) {
     const [isLoading, setIsLoading] = useState(false)
-    const { successMessage , errorMessage } = useToastMessage();
+    const { successMessage, errorMessage } = useToastMessage();
     const { updateGameResult, isFinals } = useAppContext();
+    const [isWOChecked, setisWOChecked] = useState(false);
+
+    const formSchema = z.object({
+        wo: z.boolean().default(false).optional(),
+        wo_player: z.string().optional(),
+        player1_score: isWOChecked ? z.string().optional() : z.string().nonempty('Campo obrigatório'),
+        player2_score: isWOChecked ? z.string().optional() : z.string().nonempty('Campo obrigatório'),
+    }).superRefine((arg, ctx) => {
+        if (isWOChecked) return z.NEVER;
+
+        if (arg.player1_score === arg.player2_score) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Placar não pode ser igual.",
+                path: ["player2_score"]
+            });
+        }
+    
+        const scoreSum = parseInt(arg.player1_score || '0', 10) + parseInt(arg.player2_score || '0', 10);
+    
+        if (scoreSum < 2) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Resultado não pode ter menos de 2 sets.",
+                path: ["player2_score"]
+            });
+        }
+    
+        return z.NEVER;
+    })
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             player1_score: '',
             player2_score: '',
+            wo_player: '',
+            wo: false
         }
     })
 
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsLoading(true);
+    const woPlayer = form.watch('wo_player');
 
-        try {
-            const response = await putApiWithCredentials(`${isFinals ? '/games/finals': '/games'}`, {
+    const WO_PLAYERS = [
+        { id: 1, key: data.player1_id, value: getNameWithAbbreviation(data.player1) },
+        { id: 2, key: data.player2_id, value: getNameWithAbbreviation(data.player2) }
+    ]
+
+    const getWoPlayerScore = (woPlayer: string) => WO_PLAYERS.find(player => player.key === woPlayer);
+
+    const handlePayload = async(values: any) => {
+        let response;
+        const url = isFinals ? '/games/finals' : '/games';
+        const player: any = getWoPlayerScore(woPlayer || '')
+
+        if (isWOChecked) {
+            response =  await putApiWithCredentials(`${url}`, {
                 id: data.id,
                 unique_id: data.unique_id,
                 player1_id: data.player1_id,
-                player2_id: data.player2_id, 
+                player2_id: data.player2_id,
+                game_number: data.game_number,
+                round: data.round,
+                classId: data.class_id,
+                player1_score: player.id === 1 ? WO_WIN_SCORE : WO_LOSE_SCORE,
+                player2_score: player.id === 2 ? WO_WIN_SCORE : WO_LOSE_SCORE,
+                game_flow: 'wo'
+            })
+        } else {
+            response = await putApiWithCredentials(`${url}`, {
+                id: data.id,
+                unique_id: data.unique_id,
+                player1_id: data.player1_id,
+                player2_id: data.player2_id,
                 game_number: data.game_number,
                 round: data.round,
                 classId: data.class_id,
                 player1_score: values.player1_score,
                 player2_score: values.player2_score,
             })
+        }
+
+        return response;
+    }
+
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsLoading(true);
+
+        try {
+            const response = await handlePayload(values)
 
             form.reset();
 
@@ -100,7 +146,7 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                             <FormItem className='w-[150px]'>
                                 <FormLabel className='text-xs truncate block'>{data.player1 || 'Bye'}</FormLabel>
                                 <FormControl>
-                                    <Select onValueChange={field.onChange} value={field.value}>
+                                    <Select onValueChange={field.onChange} value={field.value} disabled={isWOChecked}>
                                         <FormControl>
                                             <SelectTrigger>
                                                 <SelectValue placeholder="Placar..." />
@@ -126,7 +172,7 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                         render={({ field }) => (
                             <FormItem className='w-[150px]'>
                                 <FormLabel className='text-xs truncate block'>{data.player2}</FormLabel>
-                                <Select onValueChange={field.onChange} value={field.value} >
+                                <Select onValueChange={field.onChange} value={field.value} disabled={isWOChecked}>
                                     <FormControl>
                                         <SelectTrigger>
                                             <SelectValue placeholder="Placar..." />
@@ -147,6 +193,55 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                 <div className="text-sm text-muted-foreground mb-6 mt-6">
                     <p>Você tem certeza que deseja <strong>salvar</strong> esse resultado?</p>
                     <p>Esse resultado <strong>não poderá ser alterado</strong> no futuro.</p>
+                </div>
+
+                <div className='flex gap-4 justify-around items-center rounded-md border p-2 mb-4'>
+                    <FormField
+                        control={form.control}
+                        name="wo"
+                        render={({ field }) => (
+                            <FormItem className='flex flex-row items-start space-x-3 space-y-0 rounded-md'>
+                                <FormControl>
+                                    <Checkbox
+                                        checked={field.value}
+                                        onCheckedChange={(value: boolean) => {
+                                            field.onChange(value)
+                                            setisWOChecked(value)
+                                        }}
+                                    />
+                                </FormControl>
+                                <div className="space-y-1 leading-none">
+                                    <FormLabel>
+                                        W.O
+                                    </FormLabel>
+                                </div>
+                            </FormItem>
+                        )}
+                    />
+
+                    <FormField
+                        control={form.control}
+                        name="wo_player"
+                        render={({ field }) => (
+                            <FormItem className='w-[250px]'>
+                                <FormControl>
+                                    <Select onValueChange={field.onChange} value={field.value} disabled={!isWOChecked}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Vencedor..." />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {WO_PLAYERS.map((result: any) => (
+                                                <SelectItem key={result.key} value={result.key.toString()}>{result.value}</SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                 </div>
 
                 <div className='flex justify-end gap-4'>
