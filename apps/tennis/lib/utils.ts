@@ -22,7 +22,7 @@ export const formatCpf = (number: string) => {
 }
 
 export const getInitialLetterName = (player: string) => {
-  const names = player.split(' ');
+  const names = player?.split(' ');
 
   if (names.length <= 2) {
     return names.map(word => word.charAt(0)).join('');
@@ -60,7 +60,7 @@ export function getNameWithAbbreviation(name: string) {
   const trimmedName = name.trim();
 
   // Split the name into words
-  const nameParts = trimmedName.split(/\s+/);
+  const nameParts = trimmedName?.split(/\s+/);
 
   // Identify pronouns (case-insensitive)
   const pronouns = ["do", "da", "de", "dos", "das"];
