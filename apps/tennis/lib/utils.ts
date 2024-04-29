@@ -22,7 +22,7 @@ export const formatCpf = (number: string) => {
 }
 
 export const getInitialLetterName = (player: string) => {
-  if (player) return '';
+  if (!player) return 'AB';
 
   const names = player.split(' ');
 
