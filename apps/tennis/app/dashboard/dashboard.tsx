@@ -19,8 +19,7 @@ export default function Dashboard() {
                     </DashboardCard>
                     <DashboardCard title="Jogos realizados/mês" className="flex flex-col justify-between">
                         <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
-                            {/* <MonthlyGames /> */}
-                            <div> montlhly games</div>
+                            <MonthlyGames />
                         </Suspense>
                     </DashboardCard>
                     <DashboardCard title="Líderes do ranking" description={`Top 10 - Geral`}
