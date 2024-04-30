@@ -7,7 +7,7 @@ export default function Monthly({ data }: { data: any }) {
   if (!data.length) {
     return (
       <div className="flex flex-col justify-center items-center">
-        <CalendarX className="w-[50px] h-[50px] stroke-orange-500 mb-4" />
+        <CalendarX className="w-[50px] h-[50px] stroke-primary mb-4" />
         <p className="text-sm text-muted-foreground">Nenhum jogo até o momento. </p>
       </div>
     )

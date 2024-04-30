@@ -123,7 +123,7 @@ export default function GameWeek({ id, week }: GameWeekProps) {
                                     <>
                                         <div> {week}</div>
                                         <Button variant="ghost" onClick={() => { handleEdit(index) }}>
-                                            <Pencil className="w-4 h-4 stroke-orange-400" />
+                                            <Pencil className="w-4 h-4 stroke-primary" />
                                         </Button>
                                     </>
                                 )}

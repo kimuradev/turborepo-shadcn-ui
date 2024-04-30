@@ -17,18 +17,19 @@ const spinnerVariant = cva(
         default: "stroke-black-400",
         orange: "stroke-orange-400",
         black: "stroke-black-400",
+        primary: "stroke-primary"
       },
     },
     defaultVariants: {
       size: "default",
-      color: "orange"
+      color: "primary",
     },
   }
 )
 
 type SpinnerProps = {
   size?: "sm" | "md" | "lg",
-  color?: "orange" | "black"
+  color?: "orange" | "black" | "primary"
 }
 
 export default function Spinner({ size, color } : SpinnerProps ) {

@@ -185,7 +185,7 @@ const DateTimePicker = (props: DatePickerProps) => {
                         }
                     />
                     {props.hasSchedule && (
-                        <div className="flex justify-center items-center p-3 text-orange-400 hover:text-black ">
+                        <div className="flex justify-center items-center p-3 text-primary hover:text-black ">
                             {!isLoading ? (
                                 <Button
                                     variant={"outline"}

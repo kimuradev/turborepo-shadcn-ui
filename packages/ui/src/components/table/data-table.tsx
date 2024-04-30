@@ -87,7 +87,7 @@ export function DataTable<TData, TValue>({
 
         {isLoading ? (
           <div className="h-28 flex justify-center items-center">
-            <Spinner size="md" color="orange" />
+            <Spinner size="md"/>
           </div>
         ) : (
           <Table>
@@ -115,7 +115,7 @@ export function DataTable<TData, TValue>({
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
-                    className={index % 2 === 0 ? 'bg-orange-50 hover:bg-orange-100' : 'bg-white hover:bg-orange-100'}
+                    className={index % 2 === 0 ? 'bg-primary/10 hover:bg-primary/40' : 'bg-white hover:bg-primary/40'}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>

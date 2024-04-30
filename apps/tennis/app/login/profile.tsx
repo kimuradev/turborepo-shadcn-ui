@@ -43,17 +43,17 @@ export function Profile({ handleLogout }: { handleLogout: () => {} }) {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem className="cursor-pointer w-full hover:bg-orange-200" onClick={() => setOpen(false)}>
+                    <DropdownMenuItem className="cursor-pointer w-full hover:bg-primary/20" onClick={() => setOpen(false)}>
                         <BarChartBig className="w-4 h-4 mr-3" />
                         <Link href={'/'} className="w-full">Dashboard</Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer w-full hover:bg-orange-200" onClick={() => setOpen(false)}>
+                    <DropdownMenuItem className="cursor-pointer w-full hover:bg-primary/20" onClick={() => setOpen(false)}>
                         <User className="w-4 h-4 mr-3" />
                         <Link href={`/users/${profile?.id}`} className="w-full">Perfil</Link>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer w-full hover:bg-orange-200" onClick={handleLogout}>
+                <DropdownMenuItem className="cursor-pointer w-full hover:bg-primary/20" onClick={handleLogout}>
                     <LogOut className="w-4 h-4 mr-3" />
                     <span>Log out</span>
                 </DropdownMenuItem>

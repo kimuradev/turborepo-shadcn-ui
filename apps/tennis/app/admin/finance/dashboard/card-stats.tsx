@@ -64,7 +64,7 @@ export function CardsStats() {
                 </Card>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
-                <Card className="hover:bg-orange-50 hover:scale-105 cursor-pointer">
+                <Card className="hover:bg-primary/20 hover:scale-105 cursor-pointer">
                     <Link href='/admin/finance/yearly'>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-base font-normal flex items-center gap-2">
@@ -77,7 +77,7 @@ export function CardsStats() {
                         </CardContent>
                     </Link>
                 </Card>
-                <Card className="hover:bg-orange-50 hover:scale-105 cursor-pointer">
+                <Card className="hover:bg-primary/20 hover:scale-105 cursor-pointer">
                     <Link href='/admin/finance/tournaments'>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-base font-normal flex items-center gap-2">

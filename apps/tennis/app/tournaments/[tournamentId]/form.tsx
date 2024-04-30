@@ -269,7 +269,7 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                         {isAdmin && (
                             <Button variant="link" type="submit" className='flex items-center justify-center gap-2 p-0' disabled={isWOChecked || isLoading}>
                                 <RefreshCw className='w-4 h-4' />
-                                <span className='p-0 text-sm text-orange-400' onClick={() => { setIsSorted(true); setIsWOChecked(false) }}>Sortear vencedor</span>
+                                <span className='p-0 text-sm text-primary' onClick={() => { setIsSorted(true); setIsWOChecked(false) }}>Sortear vencedor</span>
                             </Button>
                         )}
                     </div>

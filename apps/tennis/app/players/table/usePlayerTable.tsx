@@ -57,7 +57,7 @@ export function usePlayerTable() {
         if (!phoneNumber) { return '-' }
 
         return (
-          <Link href={`https://wa.me/${phoneNumber.replace(/\D/g, '')}`} target="_blank" className="hover:text-orange-400 underline" >
+          <Link href={`https://wa.me/${phoneNumber.replace(/\D/g, '')}`} target="_blank" className="hover:text-primary underline" >
             <div className="flex items-center gap-2">
               {formatPhoneNumber(row.getValue("phone"))}
               <MessageCircle className="h-8 w-8 md:h-4 md:w-4 stroke-green-400" />
@@ -109,6 +109,7 @@ export function usePlayerTable() {
                 <DropdownMenuLabel>Ações</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
+                  className="cursor-pointer"
                   onClick={() => { router.push(`/admin/players/${row.original.id}`) }}
                 >
                   <UserCog className="h-4 w-4" />

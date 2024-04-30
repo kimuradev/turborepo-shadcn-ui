@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 function Header() {
     return (
-        <div className="px-6 py-3 flex items-center justify-between border-b bg-orange-400">
+        <div className="px-6 py-3 flex items-center justify-between border-b bg-primary/80">
             <div className='flex items-center'>
                 <NavbarMobile />
                 <Link href="/">

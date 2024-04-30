@@ -25,7 +25,7 @@ export default function NavigationMenuRules({ anchors }: NavigationMenu) {
                 {anchors.map(a => (
                     <NavigationMenuItem key={a.label}>
                         <Link to={a.href} spy smooth offset={-100} duration={500} activeClass="active" className='cursor-pointer'>
-                            <span className={`${navigationMenuTriggerStyle()} hover:bg-orange-400 hover:text-white`}>
+                            <span className={`${navigationMenuTriggerStyle()} hover:bg-primary hover:text-white`}>
                                 {a.label}
                             </span>
                         </Link>

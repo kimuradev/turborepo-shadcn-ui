@@ -10,7 +10,7 @@ export default function FloatSaveButton() {
 
     return (
         <div className='fixed bottom-8 right-8'>
-            <Button variant="outline" size="icon" className='rounded-full bg-orange-300 w-12 h-12' >
+            <Button variant="outline" size="icon" className='rounded-full bg-primary/50 w-12 h-12' >
                 {!pending ? <Save className="h-8 w-8" type="submit" /> : <ReloadIcon className="h-6 w-6 animate-spin" />}
             </Button>
         </div>

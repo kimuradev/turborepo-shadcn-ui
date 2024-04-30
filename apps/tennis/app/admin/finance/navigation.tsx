@@ -17,13 +17,13 @@ export function FinanceNavigation() {
             <NavigationMenuList className="flex-col items-start">
                 <NavigationMenuItem>
                     <div className="flex items-center justify-center gap-2">
-                        <CircleDollarSign className="w-4 h-4 stroke-orange-400" />
-                        <NavigationMenuTrigger className="text-primary focus:bg-transparent focus:text-primary hover:underline hover:bg-transparent hover:text-orange-300 m-0 p-0">Financeiro</NavigationMenuTrigger>
+                        <CircleDollarSign className="w-4 h-4 stroke-primary" />
+                        <NavigationMenuTrigger className="text-primary focus:bg-transparent focus:text-primary hover:underline hover:bg-transparent hover:text-primary m-0 p-0">Financeiro</NavigationMenuTrigger>
                     </div>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             <li className="row-span-3">
-                                <NavigationMenuLink asChild className="hover:bg-orange-100">
+                                <NavigationMenuLink asChild className="hover:bg-primary/10">
                                     <Link
                                         className="flex gap-2 h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                         href="/admin/finance/dashboard"
@@ -39,7 +39,7 @@ export function FinanceNavigation() {
                                 </NavigationMenuLink>
                             </li>
                             <li>
-                                <Link href="/admin/finance/yearly" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-orange-100 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                <Link href="/admin/finance/yearly" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/10 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                                     <div className="flex items-center gap-2">
                                         <CreditCard className="w-4 h-4" />
                                         <div className="text-sm font-medium leading-none">Anuidade</div>
@@ -50,7 +50,7 @@ export function FinanceNavigation() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/admin/finance/tournaments" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-orange-100 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                <Link href="/admin/finance/tournaments" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primary/10 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                                     <div className="flex items-center gap-2">
                                         <Trophy className="w-4 h-4" />
                                         <div className="text-sm font-medium leading-none">Torneios</div>

@@ -7,7 +7,7 @@ import { Button } from '@repo/ui/components/ui/button';
 export default function FloatTopButton() {
     return (
         <div className='fixed bottom-8 right-8'>
-            <Button variant="outline" size="icon" className='rounded-full bg-orange-300' onClick={scroll.scrollToTop}>
+            <Button variant="outline" size="icon" className='rounded-full bg-primary' onClick={scroll.scrollToTop}>
                 <ArrowBigUpDash className="h-8 w-8" />
             </Button>
         </div>

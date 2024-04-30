@@ -14,7 +14,7 @@ export default async function CurrentTournament() {
     if (tournamentIndex == -1) {
         return (
             <div className="flex flex-col justify-center items-center mt-6">
-                <Frown className="w-[50px] h-[50px] stroke-orange-500 mb-4" />
+                <Frown className="w-[50px] h-[50px] stroke-primary mb-4" />
                 <p className="text-sm text-muted-foreground">Nenhum torneio ativo no momento. </p>
             </div>
         )

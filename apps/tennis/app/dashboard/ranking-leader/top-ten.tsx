@@ -13,7 +13,7 @@ export default function TopTen({ data, isLoading }: TopTenDataProps) {
     if (!data.length) {
         return (
             <div className="flex flex-col flex-1 justify-center items-center">
-                <Users className="w-[50px] h-[50px] stroke-orange-500 mb-4" />
+                <Users className="w-[50px] h-[50px] stroke-primary mb-4" />
                 <p className="text-sm text-muted-foreground">Nenhum jogador possui pontos no momento. </p>
             </div>
         )
@@ -27,7 +27,7 @@ export default function TopTen({ data, isLoading }: TopTenDataProps) {
                 ))}
             </div>
             <div>
-                <Link href='/ranking' className="text-orange-400">Ver ranking completo</Link>
+                <Link href='/ranking' className="text-primary">Ver ranking completo</Link>
             </div>
         </div>
     )

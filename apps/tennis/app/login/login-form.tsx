@@ -89,7 +89,7 @@ function LoginForm({ handleCancel }: { handleCancel: () => void }) {
                     />
                     <div className='flex justify-between'>
                         <Link href='/users/forgot'>
-                            <span className='p-0 text-sm text-orange-400' onClick={handleCancel}>Esqueci minha senha</span>
+                            <span className='p-0 text-sm text-primary' onClick={handleCancel}>Esqueci minha senha</span>
                         </Link>
 
                         <LoginButton />
@@ -99,7 +99,7 @@ function LoginForm({ handleCancel }: { handleCancel: () => void }) {
             <div>
                 <span className='text-sm text-muted-foreground'>Ainda não tem cadastro? </span>
                 <Link href='/users/register'>
-                    <span className='p-0 text-sm text-orange-400 font-semibold' onClick={handleCancel}>Registrar</span>
+                    <span className='p-0 text-sm text-primary font-semibold' onClick={handleCancel}>Registrar</span>
                 </Link>
             </div>
         </>

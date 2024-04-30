@@ -36,7 +36,7 @@ export default function RootLayout({
               <Header />
               <main className="flex-1 p-6 flex gap-6 ">
                 <Navbar />
-                <div className="flex flex-col flex-1 md:border md:rounded md:border-orange-100 gap-4 p-0 sm:p-2 md:p-10 overflow-auto">
+                <div className="flex flex-col flex-1 md:border md:rounded md:border-primary/50 gap-4 p-0 sm:p-2 md:p-10 overflow-auto">
                   {children}
                 </div>
               </main>

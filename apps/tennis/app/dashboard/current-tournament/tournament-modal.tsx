@@ -22,7 +22,7 @@ export default function TournamentModal() {
     return (
         <Dialog open={isOpen} onOpenChange={handleCancel}>
             <Button className='absolute right-1' variant="ghost" onClick={() => setIsOpen(true)}>
-                <Pencil className="h-4 w-4 stroke-orange-300" />
+                <Pencil className="h-4 w-4 stroke-primary/90" />
             </Button>
             <DialogContent className="sm:max-w-[425px]">
                 <div className='flex flex-col space-y-1.5 text-center sm:text-left'>
