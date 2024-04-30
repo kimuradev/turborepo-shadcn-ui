@@ -30,7 +30,6 @@ export function TournamentBarChart({ year, finance, isLoading: isFinanceLoading 
 
                 setTotal(sumEmDia)
                 setData(response);
-            } catch (err) {
             } finally {
                 setIsLoading(false);
             }

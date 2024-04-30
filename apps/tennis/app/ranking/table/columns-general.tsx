@@ -11,7 +11,7 @@ export type Ranking = {
 export const columns: ColumnDef<Ranking>[] = [
     {
         accessorKey: "position",
-        header: ({ column }) => {
+        header: () => {
             return (
                 <Button
                 variant="ghost"

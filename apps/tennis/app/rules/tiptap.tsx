@@ -17,7 +17,7 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import {
     Bold, Italic, Strikethrough, Code, Heading1, Heading2, Heading3, MessageCircle, Underline as LucideUnderline, Image as LucideImage, List,
-    ListOrdered, AlignLeft, AlignRight, AlignCenter, AlignJustify, Save
+    ListOrdered, AlignLeft, AlignRight, AlignCenter, AlignJustify
 } from 'lucide-react'
 import StarterKit from '@tiptap/starter-kit'
 

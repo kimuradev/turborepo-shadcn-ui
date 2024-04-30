@@ -14,11 +14,11 @@ type Anchors = {
     label: string
 }
 
-type NavigationMenu = {
+type NavigationMenuProps = {
     anchors: Anchors[]
 }
 
-export default function NavigationMenuRules({ anchors }: NavigationMenu) {
+export default function NavigationMenuRules({ anchors }: NavigationMenuProps) {
     return (
         <NavigationMenu className="hidden lg:block" >
             <NavigationMenuList>

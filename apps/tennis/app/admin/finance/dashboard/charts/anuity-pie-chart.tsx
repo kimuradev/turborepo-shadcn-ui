@@ -7,7 +7,7 @@ import { formattedBrazilianCurrency } from '@/lib/utils';
 const COLORS = ['#00C49F', '#FF8042', 'red'];
 
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }: any) => {
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -31,7 +31,6 @@ export default function AnuityPieChart({ year, finance, isLoading: isFinanceLoad
                 const response = await getApi(`/finance/anuity?year=${year}`);
                 setTotal(response.find((res: any) => res.name === 'Em dia').value)
                 setData(response);
-            } catch (err) {
             } finally {
                 setIsLoading(false);
             }

@@ -16,6 +16,7 @@ export default function Finance() {
                 const response = await getApi('/settings/finance');
                 setData(response);
             } catch (err) {
+                setData({ finance: { yearly_payment: 0, tournament_payment: 0 } })
             } finally {
                 setIsLoading(false)
             }

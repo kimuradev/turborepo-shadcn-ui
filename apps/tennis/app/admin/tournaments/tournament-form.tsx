@@ -106,7 +106,6 @@ export default function TournamentForm() {
                     setClasses(classesResponse)
                 }
 
-            } catch (err) {
             } finally {
                 setIsLoading(false);
             }
@@ -130,7 +129,6 @@ export default function TournamentForm() {
                 ...state,
                 isFiltered: true
             }))
-        } catch (err) {
         } finally {
             setPlayers((state) => ({
                 ...state,
@@ -152,7 +150,6 @@ export default function TournamentForm() {
                 ...state,
                 data: response,
             }))
-        } catch (err) {
         } finally {
             setSubscribedPlayers((state) => ({
                 ...state,

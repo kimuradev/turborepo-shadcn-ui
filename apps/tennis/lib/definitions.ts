@@ -42,7 +42,7 @@ export type DashboardCardProps = {
     children: React.ReactNode
 }
 
-export type DialogDemoProps = {
+export type DialogRemovePlayerProps = {
     isOpen: boolean,
     isLoading?: boolean,
     data: {
@@ -74,7 +74,7 @@ export type CardProps = {
     classification?: string[] | undefined
 }
 
-export type TournamentDetails = {
+export type TournamentDetailsProps = {
     tournament: string,
 }
 
@@ -110,7 +110,7 @@ export type GameWeekProps = {
     week: string[]
 }
 
-export type TournamentTabs = {
+export type TournamentTabsProps = {
     classes: string[],
     tournament: string,
     year?: number | null,

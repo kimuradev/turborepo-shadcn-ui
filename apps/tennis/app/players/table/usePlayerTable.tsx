@@ -42,7 +42,7 @@ export function usePlayerTable() {
     {
       accessorKey: "phone",
       // filterFn: (row: any, id, filterValue) => row.getValue(id).startsWith(filterValue),
-      header: ({ column }) => {
+      header: () => {
         return (
           <Button
             variant="ghost"

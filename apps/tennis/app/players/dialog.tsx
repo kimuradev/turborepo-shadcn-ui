@@ -11,10 +11,10 @@ import {
   DialogTitle,
 } from "@repo/ui/components/ui/dialog";
 import { ButtonLoading } from "@repo/ui/components/ui/button-loading";
-import { type DialogDemoProps } from "@/lib/definitions";
+import { type DialogRemovePlayerProps } from "@/lib/definitions";
 import { removePlayer } from "@/lib/actions";
 
-export default function DialogDemo({ isOpen = false, isLoading, data, handleCancel, handleRemovePlayer }: DialogDemoProps) {
+export default function DialogRemovePlayer({ isOpen = false, data, handleCancel, handleRemovePlayer }: DialogRemovePlayerProps) {
   return (
     <Dialog open={isOpen} onOpenChange={handleCancel} >
       <DialogContent className="sm:max-w-[425px]">

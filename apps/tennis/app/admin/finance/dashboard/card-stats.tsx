@@ -33,7 +33,6 @@ export function CardsStats() {
             try {
                 const response = await getApi(`/settings/finance`);
                 setFinance(response.finance);
-            } catch (err) {
             } finally {
                 setIsLoading(false);
             }

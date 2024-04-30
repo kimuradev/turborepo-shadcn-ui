@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { DataTable } from "@repo/ui/components/table/data-table";
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { STATUS_OPTIONS } from "@/lib/constants";
-import { type DialogProps, type Players } from "@/lib/definitions";
+import { type DialogProps } from "@/lib/definitions";
 
-import DialogDemo from "@/app/players/dialog"
+import DialogRemovePlayer from "@/app/players/dialog"
 import { useWindowSize } from "@repo/ui/components/hooks/useWindowSize";
 import { usePlayerTable } from "./table/usePlayerTable";
 
@@ -83,7 +83,7 @@ export default function PlayerList({ players: data }: { players: any }) {
     <div className="container mx-auto p-0">
       <DataTable columns={columns} data={data} filtering={filtering} columnVisibility={columnVisibility} />
 
-      <DialogDemo isOpen={dialog.isOpen} isLoading={dialog.isLoading} data={dialog.data} handleCancel={handleCancel} handleRemovePlayer={handleRemovePlayer} />
+      <DialogRemovePlayer isOpen={dialog.isOpen} isLoading={dialog.isLoading} data={dialog.data} handleCancel={handleCancel} handleRemovePlayer={handleRemovePlayer} />
     </div>
   )
 }

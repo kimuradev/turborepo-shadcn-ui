@@ -35,6 +35,7 @@ export function useTournamentTable({ tournamentId, year }: { tournamentId: strin
                 const orderedByName: any = sortBy(response, ['player_name'])
                 setData(orderedByName);
             } catch (err) {
+                setData([])
             } finally {
                 setIsLoading(false)
             }
@@ -127,7 +128,7 @@ export function useTournamentTable({ tournamentId, year }: { tournamentId: strin
         {
             id: "actions",
             accessorKey: "payment_status",
-            header: ({ column }) => {
+            header: () => {
                 return (
                     <span>Já foi pago?</span>
                 )

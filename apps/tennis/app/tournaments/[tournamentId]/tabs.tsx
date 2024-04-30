@@ -9,12 +9,12 @@ import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { useAppContext } from "@/app/context/app-context";
 import { CLASSIFICATION } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
-import { type TournamentTabs } from "@/lib/definitions";
+import { type TournamentTabsProps } from "@/lib/definitions";
 
 import Card from "./card";
 import GameWeek from "./game-week";
 
-export default function TournamentTabs({ classes, tournament, year, classId }: TournamentTabs) {
+export default function TournamentTabs({ classes, tournament, year, classId }: TournamentTabsProps) {
     const [isLoading, setIsLoading] = useState(false);
     const { games, setGames } = useAppContext()
     const { errorMessage } = useToastMessage();

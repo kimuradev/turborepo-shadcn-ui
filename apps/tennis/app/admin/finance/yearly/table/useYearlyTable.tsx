@@ -124,7 +124,7 @@ export function useYearlyTable({ year }: { year : string}) {
         {
             id: "actions",
             accessorKey: "payment_status",
-            header: ({ column }) => {
+            header: () => {
                 return (
                     <span>Já foi pago?</span>
                 )
