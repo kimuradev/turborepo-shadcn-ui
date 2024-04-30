@@ -107,6 +107,7 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                 classId: data.class_id,
                 player1_score: values.player1_score,
                 player2_score: values.player2_score,
+                game_flow: 'normal'
             })
         }
 
