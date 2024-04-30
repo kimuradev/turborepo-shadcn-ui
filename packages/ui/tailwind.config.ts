@@ -77,6 +77,11 @@ const config = {
     },
   },
   plugins: [tailwindcssAnimate],
+  safelist: [
+    {
+      pattern: /bg-(red|green|blue|orange)-(50|100|200|300)/,
+    },
+  ],
 } satisfies Config;
 
 export default config;

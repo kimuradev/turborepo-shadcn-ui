@@ -56,7 +56,7 @@ const TOURNAMENT_NAMES = {
 }
 
 export const TOURNAMENTS = [
-    { value: TOURNAMENT_ID.AO, headerSrcImg: AO, contentSrcImg: { src: AOCircle, alt: TOURNAMENT_NAMES.AO }, bgColor: 'bg-blue', link: `/tournaments/${TOURNAMENT_ID.AO}`},
+    { value: TOURNAMENT_ID.AO, headerSrcImg: AO, contentSrcImg: { src: AOCircle, alt: TOURNAMENT_NAMES.AO }, bgColor: 'bg-blue-50', link: `/tournaments/${TOURNAMENT_ID.AO}`},
     { value: TOURNAMENT_ID.RG, headerSrcImg: RG, contentSrcImg: { src: RGCircle, alt: TOURNAMENT_NAMES.RG }, bgColor: 'bg-orange-50', link: `/tournaments/${TOURNAMENT_ID.RG}`},
     { value: TOURNAMENT_ID.WIMBLEDON, headerSrcImg: Wimbledon, contentSrcImg: { src: WimbledonCircle, alt: TOURNAMENT_NAMES.WIMBLEDON }, bgColor: 'bg-green-50', link: `/tournaments/${TOURNAMENT_ID.WIMBLEDON}`},
     { value: TOURNAMENT_ID.US, headerSrcImg: US, contentSrcImg: { src: USCircle, alt: TOURNAMENT_NAMES.US }, bgColor: 'bg-blue-50', link: `/tournaments/${TOURNAMENT_ID.US}`},
