@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Image from "next/image"
+import { format } from "date-fns"
 
 import { useAuthContext } from "@/app/context/auth-context"
 // import JapanFlag from "@/public/static/japan-flag.svg"
@@ -8,6 +9,7 @@ import { type CardProps } from "@/lib/definitions"
 import DialogResult from "./dialog"
 import TournamentDatePicker from "../datepicker"
 import { getNameWithAbbreviation } from "@/lib/utils"
+import { DATE_TIME_FORMAT, GAME_FLOW_SORTED, GAME_FLOW_WO } from "@/lib/constants"
 
 export default function Card({ data, classification }: CardProps) {
     const { signed, isAdmin } = useAuthContext();
@@ -59,7 +61,7 @@ export default function Card({ data, classification }: CardProps) {
     }
 
     const getPlayerScore = ({ flow, score }: { flow: string, score: number }) => {
-        if (flow === 'wo') {
+        if (flow === GAME_FLOW_WO || flow === GAME_FLOW_SORTED ) {
             if (score === 2) return 'W';
             return 'L'
         }
@@ -107,11 +109,14 @@ export default function Card({ data, classification }: CardProps) {
                         </div>
                     </div>
 
-                    {game.flow === 'wo' && (
-                        <div className="text-xs text-muted-foreground">
-                            * W.O.
-                        </div>
-                    )}
+                    <div className="text-xs text-muted-foreground">
+                        {game.flow === GAME_FLOW_WO && (
+                            <span className="italic">* W.O.</span>
+                        )}
+                        {game.flow === GAME_FLOW_SORTED && (
+                            <span className="italic">* Sorteado {format(game.updated_at, DATE_TIME_FORMAT)}</span>
+                        )}
+                    </div>
                 </div>
             ))}
             <DialogResult isOpen={dialog.isOpen} data={dialog.data} handleCancel={handleCancel} />

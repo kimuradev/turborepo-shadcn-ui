@@ -20,6 +20,8 @@ import { useAppContext } from '@/app/context/app-context';
 import { type TournamentResultProps } from '@/lib/definitions';
 import { putApiWithCredentials } from '@/lib/fetchWithCredentials';
 import { getNameWithAbbreviation } from '@/lib/utils';
+import { RefreshCw } from 'lucide-react';
+import { useAuthContext } from '@/app/context/auth-context';
 
 const WO_WIN_SCORE = "2";
 const WO_LOSE_SCORE = "0";
@@ -28,15 +30,17 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
     const [isLoading, setIsLoading] = useState(false)
     const { successMessage, errorMessage } = useToastMessage();
     const { updateGameResult, isFinals } = useAppContext();
-    const [isWOChecked, setisWOChecked] = useState(false);
+    const { isAdmin } = useAuthContext();
+    const [isWOChecked, setIsWOChecked] = useState(false);
+    const [isSorted, setIsSorted] = useState(false);
 
     const formSchema = z.object({
         wo: z.boolean().default(false).optional(),
-        wo_player: z.string().optional(),
-        player1_score: isWOChecked ? z.string().optional() : z.string().nonempty('Campo obrigatório'),
-        player2_score: isWOChecked ? z.string().optional() : z.string().nonempty('Campo obrigatório'),
+        wo_player: isWOChecked ? z.string().min(1, { message: "Campo obrigatório" }) : z.string().optional(),
+        player1_score: isWOChecked || isSorted ? z.string().optional() : z.string().min(1, { message: "Campo obrigatório" }),
+        player2_score: isWOChecked || isSorted ? z.string().optional() : z.string().min(1, { message: "Campo obrigatório" }),
     }).superRefine((arg, ctx) => {
-        if (isWOChecked) return z.NEVER;
+        if (isWOChecked || isSorted) return z.NEVER;
 
         if (arg.player1_score === arg.player2_score) {
             ctx.addIssue({
@@ -45,9 +49,9 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                 path: ["player2_score"]
             });
         }
-    
+
         const scoreSum = parseInt(arg.player1_score || '0', 10) + parseInt(arg.player2_score || '0', 10);
-    
+
         if (scoreSum < 2) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
@@ -55,7 +59,7 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                 path: ["player2_score"]
             });
         }
-    
+
         return z.NEVER;
     })
 
@@ -78,33 +82,47 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
 
     const getWoPlayerScore = (woPlayer: string) => WO_PLAYERS.find(player => player.key === woPlayer);
 
-    const handlePayload = async(values: any) => {
+    const randomWinnerChoice = () => {
+        const randomNumber = Math.random();
+        // If the random number is less than 0.5, return 1, otherwise return 2
+        const winner = randomNumber < 0.5 ? 1 : 2;
+
+        return {
+            player1_score: winner === 1 ? WO_WIN_SCORE : WO_LOSE_SCORE,
+            player2_score: winner === 2 ? WO_WIN_SCORE : WO_LOSE_SCORE,
+            game_flow: 'sorted'
+        }
+    }
+
+    const handlePayload = async (values: any) => {
         let response;
+        const payload = {
+            id: data.id,
+            unique_id: data.unique_id,
+            player1_id: data.player1_id,
+            player2_id: data.player2_id,
+            game_number: data.game_number,
+            round: data.round,
+            classId: data.class_id,
+        }
         const url = isFinals ? '/games/finals' : '/games';
         const player: any = getWoPlayerScore(woPlayer || '')
 
-        if (isWOChecked) {
-            response =  await putApiWithCredentials(`${url}`, {
-                id: data.id,
-                unique_id: data.unique_id,
-                player1_id: data.player1_id,
-                player2_id: data.player2_id,
-                game_number: data.game_number,
-                round: data.round,
-                classId: data.class_id,
+        if (isSorted) {
+            response = await putApiWithCredentials(`${url}`, {
+                ...payload,
+                ...randomWinnerChoice()
+            })
+        } else if (isWOChecked) {
+            response = await putApiWithCredentials(`${url}`, {
+                ...payload,
                 player1_score: player.id === 1 ? WO_WIN_SCORE : WO_LOSE_SCORE,
                 player2_score: player.id === 2 ? WO_WIN_SCORE : WO_LOSE_SCORE,
                 game_flow: 'wo'
             })
         } else {
             response = await putApiWithCredentials(`${url}`, {
-                id: data.id,
-                unique_id: data.unique_id,
-                player1_id: data.player1_id,
-                player2_id: data.player2_id,
-                game_number: data.game_number,
-                round: data.round,
-                classId: data.class_id,
+                ...payload,
                 player1_score: values.player1_score,
                 player2_score: values.player2_score,
                 game_flow: 'normal'
@@ -207,7 +225,8 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                                         checked={field.value}
                                         onCheckedChange={(value: boolean) => {
                                             field.onChange(value)
-                                            setisWOChecked(value)
+                                            setIsWOChecked(value)
+                                            setIsSorted(false)
                                         }}
                                     />
                                 </FormControl>
@@ -245,9 +264,19 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
                     />
                 </div>
 
-                <div className='flex justify-end gap-4'>
-                    <Button onClick={handleCloseDialog} variant="ghost">Cancelar</Button>
-                    {!isLoading ? <Button type="submit">{(data.player1_score === null && data.player2_score === null) ? 'Salvar' : 'Editar'}</Button> : <ButtonLoading />}
+                <div className={`flex gap-4 pt-4 ${isAdmin ? 'justify-between' : 'justify-end'}`}>
+                    <div>
+                        {isAdmin && (
+                            <Button variant="link" type="submit" className='flex items-center justify-center gap-2 p-0' disabled={isWOChecked || isLoading}>
+                                <RefreshCw className='w-4 h-4' />
+                                <span className='p-0 text-sm text-orange-400' onClick={() => { setIsSorted(true); setIsWOChecked(false) }}>Sortear vencedor</span>
+                            </Button>
+                        )}
+                    </div>
+                    <div className='flex items-center justify-center'>
+                        <Button onClick={handleCloseDialog} variant="ghost">Cancelar</Button>
+                        {!isLoading ? <Button type="submit">{(data.player1_score === null && data.player2_score === null) ? 'Salvar' : 'Editar'}</Button> : <ButtonLoading />}
+                    </div>
                 </div>
             </form>
         </Form>

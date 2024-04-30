@@ -86,6 +86,11 @@ export const RANKING_TAB = "general"
 
 export const DATE_FORMAT = "dd/MM/yyyy"
 
+export const DATE_TIME_FORMAT = "dd/MM/yyyy HH:mm:ss"
+
 export const FINALS_CLASS_ID = 7;
 
 export const ROLE_ADMIN = 'admin';
+
+export const GAME_FLOW_WO = 'wo';
+export const GAME_FLOW_SORTED = 'sorted';
