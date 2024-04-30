@@ -42,6 +42,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logout = () => {
     setUser(null);
+    setIsAdmin(false);
     setProfile({})
     router.push('/')
   };
