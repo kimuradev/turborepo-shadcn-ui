@@ -39,8 +39,8 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
     <div>
       <h2 className="text-sm text-muted-foreground mb-6">Ano: {year}</h2>
 
-      <div className="mb-4">
-        <Image src={Banner} width="1200" height="100" alt="Ajude o Rio Grande do Sul" />
+      <div className="mb-4 w-[1200px] h-[100px]">
+        <Image src={Banner} width={1200} height={100} alt="Ajude o Rio Grande do Sul" />
       </div>
 
       {isFinals ? (
