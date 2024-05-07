@@ -3,20 +3,20 @@
 import { Button } from "@ui/components/ui/button";
 import ABIcon from '@/public/icons/icon-192x192.png';
 import Image from "next/image";
+import { Dialog, DialogContent } from "@ui/components/ui/dialog";
 
 type PwaModalProps = {
     show: boolean,
     onClose: () => void,
     onInstall: () => void
+    onClickOutside: () => void
 }
 
-const PwaModal = ({ show, onClose, onInstall }: PwaModalProps) => {
-    const blurBackground = show ? 'backdrop-blur' : '';
-
+const PwaModal = ({ show, onClose, onInstall, onClickOutside }: PwaModalProps) => {
     return (
         show && (
-            <div className="fixed inset-0 flex items-center justify-center z-50">
-                <div className="bg-white w-94 p-4 rounded-lg shadow-lg">
+            <Dialog open={show} onOpenChange={onClickOutside}>
+                <DialogContent className="sm:max-w-[350px]">
                     <h2 className="text-lg font-semibold mb-2 text-black">
                         Instalar aplicativo?
                     </h2>
@@ -34,24 +34,21 @@ const PwaModal = ({ show, onClose, onInstall }: PwaModalProps) => {
 
                     <div className="flex justify-end gap-4">
                         <Button
+                            type="button"
                             onClick={onClose}
                             variant="secondary"
                         >
                             Cancelar
                         </Button>
                         <Button
+                            type="button"
                             onClick={onInstall}
                         >
                             Instalar
                         </Button>
-
                     </div>
-                </div>
-                <div
-                    className={`fixed inset-0 bg-gray-900 opacity-80 -z-10 ${blurBackground}`}
-                >
-                </div>
-            </div>
+                </DialogContent>
+            </Dialog>
         )
     )
 }

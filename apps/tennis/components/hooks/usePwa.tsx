@@ -40,7 +40,6 @@ export function usePwa() {
                 localStorage.setItem("ab-tenis-installed", 'true')
             } else {
                 console.log('Canceled')
-                // localStorage.setItem("ab-tenis-installed", 'false')
             }
 
             setPrompt(null);
@@ -53,11 +52,16 @@ export function usePwa() {
         setShowInstallModal(false)
     }
 
+    const handleClickOutsideModal = () => {
+        setShowInstallModal(false)
+    }
+
     return [
         {
             showInstallModal
         },
         {
+            handleClickOutsideModal,
             handleInstallClick,
             handleCloseModal
         }
