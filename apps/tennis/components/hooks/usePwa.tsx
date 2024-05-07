@@ -3,14 +3,24 @@
 import { useEffect, useState } from "react";
 
 export function usePwa() {
+    const [showIOSInstallModal, setShowIOSInstallModal] = useState<boolean>(false);
     const [showInstallModal, setShowInstallModal] = useState<boolean>(false);
     const [prompt, setPrompt] = useState<any>(null);
 
+    const isIos = () => /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isFirefox = () => navigator.userAgent.toLowerCase().includes('firefox')
+    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
     useEffect(() => {
+        if (isIos() && !isInStandaloneMode()) {
+            setShowIOSInstallModal(true);
+        } else if (isFirefox()) {
+            setShowInstallModal(false)
+            return;
+        }
+
         const hasPwa = localStorage.getItem("ab-tenis-installed")
         const getPWAfromLocalStorage = hasPwa ? JSON.parse(hasPwa) : null;
-
-        console.log('getPWAfromLocalStorage: ', getPWAfromLocalStorage)
 
         const handleBeforeInstallPrompt = (event: any) => {
             event.preventDefault();
@@ -50,6 +60,7 @@ export function usePwa() {
     const handleCloseModal = () => {
         localStorage.setItem("ab-tenis-installed", 'false')
         setShowInstallModal(false)
+        setShowIOSInstallModal(false)
     }
 
     const handleClickOutsideModal = () => {
@@ -58,7 +69,8 @@ export function usePwa() {
 
     return [
         {
-            showInstallModal
+            showInstallModal,
+            showIOSInstallModal
         },
         {
             handleClickOutsideModal,
