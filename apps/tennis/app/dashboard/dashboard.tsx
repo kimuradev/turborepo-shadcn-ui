@@ -1,6 +1,3 @@
-import { Suspense } from "react"
-import Spinner from "@repo/ui/components/ui/spinner"
-
 import MonthlyGames from "./monthly-games"
 import DashboardCard from "./card"
 import RankingLeader from "./ranking-leader"
@@ -18,15 +15,11 @@ export default function Dashboard() {
                         <CurrentTournament />
                     </DashboardCard>
                     <DashboardCard title="Jogos realizados/mês" className="flex flex-col justify-between">
-                        <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
-                            <MonthlyGames />
-                        </Suspense>
+                        <MonthlyGames />
                     </DashboardCard>
                     <DashboardCard title="Líderes do ranking" description={`Top 10 - Geral`}
                         className="flex flex-col md:col-start-2 md:row-start-1 md:row-end-3">
-                        <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
-                            <RankingLeader />
-                        </Suspense>
+                        <RankingLeader />
                     </DashboardCard>
                 </div >
             </div >

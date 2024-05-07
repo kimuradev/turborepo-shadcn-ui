@@ -40,7 +40,7 @@ export default function manifest(): MetadataRoute.Manifest {
         ],
         screenshots: [
             {
-                src: "icons/screenshot.png",
+                src: "icons/icon-192x192.png",
                 sizes: "640x320",
                 type: "image/png",
                 /** @ts-expect-error */
@@ -48,7 +48,7 @@ export default function manifest(): MetadataRoute.Manifest {
                 label: "AB T\u00eanis"
             },
             {
-                src: "icons/screenshot-320x640.png",
+                src: "icons/icon-192x192.png",
                 sizes: "320x640",
                 type: "image/png",
                 /** @ts-expect-error */

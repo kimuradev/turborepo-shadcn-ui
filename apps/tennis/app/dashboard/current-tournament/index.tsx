@@ -1,15 +1,40 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import { Frown } from "lucide-react";
 
+import Spinner from "@ui/components/ui/spinner";
 import { TOURNAMENTS } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import TournamentCard from "./tournament-card";
 
-export default async function CurrentTournament() {
-    const response = await getApi('/tournaments/active', { cache: 'no-store' });
+export default function CurrentTournament() {
+    const [data, setData] = useState<any>(null);
+    const [isLoading, setIsLoading] = useState(true)
 
-    const tournamentIndex = await TOURNAMENTS.findIndex((tournament: any) =>  {
-        return tournament.value === response?.key;
+    useEffect(() => {
+        setIsLoading(true)
+    
+        const fetchData = async () => {
+            try {
+                const response = await getApi('/tournaments/active', { cache: 'no-store' });
+                setData(response);
+            }  finally {
+                setIsLoading(false);
+            }
+        }
+    
+        fetchData();
+    }, [])
+
+
+    const tournamentIndex = TOURNAMENTS.findIndex((tournament: any) =>  {
+        return tournament.value === data?.key;
     })
+
+    if (isLoading) {
+        return <div className="flex justify-center"><Spinner /></div>
+    }
 
     if (tournamentIndex == -1) {
         return (
@@ -21,6 +46,6 @@ export default async function CurrentTournament() {
     }
 
     return (
-       <TournamentCard data={response} tournamentIndex={tournamentIndex} />
+       <TournamentCard data={data} tournamentIndex={tournamentIndex} />
     )
 }
