@@ -44,17 +44,22 @@ export function usePwa() {
             prompt.prompt();
         }
 
-        prompt.userChoice.then((choiceResult: any) => {
-            if (choiceResult.outcome === "accepted") {
-                console.log('Accepted')
-                localStorage.setItem("ab-tenis-installed", 'true')
-            } else {
-                console.log('Canceled')
-            }
-
+        try {
+            prompt.userChoice.then((choiceResult: any) => {
+                if (choiceResult.outcome === "accepted") {
+                    console.log('Accepted')
+                    localStorage.setItem("ab-tenis-installed", 'true')
+                } else {
+                    console.log('Canceled')
+                }
+    
+                setPrompt(null);
+                setShowInstallModal(false);
+            })
+        } catch (error) {
             setPrompt(null);
             setShowInstallModal(false);
-        })
+        }
     }
 
     const handleCloseModal = () => {
