@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import type { Viewport } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
  
 import { Toaster } from '@repo/ui/components/ui/toaster'
 import Header from '@/components/header'
@@ -45,6 +46,7 @@ export default function RootLayout({
           </AppProvider>
         </div>
       </body>
+      <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GA_TRACKING}`} />
     </html>
   )
 }
