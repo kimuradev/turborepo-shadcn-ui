@@ -57,6 +57,7 @@ export function usePwa() {
                 setShowInstallModal(false);
             })
         } catch (error) {
+            localStorage.setItem("ab-tenis-installed", 'true')
             setPrompt(null);
             setShowInstallModal(false);
         }
