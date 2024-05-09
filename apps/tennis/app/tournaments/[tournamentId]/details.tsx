@@ -1,17 +1,18 @@
 "use client"
 
 import { useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { TOURNAMENT_ID } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import { useAppContext } from "@/app/context/app-context";
 import Spinner from "@repo/ui/components/ui/spinner";
 import { type TournamentDetailsProps } from "@/lib/definitions";
-import Banner from '@/public/img/banner.jpg'
+import Banner from '@/public/img/banner1.jpg'
 
 import TournamentTabs from "./tabs";
 import FinalsDetails from "./finals/details";
-import Image from "next/image";
 
 
 export default function TournamentDetails({ tournament }: TournamentDetailsProps) {
@@ -40,7 +41,9 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
       <h2 className="text-sm text-muted-foreground mb-6">Ano: {year}</h2>
 
       <div className="mb-4 w-[1200px] h-[100px]">
-        <Image src={Banner} width={1200} height={100} alt="Ajude o Rio Grande do Sul" />
+        <Link href="https://www.instagram.com/pibcuritiba/" target="_blank">
+          <Image src={Banner} width={1200} height={100} alt="Ajude o Rio Grande do Sul" />
+        </Link>
       </div>
 
       {isFinals ? (
