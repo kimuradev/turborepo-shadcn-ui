@@ -6,6 +6,14 @@ const nextConfig = {
         }
     },
     transpilePackages: ["@repo/ui"],
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'firebasestorage.googleapis.com',
+          },
+        ],
+      },
     // distDir: 'build',
     // output: 'export',
     // trailingSlash: true,
