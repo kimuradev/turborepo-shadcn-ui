@@ -15,7 +15,7 @@ export default function Dashboard() {
                     <DashboardCard title="Torneio ativo" isEditable >
                         <CurrentTournament />
                     </DashboardCard>
-                    <DashboardCard title="Jogos da semana" isEditable >
+                    <DashboardCard title="Jogos da rodada" isEditable >
                         <GameScheduled />
                     </DashboardCard>
                     <DashboardCard title="Líderes do ranking" description={`Top 10 - Geral`}>
