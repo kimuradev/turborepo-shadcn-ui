@@ -31,7 +31,7 @@ export default function DashboardCard({ title, description, className, isEditabl
                     </CardDescription>
                 )}
             </CardHeader>
-            <CardContent className="flex justify-center flex-1 pl-2">
+            <CardContent className={`flex justify-center flex-1 ${className}`} >
                 {children}
             </CardContent>
         </Card>

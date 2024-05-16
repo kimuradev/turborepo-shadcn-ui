@@ -10,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Calendar } from "./calendar";
 import { cn } from "@ui/lib/utils";
 import { Button } from "./button";
-import { Toggle } from "./toggle";
+// import { Toggle } from "./toggle";
 import Spinner from "./spinner";
 
 interface DateSegmentProps {
@@ -40,9 +40,10 @@ function DateSegment({ segment, state }: DateSegmentProps) {
     );
 }
 
-function TimeField({ hasTime, onHasTimeChange, disabled, ...props }: {
+function TimeField({ hasTime, hasSelectedDate, onHasTimeChange, disabled, ...props }: {
     disabled: boolean
     hasTime: boolean
+    hasSelectedDate: boolean
     onHasTimeChange: (hasTime: boolean) => void
     value: TimeValue | null
     onChange: (value: TimeValue) => void
@@ -59,25 +60,28 @@ function TimeField({ hasTime, onHasTimeChange, disabled, ...props }: {
     useTimeField(props, state, ref);
 
     return (
-        <div className={cn("flex items-center space-x-2 mt-1", disabled ? "cursor-not-allowed opacity-70" : "")}>
-            <Toggle
+        <div className={cn("flex justify-center items-center space-x-2 mt-1", disabled ? "cursor-not-allowed opacity-70" : "")}>
+            {/* <Toggle
                 disabled={disabled}
                 pressed={hasTime}
-                onPressedChange={onHasTimeChange}
+                // onPressedChange={onHasTimeChange}
                 size="lg"
                 variant="outline"
                 aria-label="Toggle time"
             >
                 <ClockIcon size='16px' />
-            </Toggle>
-            {hasTime && (
-                <div
-                    ref={ref}
-                    className="inline-flex h-10 w-full flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                >
-                    {state.segments.map((segment, i) => (
-                        <DateSegment key={i} segment={segment} state={state} />
-                    ))}
+            </Toggle> */}
+            {hasSelectedDate && (
+                <div className="flex items-center gap-2">
+                    <ClockIcon size='24px' className="stroke-primary" />
+                    <div
+                        ref={ref}
+                        className="inline-flex h-10 w-full flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                        {state.segments.map((segment, i) => (
+                            <DateSegment key={i} segment={segment} state={state} />
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
@@ -107,15 +111,14 @@ type DatePickerProps = {
 
 const DateTimePicker = (props: DatePickerProps) => {
     const contentRef = useRef<HTMLDivElement | null>(null);
-
-
     const [open, setOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const hasTime = props.value?.hasTime || false
+    const hasTime = props.value?.hasTime || false;
+    const isDisabled = props.isDisabled;
 
     const onChangeWrapper = (value: DateValue, newHasTime?: boolean) => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-        props.onChange({ date: value.toDate(timeZone), hasTime: newHasTime ?? hasTime })
+        props.onChange({ date: value.toDate(timeZone), hasTime: true })
     }
 
     const datePickerProps: DatePickerStateOptions<CalendarDateTime> = {
@@ -157,12 +160,13 @@ const DateTimePicker = (props: DatePickerProps) => {
                     <Button
                         variant={"outline"}
                         className={cn(
-                            "w-full justify-center text-left h-8 border-none shadow-none p-0  hover:bg-transparent hover:text-black",
+                            "w-full justify-center text-left h-8 border-none shadow-none p-0 hover:bg-transparent hover:text-black",
                             !props.value && "text-muted-foreground",
                         )}
+                        disabled={isDisabled}
                     >
                         <CalendarIcon className="mr-2 h-4 w-4" />
-                        {props.value?.date ? <span className="text-xs text-muted-foreground">{format(props.value?.date, dateDisplayFormat)}</span> : <span className="text-xs text-muted-foreground hover:text-black">Adicionar data do jogo</span>}
+                        {props.value?.date ? <span className="text-xs hover:text-muted-foreground">{format(props.value?.date, dateDisplayFormat)}</span> : <span className="text-xs hover:text-muted-foreground">Adicionar data do jogo</span>}
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent ref={contentRef} className="w-auto" align="start">
@@ -175,6 +179,7 @@ const DateTimePicker = (props: DatePickerProps) => {
                             <TimeField
                                 aria-label='Time Picker'
                                 disabled={!props.value?.date}
+                                hasSelectedDate={props.value?.date ? true : false}
                                 hasTime={hasTime}
                                 onHasTimeChange={newHasTime =>
                                     onChangeWrapper(dateToCalendarDateTime(props.value?.date!), newHasTime)
