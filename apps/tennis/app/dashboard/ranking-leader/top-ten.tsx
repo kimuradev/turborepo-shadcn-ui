@@ -2,8 +2,9 @@ import { Users } from "lucide-react"
 import Link from "next/link"
 
 import Spinner from "@repo/ui/components/ui/spinner"
-import TopTenCard from "./top-ten-card"
 import { type TopTenDataProps } from "@/lib/definitions"
+import { getNameWithAbbreviation } from "@/lib/utils"
+import TopTenCard from "./top-ten-card"
 
 export default function TopTen({ data, isLoading }: TopTenDataProps) {
     if (isLoading) {
@@ -20,10 +21,10 @@ export default function TopTen({ data, isLoading }: TopTenDataProps) {
     }
 
     return (
-        <div className="flex flex-col justify-between p-4 space-y-6">
-            <div className="flex flex-col gap-6">
+        <div className="flex flex-col justify-between space-y-6">
+            <div className="flex flex-col gap-4 p-0 md:px-8 overflow-auto max-h-[400px]">
                 {data.map((item, index) => (
-                    <TopTenCard key={item.player_name} player_name={item.player_name} class_id={item.class_id} points={item.points} index={index} />
+                    <TopTenCard key={item.player_name} player_name={getNameWithAbbreviation(item.player_name)} class_id={item.class_id} points={item.points} index={index} />
                 ))}
             </div>
             <div>
