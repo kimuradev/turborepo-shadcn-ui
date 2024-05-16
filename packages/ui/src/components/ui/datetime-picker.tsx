@@ -113,7 +113,8 @@ const DateTimePicker = (props: DatePickerProps) => {
     const contentRef = useRef<HTMLDivElement | null>(null);
     const [open, setOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const hasTime = props.value?.hasTime || false
+    const hasTime = props.value?.hasTime || false;
+    const isDisabled = props.isDisabled;
 
     const onChangeWrapper = (value: DateValue, newHasTime?: boolean) => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -159,12 +160,13 @@ const DateTimePicker = (props: DatePickerProps) => {
                     <Button
                         variant={"outline"}
                         className={cn(
-                            "w-full justify-center text-left h-8 border-none shadow-none p-0  hover:bg-transparent hover:text-black",
+                            "w-full justify-center text-left h-8 border-none shadow-none p-0 hover:bg-transparent hover:text-black",
                             !props.value && "text-muted-foreground",
                         )}
+                        disabled={isDisabled}
                     >
                         <CalendarIcon className="mr-2 h-4 w-4" />
-                        {props.value?.date ? <span className="text-xs text-muted-foreground">{format(props.value?.date, dateDisplayFormat)}</span> : <span className="text-xs text-muted-foreground hover:text-black">Adicionar data do jogo</span>}
+                        {props.value?.date ? <span className="text-xs hover:text-muted-foreground">{format(props.value?.date, dateDisplayFormat)}</span> : <span className="text-xs hover:text-muted-foreground">Adicionar data do jogo</span>}
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent ref={contentRef} className="w-auto" align="start">

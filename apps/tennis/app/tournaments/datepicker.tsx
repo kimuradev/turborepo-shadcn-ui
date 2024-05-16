@@ -5,7 +5,7 @@ import { Separator } from "@repo/ui/components/ui/separator"
 import { deleteApi, putApi } from "@/lib/fetch"
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage"
 
-export default function TournamentDatePicker({ id, schedule }: { id: Number, schedule: Date | null }) {
+export default function TournamentDatePicker({ id, schedule, isDisabled }: { id: Number, schedule: Date | null, isDisabled: boolean }) {
     const [dateTime, setDateTime] = useState<any>({
         date: schedule ? new Date(schedule) : null,
         hasTime: schedule ? true : false,
@@ -51,7 +51,7 @@ export default function TournamentDatePicker({ id, schedule }: { id: Number, sch
     return (
         <>
             <div className="flex justify-center items-center w-full">
-                <DateTimePicker onChange={(value: any) => setDateTime(value)} value={dateTime} hasSchedule={dateTime.hasSchedule} handleDatePickerDialog={handleDatePickerDialog} handleRemoveDate={handleRemoveDate} />
+                <DateTimePicker onChange={(value: any) => setDateTime(value)} value={dateTime} hasSchedule={dateTime.hasSchedule} handleDatePickerDialog={handleDatePickerDialog} handleRemoveDate={handleRemoveDate} isDisabled={isDisabled}/>
             </div>
             <Separator className="w-[210px] mr-2 ml-2 bg-gray-300" />
         </>

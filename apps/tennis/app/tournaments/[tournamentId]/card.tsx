@@ -48,6 +48,9 @@ export default function Card({ data, classification }: CardProps) {
         }
     }
 
+    const enableToEditCard = (game: any) => (((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
+        || (signed && isAdmin && ((game.player1_score !== null && game.player2_score !== null))))
+
     const enableHover = (game: any) => {
         if (((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
             || (signed && isAdmin && ((game.player1_score !== null && game.player2_score !== null)))) return 'hover:cursor-pointer hover:scale-110 '
@@ -61,7 +64,7 @@ export default function Card({ data, classification }: CardProps) {
     }
 
     const getPlayerScore = ({ flow, score }: { flow: string, score: number }) => {
-        if (flow === GAME_FLOW_WO || flow === GAME_FLOW_SORTED ) {
+        if (flow === GAME_FLOW_WO || flow === GAME_FLOW_SORTED) {
             if (score === 2) return 'W';
             return 'L'
         }
@@ -74,7 +77,8 @@ export default function Card({ data, classification }: CardProps) {
                 <div key={game.game_number}
                     className={`flex flex-col items-center ${game.round === 'final' ? 'border' : cardBackground(game.type)} w-60 rounded-sm m-4 p-1 ${enableHover(game)}} w-[270px]`}
                 >
-                    <TournamentDatePicker id={game.id} schedule={game.schedule} />
+                    
+                    <TournamentDatePicker id={game.id} schedule={game.schedule} isDisabled={!enableToEditCard(game)}/>
 
                     <div className="flex justify-around p-2 w-full" onClick={() => enableOpenForm(game)}>
                         <div className="flex flex-col justify-center items-center">
