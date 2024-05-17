@@ -12,7 +12,7 @@ export default function Dashboard() {
             </div>
             <div >
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
-                    <DashboardCard title="Torneio ativo" isEditable >
+                    <DashboardCard title="Torneio ativo" className="relative">
                         <CurrentTournament />
                     </DashboardCard>
                     <DashboardCard title="Jogos da rodada" className="relative">
