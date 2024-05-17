@@ -20,21 +20,24 @@ export default function TournamentModal() {
     }
 
     return (
-        <Dialog open={isOpen} onOpenChange={handleCancel}>
-            <Button className='absolute right-1' variant="ghost" onClick={() => setIsOpen(true)}>
+        <>
+            <Button className='absolute top-3 right-2' variant="ghost" onClick={() => setIsOpen(true)}>
                 <Pencil className="h-4 w-4 stroke-primary/90" />
             </Button>
-            <DialogContent className="sm:max-w-[425px]">
-                <div className='flex flex-col space-y-1.5 text-center sm:text-left'>
-                    <h2 className='text-lg font-semibold leading-none tracking-tight'>
-                        Ativar torneio
-                    </h2>
-                    <p className='text-sm text-muted-foreground'>Selecione o torneio que você quer deixar ativo.</p>
-                </div>
-                <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
-                    <Tournament handleCloseModal={handleCancel} />
-                </Suspense>
-            </DialogContent>
-        </Dialog>
+            <Dialog open={isOpen} onOpenChange={handleCancel}>
+                <DialogContent className="sm:max-w-[425px]">
+                    <div className='flex flex-col space-y-1.5 text-center sm:text-left'>
+                        <h2 className='text-lg font-semibold leading-none tracking-tight'>
+                            Ativar torneio
+                        </h2>
+                        <p className='text-sm text-muted-foreground'>Selecione o torneio que você quer deixar ativo.</p>
+                    </div>
+                    <Suspense fallback={<div className="flex justify-center"><Spinner /></div>}>
+                        <Tournament handleCloseModal={handleCancel} />
+                    </Suspense>
+                </DialogContent>
+            </Dialog>
+        </>
+
     )
 }

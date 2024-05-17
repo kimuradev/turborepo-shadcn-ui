@@ -10,12 +10,12 @@ export default function Dashboard() {
             <div className="flex items-center justify-between space-y-2">
                 <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
             </div>
-            <div>
+            <div >
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
-                    <DashboardCard title="Torneio ativo" isEditable >
+                    <DashboardCard title="Torneio ativo" className="relative">
                         <CurrentTournament />
                     </DashboardCard>
-                    <DashboardCard title="Jogos da rodada" isEditable >
+                    <DashboardCard title="Jogos da rodada" className="relative">
                         <GameScheduled />
                     </DashboardCard>
                     <DashboardCard title="Líderes do ranking" description={`Top 10 - Geral`}>

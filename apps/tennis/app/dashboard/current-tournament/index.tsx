@@ -6,29 +6,32 @@ import { Frown } from "lucide-react";
 import Spinner from "@ui/components/ui/spinner";
 import { TOURNAMENTS } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
+import { useAuthContext } from "@/app/context/auth-context";
 import TournamentCard from "./tournament-card";
+import TournamentModal from "./tournament-modal";
 
 export default function CurrentTournament() {
     const [data, setData] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(true)
+    const { signed, isAdmin } = useAuthContext();
 
     useEffect(() => {
         setIsLoading(true)
-    
+
         const fetchData = async () => {
             try {
                 const response = await getApi('/tournaments/active', { cache: 'no-store' });
                 setData(response);
-            }  finally {
+            } finally {
                 setIsLoading(false);
             }
         }
-    
+
         fetchData();
     }, [])
 
 
-    const tournamentIndex = TOURNAMENTS.findIndex((tournament: any) =>  {
+    const tournamentIndex = TOURNAMENTS.findIndex((tournament: any) => {
         return tournament.value === data?.key;
     })
 
@@ -46,6 +49,11 @@ export default function CurrentTournament() {
     }
 
     return (
-       <TournamentCard data={data} tournamentIndex={tournamentIndex} />
+        <>
+            {signed && isAdmin && (
+                <TournamentModal />
+            )}
+            <TournamentCard data={data} tournamentIndex={tournamentIndex} />
+        </>
     )
 }
