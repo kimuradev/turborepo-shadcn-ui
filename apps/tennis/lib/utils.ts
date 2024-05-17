@@ -1,5 +1,8 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { format } from "date-fns";
+import { parseISO } from "date-fns/parseISO";
+import { ptBR } from "date-fns/locale";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -104,3 +107,6 @@ export function getNameWithAbbreviation(name: string) {
   return abbreviation.trim();
 }
 
+export const getFormattedDate = (date: string) => {
+  return format(parseISO(date), 'dd/MM/yyyy - eee', { locale: ptBR })
+}
