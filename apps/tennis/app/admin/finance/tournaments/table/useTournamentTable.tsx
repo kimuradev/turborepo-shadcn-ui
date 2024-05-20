@@ -19,7 +19,7 @@ export type UserProps = {
 }
 
 export function useTournamentTable({ tournamentId, year }: { tournamentId: string, year: string}) {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<UserProps[]>([]);
     const [isLoading, setIsLoading] = useState(false)
     const { successMessage, alertMessage, errorMessage } = useToastMessage();
    
@@ -32,7 +32,7 @@ export function useTournamentTable({ tournamentId, year }: { tournamentId: strin
             try {
                 const response = await getApi(`/finance/tournament?tournamentId=${tournamentId}&year=${year}`);
 
-                const orderedByName: any = sortBy(response, ['player_name'])
+                const orderedByName: UserProps[] = sortBy(response, ['player_name'])
                 setData(orderedByName);
             } catch (err) {
                 setData([])
@@ -56,8 +56,8 @@ export function useTournamentTable({ tournamentId, year }: { tournamentId: strin
                 status: checked ? 'paid' : 'pending'
             })
 
-            const userToUpdate: any = data.find((user: any) => user.player_id === response.data.player_id);
-            const updatedData: any = data.map((user: any) => {
+            const userToUpdate = data.find((user: { player_id : string}) => user.player_id === response.data.player_id);
+            const updatedData: any = data.map((user: { player_id : string}) => {
                 if (userToUpdate && user.player_id === userToUpdate.player_id) {
                     return { ...user, payment_status: response.data.payment_status };
                 }

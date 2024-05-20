@@ -26,7 +26,7 @@ export function TournamentBarChart({ year, finance, isLoading: isFinanceLoading 
             setIsLoading(true)
             try {
                 const response = await getApi(`/finance/tournament-subscription?year=${year}`);
-                const sumEmDia = response.reduce((acc: any, curr: any) => acc + curr['Em dia'], 0);
+                const sumEmDia = response.reduce((acc: number, curr: { 'Em dia': string }) => acc + curr['Em dia'], 0);
 
                 setTotal(sumEmDia)
                 setData(response);
@@ -42,7 +42,7 @@ export function TournamentBarChart({ year, finance, isLoading: isFinanceLoading 
         return <div className='flex justify-center items-center w-[500px] h-[300px]'><Spinner /></div>
     }
 
-    if (data.every((d: any) => d['Em dia'] === 0 && d['Pendente'] === 0)) {
+    if (data.every((d) => d['Em dia'] === 0 && d['Pendente'] === 0)) {
         return (
             <div className='flex justify-center items-center w-[500px] h-[300px]'>
                 Nenhum resultado encontrado.

@@ -7,8 +7,9 @@ import { TOURNAMENTS } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import isEmpty from 'lodash/isEmpty'
 import Spinner from "@repo/ui/components/ui/spinner";
+import { Frown } from "lucide-react";
 
-function TournamentCard({ data, tournamentIndex }: any) {
+function TournamentCard({ data }: any) {
     const [isLoading, setIsLoading] = useState(false);
     const { profile } = useAuthContext();
     const [subscription, setSubscription] = useState<any>(false);
@@ -32,6 +33,19 @@ function TournamentCard({ data, tournamentIndex }: any) {
                 fetchData()
             }
     }, [profile]);
+
+    const tournamentIndex = TOURNAMENTS.findIndex((tournament: any) => {
+        return tournament.value === data?.key;
+    })
+
+    if (tournamentIndex == -1) {
+        return (
+            <div className="flex flex-col justify-center items-center mt-6">
+                <Frown className="w-[50px] h-[50px] stroke-primary mb-4" />
+                <p className="text-sm text-muted-foreground">Nenhum torneio ativo no momento. </p>
+            </div>
+        )
+    }
 
     return (
         <div className="pl-4">

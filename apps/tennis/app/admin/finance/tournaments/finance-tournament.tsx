@@ -39,7 +39,7 @@ export default function FinanceTournament() {
                             <SelectValue placeholder="Torneio..." />
                         </SelectTrigger>
                         <SelectContent >
-                            {[...TOURNAMENT_DICTIONARY].map((tournament: any) => (
+                            {[...TOURNAMENT_DICTIONARY].map((tournament: { id: string, value: string }) => (
                                 <SelectItem key={tournament.id} value={tournament.id} >{tournament.value}</SelectItem>
                             ))}
                         </SelectContent>
@@ -57,7 +57,7 @@ export default function FinanceTournament() {
                             <SelectValue placeholder="Ano..." />
                         </SelectTrigger>
                         <SelectContent >
-                            {[...YEARS].map((year: any) => (
+                            {[...YEARS].map((year: string) => (
                                 <SelectItem key={year} value={year} >{year}</SelectItem>
                             ))}
                         </SelectContent>

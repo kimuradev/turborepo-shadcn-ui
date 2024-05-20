@@ -14,7 +14,7 @@ export default function Monthly({ data }: { data: any }) {
   }
 
   return (
-      <ResponsiveContainer width="100%" height={350} >
+      <ResponsiveContainer width="100%" height={350} style={{ marginTop: '40px'}}>
         <BarChart data={data}
         >
           <XAxis

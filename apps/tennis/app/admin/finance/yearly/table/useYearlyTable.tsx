@@ -20,8 +20,8 @@ export type UserProps = {
 
 type UserUpdateProps = Omit<UserProps, 'player'>
 
-export function useYearlyTable({ year }: { year : string}) {
-    const [data, setData] = useState([]);
+export function useYearlyTable({ year }: { year: string }) {
+    const [data, setData] = useState<UserProps[]>([]);
     const [isLoading, setIsLoading] = useState(false)
     const { successMessage, alertMessage, errorMessage } = useToastMessage();
 
@@ -31,7 +31,7 @@ export function useYearlyTable({ year }: { year : string}) {
         const fetchData = async () => {
             try {
                 const response = await getApi(`/finance/yearly?year=${year}`);
-                const orderedByName: any = sortBy(response, ['player_name'])
+                const orderedByName: UserProps[] = sortBy(response, ['player_name'])
                 setData(orderedByName);
             } catch (err) {
                 errorMessage();
@@ -52,7 +52,7 @@ export function useYearlyTable({ year }: { year : string}) {
                     year: year,
                 })
 
-            const userToUpdate: any = data.find((user: any) => user.id === response.data.id);
+            const userToUpdate = data.find((user: { id: string }) => user.id === response.data.id);
             const updatedData: any = data.map((user: UserUpdateProps) => {
                 if (userToUpdate && user.id === userToUpdate.id) {
                     return { ...user, payment_status: response.data.payment_status };

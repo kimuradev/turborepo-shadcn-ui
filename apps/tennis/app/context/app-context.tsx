@@ -27,7 +27,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         game_week: []
     });
 
-    const updateGameResult = (response: any) => {
+    const updateGameResult = (response: { data : any}) => {
         const { data } = response;
         setGames(state => ({
             ...state,

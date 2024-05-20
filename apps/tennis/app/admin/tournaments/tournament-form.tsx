@@ -91,7 +91,7 @@ export default function TournamentForm() {
             try {
                 const playersResponse = await getApi('/players', { cache: 'no-store' });
 
-                const options = playersResponse.map((player: any) => ({
+                const options = playersResponse.map((player: { id: string, name: string}) => ({
                     value: player.id,
                     label: player.name
                 }))
@@ -123,7 +123,7 @@ export default function TournamentForm() {
         try {
             const response = await getApi(`/players/ranking?tournamentId=${tournamentWatch}&year=${yearWatch}&classId=${classWatch}`);
 
-            form.setValue('players', response as any)
+            form.setValue('players', response)
 
             setPlayers((state) => ({
                 ...state,
@@ -175,7 +175,7 @@ export default function TournamentForm() {
 
     async function formAction() {
         const validFields = await form.trigger();
-        let response: any;
+        let response;
 
         const tournament = form.getValues("tournament").toString()
         const year = form.getValues("year").toString()
@@ -236,7 +236,7 @@ export default function TournamentForm() {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            {TOURNAMENT_DICTIONARY.map((c: any) => (
+                                            {TOURNAMENT_DICTIONARY.map((c: { id: string, value: string }) => (
                                                 <SelectItem key={c.id} value={c.id}>{c.value}</SelectItem>
                                             ))}
                                         </SelectContent>
@@ -262,7 +262,7 @@ export default function TournamentForm() {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            {YEARS.map((year: any) => (
+                                            {YEARS.map((year: string) => (
                                                 <SelectItem key={year} value={year}>{year}</SelectItem>
                                             ))}
                                         </SelectContent>
@@ -290,8 +290,8 @@ export default function TournamentForm() {
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
-                                                    {classes.map((c: any) => (
-                                                        <SelectItem key={c.id} value={c.id.toString()}>{c.name}</SelectItem>
+                                                    {classes.map((cls: any) => (
+                                                        <SelectItem key={cls.id} value={cls.id.toString()}>{cls.name}</SelectItem>
                                                     ))}
                                                 </SelectContent>
                                             </Select>

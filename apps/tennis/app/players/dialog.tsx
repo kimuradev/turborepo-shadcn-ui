@@ -40,7 +40,7 @@ export default function DialogRemovePlayer({ isOpen = false, data, handleCancel,
   );
 }
 
-function DialogButtons({ handleCancel }: any) {
+function DialogButtons({ handleCancel }: { handleCancel: () => void }) {
   const { pending } = useFormStatus();
 
   return (

@@ -33,7 +33,7 @@ export default function Page() {
                 const response = await getApi('/tournaments');
 
                 const tournamentData: any = TOURNAMENTS.map(t => {
-                    const tournament = response.find((r: any) => r.key === t.value);
+                    const tournament = response.find((r: { key : string}) => r.key === t.value);
                     return {
                         ...t,
                         ...tournament
@@ -51,7 +51,7 @@ export default function Page() {
     }, [])
 
     const fetchSubscription = async () => {
-        const tournamentActive: any = data.find((t : any) => t.active);
+        const tournamentActive: any = data.find((t : { active : string}) => t.active);
         setIsSubscribeLoading(true);
 
         try {
@@ -74,7 +74,7 @@ export default function Page() {
         }
     }, [profile, year])
 
-    const handleSelectChange = (value: any) => {
+    const handleSelectChange = (value: string) => {
         setYear(value);
     }
 
@@ -91,7 +91,7 @@ export default function Page() {
                                 <SelectValue placeholder="Ano..." />
                             </SelectTrigger>
                             <SelectContent >
-                                {[...YEARS].map((year: any) => (
+                                {[...YEARS].map((year: string) => (
                                     <SelectItem key={year} value={year} >{year}</SelectItem>
                                 ))}
                             </SelectContent>
