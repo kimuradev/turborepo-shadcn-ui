@@ -1,16 +1,11 @@
 import { Users } from "lucide-react"
 import Link from "next/link"
 
-import Spinner from "@repo/ui/components/ui/spinner"
 import { type TopTenDataProps } from "@/lib/definitions"
 import { getNameWithAbbreviation } from "@/lib/utils"
 import TopTenCard from "./top-ten-card"
 
-export default function TopTen({ data, isLoading }: TopTenDataProps) {
-    if (isLoading) {
-        return <div className="flex justify-center"><Spinner /></div>
-    }
-
+export default function TopTen({ data }: TopTenDataProps) {
     if (!data.length) {
         return (
             <div className="flex flex-col flex-1 justify-center items-center">
