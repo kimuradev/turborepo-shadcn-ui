@@ -32,7 +32,7 @@ export default function Finance() {
             <h5 className="font-bold text-muted-foreground mb-2">Financeiro</h5>
             <Separator />
 
-            <FinanceForm data={data.finance} />
+            <FinanceForm data={{ yearly_payment: data.finance.yearly_payment.toString(), tournament_payment: data.finance.tournament_payment.toString() }} />
         </div>
     )
 }
