@@ -19,7 +19,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
     );
 };
 
-export default function AnuityPieChart({ year, finance, isLoading: isFinanceLoading }: { year: string, finance: { yearly_payment: string } , isLoading: boolean}) {
+export default function AnuityPieChart({ year, finance, isLoading: isFinanceLoading }: { year: string, finance: { yearly_payment: string }, isLoading: boolean }) {
     const [data, setData] = useState([])
     const [total, setTotal] = useState(0);
     const [isLoading, setIsLoading] = useState(isFinanceLoading)
@@ -29,7 +29,7 @@ export default function AnuityPieChart({ year, finance, isLoading: isFinanceLoad
             setIsLoading(true)
             try {
                 const response = await getApi(`/finance/anuity?year=${year}`);
-                setTotal(response.find((res: any) => res.name === 'Em dia').value)
+                setTotal(response.find((res: { name: string }) => res.name === 'Em dia').value)
                 setData(response);
             } finally {
                 setIsLoading(false);
@@ -43,7 +43,7 @@ export default function AnuityPieChart({ year, finance, isLoading: isFinanceLoad
         return <div className='flex justify-center items-center h-[300px]'><Spinner /></div>
     }
 
-    if (data.every((d: any) => d.value === 0)) {
+    if (data.every((d: { value: number }) => d.value === 0)) {
         return (
             <div className='flex justify-center items-center h-[300px]'>
                 Nenhum resultado encontrado.
@@ -52,7 +52,7 @@ export default function AnuityPieChart({ year, finance, isLoading: isFinanceLoad
     }
     return (
         <div>
-            <div className="text-2xl font-bold text-green-600">R$ {formattedBrazilianCurrency((total * parseInt(finance.yearly_payment, 10)).toString()) }</div>
+            <div className="text-2xl font-bold text-green-600">R$ {formattedBrazilianCurrency((total * parseInt(finance.yearly_payment, 10)).toString())}</div>
             <p className="text-xs text-muted-foreground">
                 total arrecadado
             </p>

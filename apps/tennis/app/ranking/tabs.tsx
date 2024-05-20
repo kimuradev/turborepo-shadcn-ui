@@ -56,12 +56,12 @@ export default function RankingTabs() {
     return (
         <Tabs defaultValue={DEFAULT_RANKING} >
             <TabsList>
-                {rankingTabs.map((c: any) => (
+                {rankingTabs.map((c: { id: string, name: string }) => (
                     <TabsTrigger key={c.id} value={c.id.toString()} onClick={() => handleClickTab(c.id)}>{c.name}</TabsTrigger>
                 ))}
             </TabsList>
 
-            {rankingTabs.map((c: any) => (
+            {rankingTabs.map((c: { id: string }) => (
                 <TabsContent key={c.id} value={c.id.toString()}>
                     <RankingList data={data} type={type} isLoading={isLoading} />
                 </TabsContent>

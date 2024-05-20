@@ -53,7 +53,7 @@ export function CardsStats() {
                                     <SelectValue placeholder="Ano..." />
                                 </SelectTrigger>
                                 <SelectContent >
-                                    {[...YEARS].map((year: any) => (
+                                    {[...YEARS].map(year => (
                                         <SelectItem key={year} value={year} >{year}</SelectItem>
                                     ))}
                                 </SelectContent>

@@ -1,23 +1,33 @@
 'use client'
 
 import { useAuthContext } from "@/app/context/auth-context";
+import { DetailsProps } from "@/lib/definitions";
 import { getFormattedDate } from "@/lib/utils";
 import { Button } from "@ui/components/ui/button";
 import { format } from "date-fns";
 import { Share2 } from "lucide-react";
 
+type GameProps = {
+    schedule: string, player1: { name: string }, player2: { name: string }
+}
+
+type GameDataProps = {
+    scheduleDate: string
+    games: DetailsProps[]
+}
+
 type GameTable = {
-    data: any
+    data: GameDataProps[]
 }
 
 export default function ShareButton({ data }: GameTable) {
     const { isAdmin } = useAuthContext();
 
     const formatWhatsAppMessage = () => {
-        return data.map((schedule: any) => {
+        return data.map((schedule: { scheduleDate: string, games: any }) => {
             const formattedDate = getFormattedDate(schedule.scheduleDate)
 
-            const games = schedule.games.map((game: any) => {
+            const games = schedule.games.map((game: GameProps) => {
                 const gameTime = format(new Date(game.schedule), "HH:mm");
                 return `${gameTime} - ${game.player1.name} x ${game.player2.name}`;
             }).join('\n');

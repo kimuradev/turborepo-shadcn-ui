@@ -51,7 +51,7 @@ export default function TournamentDatePicker({ id, schedule, isDisabled }: { id:
     return (
         <>
             <div className="flex justify-center items-center w-full">
-                <DateTimePicker onChange={(value: any) => setDateTime(value)} value={dateTime} hasSchedule={dateTime.hasSchedule} handleDatePickerDialog={handleDatePickerDialog} handleRemoveDate={handleRemoveDate} isDisabled={isDisabled}/>
+                <DateTimePicker onChange={(value) => setDateTime(value)} value={dateTime} hasSchedule={dateTime.hasSchedule} handleDatePickerDialog={handleDatePickerDialog} handleRemoveDate={handleRemoveDate} isDisabled={isDisabled}/>
             </div>
             <Separator className="w-[210px] mr-2 ml-2 bg-gray-300" />
         </>

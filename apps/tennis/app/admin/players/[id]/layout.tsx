@@ -1,9 +1,10 @@
+import { PlayersProps } from "@/lib/definitions";
 import { getApi } from "@/lib/fetch";
 
 export async function generateStaticParams() {
     const players = await getApi('/players');
 
-    return players.map((player: any) => ({
+    return players.map((player: PlayersProps) => ({
         id: player.id
     }))
 }

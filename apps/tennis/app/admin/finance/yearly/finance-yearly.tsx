@@ -36,7 +36,7 @@ export default function FinanceYearly() {
                         <SelectValue placeholder="Ano..." />
                     </SelectTrigger>
                     <SelectContent >
-                        {[...YEARS].map((year: any) => (
+                        {[...YEARS].map((year: string) => (
                             <SelectItem key={year} value={year} >{year}</SelectItem>
                         ))}
                     </SelectContent>

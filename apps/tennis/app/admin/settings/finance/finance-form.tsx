@@ -17,8 +17,7 @@ const formUserSchema = z.object({
     tournament_payment: z.string().min(1, { message: "Campo obrigatório" }),
 })
 
-
-function FinanceForm({ data }: { data: any }) {
+function FinanceForm({ data }: { data: { yearly_payment: string, tournament_payment: string } }) {
     const { successMessage, errorMessage } = useToastMessage();
 
     const form = useForm<z.infer<typeof formUserSchema>>({
@@ -57,10 +56,10 @@ function FinanceForm({ data }: { data: any }) {
                         <FormItem >
                             <FormLabel>Anuidade:</FormLabel>
                             <FormControl>
-                                <Input placeholder="Valor da anuidade" {...field} className='w-[150px]' 
-                                  onChange={(event) =>
-                                    field.onChange(formatCurrencyInput(event.target.value))
-                                }/>
+                                <Input placeholder="Valor da anuidade" {...field} className='w-[150px]'
+                                    onChange={(event) =>
+                                        field.onChange(formatCurrencyInput(event.target.value))
+                                    } />
                             </FormControl>
                             <FormDescription>
                                 Digite o valor da anuidade em R$.
@@ -78,9 +77,9 @@ function FinanceForm({ data }: { data: any }) {
                             <FormLabel>Valor do torneio:</FormLabel>
                             <FormControl>
                                 <Input placeholder="Valor do torneio" {...field} className='w-[150px]'
-                                     onChange={(event) =>
+                                    onChange={(event) =>
                                         field.onChange(formatCurrencyInput(event.target.value))
-                                    }/>
+                                    } />
                             </FormControl>
                             <FormDescription>
                                 Digite o valor das inscrições para os torneios em R$.

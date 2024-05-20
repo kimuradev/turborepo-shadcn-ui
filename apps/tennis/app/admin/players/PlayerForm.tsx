@@ -55,10 +55,9 @@ function PlayerForm({ player }: { player?: PlayersProps }) {
 
     async function formAction() {
         const validFields = await form.trigger();
-
         if (validFields) {
-            const { id }: any = player;
-            const action = id ? editPlayer({ id, ...form.getValues() }) : addPlayer(form.getValues())
+            const id = player?.id;
+            const action = id ? editPlayer({ id, ...form.getValues() }) : addPlayer(form.getValues());
             const response = await action;
 
             if (response?.error) {

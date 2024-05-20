@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { DataTable } from "@repo/ui/components/table/data-table";
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { STATUS_OPTIONS } from "@/lib/constants";
-import { type DialogProps } from "@/lib/definitions";
+import { PlayersProps, type DialogProps } from "@/lib/definitions";
 
 import DialogRemovePlayer from "@/app/players/dialog"
 import { useWindowSize } from "@repo/ui/components/hooks/useWindowSize";
@@ -32,7 +32,7 @@ const filtering = [
 ]
 
 
-export default function PlayerList({ players: data }: { players: any }) {
+export default function PlayerList({ players: data }: { players: PlayersProps[] }) {
   const [dialog, setDialog] = useState<DialogProps>({
     isOpen: false,
     isLoading: false,
@@ -46,7 +46,7 @@ export default function PlayerList({ players: data }: { players: any }) {
   })
 
   useEffect(() => {
-    setColumnVisibility((state: any) => ({
+    setColumnVisibility((state) => ({
       ...state,
       status: isDesktop
     }))

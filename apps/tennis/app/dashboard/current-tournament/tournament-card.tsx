@@ -14,8 +14,6 @@ function TournamentCard({ data }: any) {
     const { profile } = useAuthContext();
     const [subscription, setSubscription] = useState<any>(false);
 
-    console.log("profile: ", profile)
-
     const fetchData = async () => {
         setIsLoading(true)
         try {

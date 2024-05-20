@@ -8,10 +8,10 @@ import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import TournamentForm from "./tournament-form";
 
 const formSchema = z.object({
-    tournament: z.string().nonempty('Campo obrigatório'),
+    tournament: z.string().min(1, { message: 'Campo obrigatório' }),
 })
 
-export default function Tournament({ handleCloseModal }: any) {
+export default function Tournament({ handleCloseModal }: { handleCloseModal : () => void }) {
     const { successMessage, errorMessage } = useToastMessage();
 
     const form = useForm<z.infer<typeof formSchema>>({
