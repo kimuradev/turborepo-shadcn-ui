@@ -22,10 +22,9 @@ import {
   TableHeader,
   TableRow,
 } from "@ui/components/ui/table"
-
 import { Button } from "@ui/components/ui/button";
 import FilterTable from "./filter-table";
-import Spinner from "../ui/spinner";
+import { TableSkeleton } from "./skeletons";
 
 type DataTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[]
@@ -84,11 +83,11 @@ export function DataTable<TData, TValue>({
         <FilterTable table={table} filtering={filtering} />
       </div>
       <div className="rounded-md border">
-
         {isLoading ? (
-          <div className="h-28 flex justify-center items-center">
-            <Spinner size="md"/>
+          <div>
+            <TableSkeleton />
           </div>
+          
         ) : (
           <Table>
             <TableHeader>

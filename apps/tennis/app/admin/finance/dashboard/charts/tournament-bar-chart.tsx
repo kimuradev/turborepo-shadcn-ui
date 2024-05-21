@@ -1,6 +1,3 @@
-import Spinner from '@repo/ui/components/ui/spinner';
-import { getApi } from '@/lib/fetch';
-import { formattedBrazilianCurrency } from '@/lib/utils';
 import React, { useEffect, useState } from 'react';
 import {
     BarChart,
@@ -13,6 +10,10 @@ import {
     ReferenceLine,
     ResponsiveContainer,
 } from 'recharts';
+
+import { BarChartSkeleton } from '@/components/skeletons';
+import { getApi } from '@/lib/fetch';
+import { formattedBrazilianCurrency } from '@/lib/utils';
 
 // const colors = ['#0091d2', '#FF8042', '#00C49F', '#0088FE', 'black'];
 
@@ -39,7 +40,7 @@ export function TournamentBarChart({ year, finance, isLoading: isFinanceLoading 
     }, [year])
 
     if (isLoading) {
-        return <div className='flex justify-center items-center w-[500px] h-[300px]'><Spinner /></div>
+        return <BarChartSkeleton />
     }
 
     if (data.every((d) => d['Em dia'] === 0 && d['Pendente'] === 0)) {
