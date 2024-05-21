@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
-import Spinner from '@repo/ui/components/ui/spinner';
 import { getApi } from '@/lib/fetch';
 import { formattedBrazilianCurrency } from '@/lib/utils';
+import { PieChartSkeleton } from '@/components/skeletons';
 
 const COLORS = ['#00C49F', '#FF8042', 'red'];
 
@@ -40,7 +40,7 @@ export default function AnuityPieChart({ year, finance, isLoading: isFinanceLoad
     }, [year])
 
     if (isLoading) {
-        return <div className='flex justify-center items-center h-[300px]'><Spinner /></div>
+        return <PieChartSkeleton />
     }
 
     if (data.every((d: { value: number }) => d.value === 0)) {

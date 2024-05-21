@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import orderBy from 'lodash/orderBy';
 
-import Spinner from "@repo/ui/components/ui/spinner";
+import GamesSkeleton from "@/components/skeletons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { useAppContext } from "@/app/context/app-context";
@@ -67,7 +67,7 @@ export default function TournamentTabs({ classes, tournament, year, classId }: T
 
             {classes.map((c: any) => (
                 <TabsContent key={c.id} value={c.id.toString()}>
-                    {isLoading ? <Spinner /> : (
+                    {isLoading ? <GamesSkeleton /> : (
                         <>
                             {
                                 data.length > 0 ? (
