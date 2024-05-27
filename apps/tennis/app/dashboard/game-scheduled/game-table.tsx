@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import ShareButton from "./share-button";
 import { CalendarX } from "lucide-react";
 import { DetailsProps } from "@/lib/definitions";
+import { ptBR } from "date-fns/locale";
 
 type GameDataProps = {
     scheduleDate: string
@@ -31,7 +32,7 @@ export default function GameTable({ data }: GameTable) {
                     <div className="flex flex-col gap-1">
                         <div className="bg-secondary font-bold px-2 py-1 rounded">{getFormattedDate(game.scheduleDate)}</div>
                         {game.games.map((item: { schedule: string, player1: { name: string }, player2: { name: string } }) => (
-                            <div className="text-sm px-4 py-1">{format(item.schedule, 'HH:mm')} - {getNameWithAbbreviation(item.player1?.name)} x {getNameWithAbbreviation(item.player2?.name)}</div>
+                            <div className="text-sm px-4 py-1">{format(item.schedule, 'HH:mm',  { locale: ptBR })} - {getNameWithAbbreviation(item.player1?.name)} x {getNameWithAbbreviation(item.player2?.name)}</div>
                         ))}
                     </div>
                 )
