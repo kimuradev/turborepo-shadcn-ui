@@ -40,6 +40,7 @@ export type DashboardCardProps = {
     className?: string,
     isEditable?: boolean,
     children: React.ReactNode
+    footer?: any
 }
 
 export type DialogRemovePlayerProps = {
@@ -137,6 +138,7 @@ export type CardTournamentProps = {
     subscriptionIsOpen: boolean,
     started: boolean,
     subscription: any,
+    isPaymentPending?: boolean
 }
 
 export type ProfileProps = {

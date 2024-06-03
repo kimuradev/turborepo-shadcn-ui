@@ -1,5 +1,4 @@
 import { Users } from "lucide-react"
-import Link from "next/link"
 
 import { type TopTenDataProps } from "@/lib/definitions"
 import { getNameWithAbbreviation } from "@/lib/utils"
@@ -21,9 +20,6 @@ export default function TopTen({ data }: TopTenDataProps) {
                 {data.map((item, index) => (
                     <TopTenCard key={item.player_name} player_name={getNameWithAbbreviation(item.player_name)} class_id={item.class_id} points={item.points} index={index} />
                 ))}
-            </div>
-            <div>
-                <Link href='/ranking' className="text-primary">Ver ranking completo</Link>
             </div>
         </div>
     )

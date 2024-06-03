@@ -23,7 +23,7 @@ import LoginForm from "../login/login-form";
 import { useAuthContext } from "../context/auth-context";
 import TournamentPayment from "./tournament-payment";
 
-const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, year, subscriptionIsOpen, started, subscription }: CardTournamentProps) => {
+const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, year, subscriptionIsOpen, started, subscription, isPaymentPending }: CardTournamentProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const { profile, isAdmin, signed } = useAuthContext();
     const router = useRouter();
@@ -37,6 +37,51 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
             setIsOpen(true)
         } else {
             router.push(`${link}/subscribe?year=${year}`)
+        }
+    }
+
+    const renderActionButton = () => {
+        if (subscription) {
+            return (
+                <Button variant="default"
+                    className={clsx(
+                        `"border border-green-200 bg-green-200 gap-2 text-xs`,
+                        {
+                            'invisible': isAdmin
+                        }
+                    )}
+                    onClick={() => { }} disabled>
+                    <Check className="h-4 w-4 stroke-green-500" />
+                    <span className="text-green-700">Inscrito</span>
+                </Button>
+            )
+        }
+        else if (isPaymentPending) {
+            return (
+                <div
+                    className={clsx(
+                        `"p-0 text-xs`,
+                        {
+                            'invisible': isAdmin
+                        }
+                    )}
+                    onClick={() => { }}>
+                    <p className="text-orange-700">Inscrição bloqueada. Regularizar pagamento</p>
+                </div>
+            )
+        } else if (signed) {
+            return (
+                <Button variant="default" className={clsx(
+                    `text-xs`,
+                    {
+                        'invisible': isAdmin
+                    }
+                )} onClick={handleSubscribe}>
+                    Me inscrever
+                </Button>
+            )
+        } else {
+            return <div className="invisible" />
         }
     }
 
@@ -57,29 +102,7 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                 </CardContent>
                 {!started && subscriptionIsOpen ? (
                     <CardFooter className="flex justify-between gap-1">
-                        {subscription ? (
-                            <Button variant="default"
-                                className={clsx(
-                                    `"border border-green-200 bg-green-200 gap-2 text-xs`,
-                                    {
-                                        'invisible': isAdmin
-                                    }
-                                )}
-                                onClick={() => { }} disabled>
-                                <Check className="h-4 w-4 stroke-green-500" />
-                                <span className="text-green-700">Inscrito</span>
-                            </Button>
-                        ) : (
-                            <Button variant="default" className={clsx(
-                                `text-xs`,
-                                {
-                                    'invisible': isAdmin
-                                }
-                            )} onClick={handleSubscribe}>
-                                Me inscrever
-                            </Button>
-                        )}
-
+                        {renderActionButton()}
                         <Link href={`${link}?year=${year}`} >
                             <Button variant="secondary" className="text-xs">
                                 Ver torneio

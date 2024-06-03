@@ -14,12 +14,15 @@ function TournamentCard({ data }: any) {
     const [isLoading, setIsLoading] = useState(false);
     const { profile } = useAuthContext();
     const [subscription, setSubscription] = useState<any>(false);
+    const [isPaymentPending, setIsPaymentPending] = useState(false);
 
     const fetchData = async () => {
         setIsLoading(true)
         try {
             const response = await getApi(`/tournaments/subscribe/${profile.id}?year=${data.year}&tournament=${data.key}`, { cache: 'no-store' });
+            const paymentResponse = await getApi(`/tournaments/payment-status/${profile.id}`, { cache: 'no-store' });
             setSubscription(response);
+            setIsPaymentPending(paymentResponse.isPaymentPending)
         } catch (err) {
             setSubscription(false)
         } finally {
@@ -68,6 +71,7 @@ function TournamentCard({ data }: any) {
                             subscriptionIsOpen={data.active}
                             started={data.started}
                             subscription={subscription}
+                            isPaymentPending={isPaymentPending}
                         />
                     )
                 }

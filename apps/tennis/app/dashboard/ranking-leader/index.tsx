@@ -5,6 +5,6 @@ export default async function RankingLeader() {
   const data = await getApi('/ranking-leader?limit=10', { cache: 'no-store' })
 
   return (
-    <TopTen data={data} />
+      <TopTen data={data} />
   )
 }
