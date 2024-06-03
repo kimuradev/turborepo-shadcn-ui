@@ -6,6 +6,7 @@ import DashboardCard from "./card"
 import RankingLeader from "./ranking-leader"
 import CurrentTournament from "./current-tournament"
 import GameScheduled from "./game-scheduled"
+import Link from "next/link"
 
 export default function Dashboard() {
     return (
@@ -25,8 +26,12 @@ export default function Dashboard() {
                             <GameScheduled />
                         </Suspense>
                     </DashboardCard>
-                    <DashboardCard title="Líderes do ranking" description={`Top 10 - Geral`}>
-                        {/* className="flex flex-col md:col-start-2 md:row-start-1 md:row-end-3"> */}
+                    <DashboardCard
+                        title="Líderes do ranking"
+                        description={`Top 10 - Geral`}
+                        footer={
+                            <Link href='/ranking' className="text-primary">Ver ranking completo</Link>
+                        }>
                         <Suspense fallback={<RankingLeaderSkeleton />}>
                             <RankingLeader />
                         </Suspense>

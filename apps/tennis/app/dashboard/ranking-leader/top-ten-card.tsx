@@ -26,7 +26,7 @@ export default function TopTenCard({ player_name, class_id: currentClass, points
                    {currentClass}
                 </p>
             </div>
-            <div className="ml-auto font-medium pl-2">{points} pts </div>
+            <div className="ml-auto font-medium px-3">{points} pts </div>
         </div>
     )
 }

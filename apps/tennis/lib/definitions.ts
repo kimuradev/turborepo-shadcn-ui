@@ -40,6 +40,7 @@ export type DashboardCardProps = {
     className?: string,
     isEditable?: boolean,
     children: React.ReactNode
+    footer?: any
 }
 
 export type DialogRemovePlayerProps = {
