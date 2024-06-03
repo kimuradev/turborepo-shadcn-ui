@@ -138,6 +138,7 @@ export type CardTournamentProps = {
     subscriptionIsOpen: boolean,
     started: boolean,
     subscription: any,
+    isPaymentPending?: boolean
 }
 
 export type ProfileProps = {
