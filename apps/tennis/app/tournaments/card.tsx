@@ -40,6 +40,18 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
         }
     }
 
+    const renderSeeTournamentButton = () => {
+        if (link !== '/tournaments/ab-doubles') {
+            return (
+                <Link href={`${link}?year=${year}`} >
+                    <Button variant="secondary" className="text-xs">
+                        Ver torneio
+                    </Button>
+                </Link>
+            )
+        }
+    }
+
     const renderActionButton = () => {
         if (subscription) {
             return (
@@ -103,19 +115,11 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                 {!started && subscriptionIsOpen ? (
                     <CardFooter className="flex justify-between gap-1">
                         {renderActionButton()}
-                        <Link href={`${link}?year=${year}`} >
-                            <Button variant="secondary" className="text-xs">
-                                Ver torneio
-                            </Button>
-                        </Link>
+                        {renderSeeTournamentButton()}
                     </CardFooter>
                 ) : (
                     <CardFooter className="flex justify-end">
-                        <Link href={`${link}?year=${year}`} >
-                            <Button variant="secondary" className="text-xs">
-                                Ver torneio
-                            </Button>
-                        </Link>
+                        {renderSeeTournamentButton()}
                     </CardFooter>
                 )}
             </Card >

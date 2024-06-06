@@ -251,6 +251,9 @@ export default function SubscribeForm({ tournament, year }: { tournament: { id: 
                             <b>Uso de Imagem:</b> Autorizo o ORGANIZADOR a utilizar, sem qualquer ônus, minhas imagens, nomes, voz, e demais elementos de identidade captados durante a minha participação no torneio, para fins de divulgação e promoção do evento em qualquer meio de comunicação.
                         </p>
                         <p>
+                            Autorizo, para os devidos fins, a utilização de minhas imagens para divulgação de eventos ou da própria Associação Brasil, em todos os meios de comunicação, sejam elas impressas ou digitais.
+                        </p>
+                        <p>
                             <b>Pelo presente, afirmo ter lido e compreendido todos os termos deste Termo de Responsabilidade, estando plenamente de acordo com todos os seus termos e condições.</b>
                         </p>
 

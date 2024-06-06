@@ -1,5 +1,6 @@
 import AOCircle from '@/public/static/ao-circle.png';
 import AB from '@/public/static/AB-rotate.png';
+import ABDoubles from '@/public/static/AB-DOUBLES.jpg';
 import ABCircle from '@/public/static/ab-circle.png';
 import AO from '@/public/static/ao-rotate.jpg';
 import RG from '@/public/static/rg-rotate.jpg';
@@ -43,7 +44,8 @@ export const TOURNAMENT_ID = {
     RG: 'rg',
     WIMBLEDON: 'wimbledon',
     US: 'usopen',
-    FINALS: 'finals'
+    FINALS: 'finals',
+    DOUBLES: 'ab-doubles'
 }
 
 const TOURNAMENT_NAMES = {
@@ -52,7 +54,8 @@ const TOURNAMENT_NAMES = {
     RG: 'AB Roland Garros',
     WIMBLEDON: 'AB Wimbledon',
     US: 'AB US Open',
-    FINALS: 'AB Finals'
+    FINALS: 'AB Finals',
+    DOUBLES: 'AB Duplas'
 }
 
 export const TOURNAMENTS = [
@@ -62,6 +65,7 @@ export const TOURNAMENTS = [
     { value: TOURNAMENT_ID.US, headerSrcImg: US, contentSrcImg: { src: USCircle, alt: TOURNAMENT_NAMES.US }, bgColor: 'bg-blue-50', link: `/tournaments/${TOURNAMENT_ID.US}`},
     { value: TOURNAMENT_ID.FINALS, headerSrcImg: Finals, contentSrcImg: { src: FinalsCircle, alt: TOURNAMENT_NAMES.FINALS }, bgColor: 'bg-blue-200', link: `/tournaments/${TOURNAMENT_ID.FINALS}` },
     { value: TOURNAMENT_ID.AB, headerSrcImg: AB, contentSrcImg: { src: ABCircle, alt: TOURNAMENT_NAMES.AB }, bgColor: 'bg-white', link: `/tournaments/${TOURNAMENT_ID.AB}`},
+    { value: TOURNAMENT_ID.DOUBLES, headerSrcImg: ABDoubles, contentSrcImg: { src: ABCircle, alt: TOURNAMENT_NAMES.DOUBLES }, bgColor: 'bg-white', link: `/tournaments/${TOURNAMENT_ID.DOUBLES}`},
     // { value:  'ab-duplas', subtitle: 'Janeiro', headerSrcImg: Finals, contentSrcImg: { src: FinalsCircle, alt: TOURNAMENT_NAMES.FINALS }, bgColor: 'bg-blue-200', link: '/tournaments/finals'},
 ]
 
@@ -72,6 +76,7 @@ export const TOURNAMENT_DICTIONARY = [
     { id: TOURNAMENT_ID.WIMBLEDON, value: TOURNAMENT_NAMES.WIMBLEDON },
     { id: TOURNAMENT_ID.FINALS, value: TOURNAMENT_NAMES.FINALS },
     { id: TOURNAMENT_ID.AB, value: TOURNAMENT_NAMES.AB },
+    { id: TOURNAMENT_ID.DOUBLES, value: TOURNAMENT_NAMES.DOUBLES },
 ]
 
 export const GAME_RESULTS = [
