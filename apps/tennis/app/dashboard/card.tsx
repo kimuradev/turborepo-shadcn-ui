@@ -13,7 +13,7 @@ import { type DashboardCardProps } from "@/lib/definitions"
 export default function DashboardCard({ title, description, contentClass, className, children, footer }: DashboardCardProps) {
     return (
         <Card className={className}>
-            <CardHeader>
+            <CardHeader className="gap-2">
                 <CardTitle>{title}</CardTitle>
 
                 {description && (

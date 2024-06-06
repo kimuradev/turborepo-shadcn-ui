@@ -40,7 +40,7 @@ const formSchema = z.object({
         message: "Você precisa concordar com os termos para prosseguir.",
     })
 })
-export default function SubscribeForm({ tournament, year }: { tournament: { id: string, value: string}, year: string }) {
+export default function SubscribeForm({ tournament, year }: { tournament: { id: string, value: string }, year: string }) {
 
     const { successMessage, errorMessage } = useToastMessage();
     const { profile } = useAuthContext();
@@ -219,15 +219,23 @@ export default function SubscribeForm({ tournament, year }: { tournament: { id: 
                         <p className='pt-4'>
                             <b>Datas dos jogos:</b> Estou ciente que o torneio será realizado, preferencialmente, entre as datas previamente informadas pelo ORGANIZADOR, podendo o período de disputa ser estendido por conta de condições climáticas ou outras causas externas. Declaro estar ciente de que disputarei quatro partidas e comprometo-me a realizá-las dentro do prazo de duas semanas cada. Afirmo compreender que as datas reservadas para a realização dos jogos são as dos finais de semana, que adiantamentos ou adiamentos para outras datas podem ocorrer apenas se houver comum acordo entre os adversários.
                         </p>
-                        <p>
-                            <b>Valor da Inscrição:</b> Concordo com o pagamento de <b>R$ 25,00</b> como inscrição individual no torneio.
-                        </p>
-                        <p>
-                            <b>Pagamento via Pix:</b>  - CNPJ 76.559.830/0001-15
-                        </p>
-                        <p>
-                            Favor enviar comprovante pelo e-mail <a href='mailto:castro@associacaobrasil.com.br' className='text-blue-400 underline'>castro@associacaobrasil.com.br</a>
-                        </p>
+                        {tournament.id !== 'ab-doubles' ? (
+                            <>
+                                <p>
+                                    <b>Valor da Inscrição:</b> Concordo com o pagamento de <b>R$ 25,00</b> como inscrição individual no torneio.
+                                </p>
+                                <p>
+                                    <b>Pagamento via Pix:</b>  - CNPJ 76.559.830/0001-15
+                                </p>
+                                <p>
+                                    Favor enviar comprovante pelo e-mail <a href='mailto:castro@associacaobrasil.com.br' className='text-blue-400 underline'>castro@associacaobrasil.com.br</a>
+                                </p>
+                            </>
+                        ) : (
+                            <p>
+                                <b>Valor da Inscrição:</b> <b>ISENTO</b>.
+                            </p>
+                        )}
 
                         <p>
                             <b>Condições de Saúde:</b> Declaro estar em plenas condições de saúde física e mental para participar do Torneio de Tênis e que não possuo quaisquer condições preexistentes que me impeçam de praticar atividades físicas de alta intensidade.

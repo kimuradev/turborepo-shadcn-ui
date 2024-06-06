@@ -10,24 +10,22 @@ import Link from "next/link"
 import { Pin } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/components/ui/card"
 import Notes from "./notes"
+import TournamentSubscription from "./tournament-subscription"
 
 export default function Dashboard() {
     return (
         <>
             <div>
                 <Notes />
-                {/* <Card className="bg-yellow-200/20 relative">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-base font-normal flex items-center gap-2">
-                            <Pin className="w-4 h-4 fill-red-500" />
-                            <span className="font-semibold leading-none tracking-tight">Mural de recados</span>
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="px-6">
-                        <Notes />
-                    </CardContent>
-                </Card> */}
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
+                    <DashboardCard
+                        title="Torneio com inscrição aberta"
+                        description="Período de inscrição: 06/06 à 09/06"
+                        className="relative">
+                        <Suspense fallback={<CardSkeleton />}>
+                            <TournamentSubscription />
+                        </Suspense>
+                    </DashboardCard>
                     <DashboardCard title="Torneio ativo" className="relative">
                         <Suspense fallback={<CardSkeleton />}>
                             <CurrentTournament />
