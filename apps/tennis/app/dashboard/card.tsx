@@ -10,7 +10,7 @@ import {
 } from "@repo/ui/components/ui/card"
 import { type DashboardCardProps } from "@/lib/definitions"
 
-export default function DashboardCard({ title, description, className, children, footer }: DashboardCardProps) {
+export default function DashboardCard({ title, description, contentClass, className, children, footer }: DashboardCardProps) {
     return (
         <Card className={className}>
             <CardHeader>
@@ -22,12 +22,14 @@ export default function DashboardCard({ title, description, className, children,
                     </CardDescription>
                 )}
             </CardHeader>
-            <CardContent className={`flex justify-center flex-1`} >
+            <CardContent className={`flex justify-center flex-1 ${contentClass}`} >
                 {children}
             </CardContent>
-            <CardFooter className="p-6">
-                {footer}
-            </CardFooter>
+            {footer && (
+                <CardFooter className="p-6">
+                    {footer}
+                </CardFooter>
+            )}
         </Card>
     )
 }

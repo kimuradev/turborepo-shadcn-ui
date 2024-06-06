@@ -35,8 +35,9 @@ export type TopTenDataProps = {
 }
 
 export type DashboardCardProps = {
-    title: string,
+    title: string | React.ReactNode,
     description?: string,
+    contentClass?: string,
     className?: string,
     isEditable?: boolean,
     children: React.ReactNode
