@@ -7,6 +7,7 @@ import RankingLeader from "./ranking-leader"
 import CurrentTournament from "./current-tournament"
 import GameScheduled from "./game-scheduled"
 import Link from "next/link"
+import TournamentSubscription from "./tournament-subscription"
 
 export default function Dashboard() {
     return (
@@ -16,6 +17,14 @@ export default function Dashboard() {
             </div>
             <div >
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
+                    <DashboardCard
+                        title="Torneio com inscrição aberta"
+                        description="Período de inscrição: 06/06 à 09/06"
+                        className="relative">
+                        <Suspense fallback={<CardSkeleton />}>
+                            <TournamentSubscription />
+                        </Suspense>
+                    </DashboardCard>
                     <DashboardCard title="Torneio ativo" className="relative">
                         <Suspense fallback={<CardSkeleton />}>
                             <CurrentTournament />

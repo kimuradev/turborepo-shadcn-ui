@@ -101,8 +101,11 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
         <>
             <Card className={`w-[250px] transform transition duration-500 hover:scale-110 ${bgColor}`}>
                 <CardHeader className="flex justify-center items-center m-0 p-0" >
-                    <TournamentPayment email={profile.user} status={subscription?.payment_status} tournamentId={id} year={year} isActive={subscription && !started && subscriptionIsOpen && signed && !isAdmin} />
-
+                    {link !== '/tournaments/ab-doubles' ? (
+                        <TournamentPayment email={profile.user} status={subscription?.payment_status} tournamentId={id} year={year} isActive={subscription && !started && subscriptionIsOpen && signed && !isAdmin} />
+                    ) : (
+                        <div className="py-4 invisible"/>
+                    )}
                     <Image src={headerSrcImg} width={250} height={140} alt={contentSrcImg.alt} />
                 </CardHeader>
                 <CardContent className="flex flex-row justify-between">
