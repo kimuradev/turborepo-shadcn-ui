@@ -25,7 +25,7 @@ const FormSchema = z.object({
 })
 
 type MessageFormProps = {
-    data: string,
+    data: string | undefined,
     handleCancel: () => void,
     handleComplete: () => void
 }
@@ -68,7 +68,7 @@ export default function MessageForm({ data, handleCancel, handleComplete }: Mess
                                     {...field}
                                     placeholder="Digite aqui os recados para o mural."
                                     className="resize-none"
-                                    defaultValue={data}
+                                    defaultValue={data || ''}
                                 />
                             </FormControl>
                             <FormMessage />

@@ -10,7 +10,7 @@ import MessageForm from "./message-form";
 import MessageRemoveModal from "./message-remove-modal";
 
 type MessageProps = {
-    data: NoteProps,
+    data: NoteProps | null,
     handleCancel: () => void,
     handleComplete: () => void,
     resetComplete: () => void
@@ -76,10 +76,10 @@ export default function Messages({ data, handleCancel, handleComplete, resetComp
             )}
 
             {isEditing ? (
-                <MessageForm data={data.message} handleCancel={handleCancelForm} handleComplete={handleCompleteForm} />
+                <MessageForm data={data?.message} handleCancel={handleCancelForm} handleComplete={handleCompleteForm} />
             ) : (
                 <pre className="text-sm">
-                    {data.message}
+                    {data?.message}
                 </pre>
             )}
         </>

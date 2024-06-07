@@ -85,7 +85,7 @@ export default function Notes() {
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="px-6 overflow-auto max-h-[220px]">
-                    {data && <Messages data={data} handleCancel={handleCancel} handleComplete={handleComplete} resetComplete={resetComplete}/>}
+                    <Messages data={data} handleCancel={handleCancel} handleComplete={handleComplete} resetComplete={resetComplete}/>
                 </CardContent>
             </Card>
         </>
