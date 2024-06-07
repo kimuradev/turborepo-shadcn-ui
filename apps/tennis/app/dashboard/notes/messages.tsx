@@ -1,31 +1,58 @@
-// import { getApi } from "@/lib/fetch";
-// import TopTen from "./top-ten";
-
 'use client'
 
-import { useAuthContext } from "@/app/context/auth-context";
-import { Button } from "@ui/components/ui/button";
+import { useEffect, useState } from "react";
 import { Pencil, X } from "lucide-react";
-import { useState } from "react";
+
+import { useAuthContext } from "@/app/context/auth-context";
+import { type NoteProps } from "@/lib/definitions";
+import { Button } from "@ui/components/ui/button";
 import MessageForm from "./message-form";
 import MessageRemoveModal from "./message-remove-modal";
 
-type Messages = {
-    message: string
+type MessageProps = {
+    data: NoteProps,
+    handleCancel: () => void,
+    handleComplete: () => void,
+    resetComplete: () => void
 }
 
-export default function Messages({ data }: { data: string }) {
-    //   const data = await getApi('/ranking-leader?limit=10', { cache: 'no-store' })
+export default function Messages({ data, handleCancel, handleComplete, resetComplete }: MessageProps) {
     const [isOpenRemoveModal, setIsOpenRemoveModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const { signed, isAdmin } = useAuthContext();
 
-    const handleRemove = () => {
-        setIsOpenRemoveModal(true)
+    useEffect(() => {
+        if (!data || !data.active) {
+            setIsEditing(true)
+        }
+    }, [data])
+
+    const handleCompleteModal = () => {
+        handleComplete();
     }
 
-    const handleCancelRemoveModal = () => {
+    const handleEditModal = () => {
+        setIsEditing(state => !state)
+        resetComplete();
+    }
+
+    const handleOpenRemoveModal = () => {
+        setIsOpenRemoveModal(true)
+        resetComplete();
+    }
+
+    const handleCancelModal = () => {
         setIsOpenRemoveModal(false)
+    }
+
+    const handleCancelForm = () => {
+        setIsEditing(false)
+        handleCancel()
+    }
+
+    const handleCompleteForm = () => {
+        setIsEditing(false)
+        handleComplete();
     }
 
     return (
@@ -33,23 +60,26 @@ export default function Messages({ data }: { data: string }) {
             {signed && isAdmin && (
                 <>
                     <div className="flex gap-1 absolute top-3 right-2">
-                        <Button variant="ghost" onClick={() => setIsEditing(state => !state)}>
+                        <Button variant="ghost" onClick={handleEditModal}>
                             <Pencil className="h-4 w-4 stroke-primary/90" />
                         </Button>
 
-                        <Button variant="ghost" onClick={() => handleRemove()}>
+                        <Button variant="ghost" onClick={() => handleOpenRemoveModal()}>
                             <X className="h-4 w-4 stroke-red-500" />
                         </Button>
                     </div>
-                    <MessageRemoveModal isOpenRemoveModal={isOpenRemoveModal} handleCancelRemoveModal={() => handleCancelRemoveModal()} />
+                    <MessageRemoveModal
+                        isOpenModal={isOpenRemoveModal}
+                        handleCancelModal={() => handleCancelModal()}
+                        handleComplete={handleCompleteModal} />
                 </>
             )}
 
             {isEditing ? (
-                <MessageForm />
+                <MessageForm data={data.message} handleCancel={handleCancelForm} handleComplete={handleCompleteForm} />
             ) : (
                 <pre className="text-sm">
-                    {data}
+                    {data.message}
                 </pre>
             )}
         </>

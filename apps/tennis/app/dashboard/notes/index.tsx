@@ -1,26 +1,78 @@
-// import { getApi } from "@/lib/fetch";
-// import TopTen from "./top-ten";
+'use client'
 
-import { Button } from "@ui/components/ui/button"
-import Messages from "./messages"
-import { Pencil } from "lucide-react"
-import MessageRemoveModal from "./message-remove-modal"
-import EmptyMessage from "./empty-message"
 import { Pin } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/components/ui/card"
+import { getApi } from "@/lib/fetch"
 
-const data = {
-    message: "06/06 à 09/06 - Inscrição duplas\n11/06 à 15/06 - Torneio de duplas\n14/06 - Término dos jogos\n15/06 - Churrasco entrega dos troféus e camiseta\n14/06 à 23/06 - Inscrição Wimbledon\n25/06 - Inicio Wimbledon"
-}
+import Messages from "./messages"
+import EmptyMessage from "./empty-message"
+import { useEffect, useState } from "react"
+import { type NoteProps } from "@/lib/definitions"
+import { NotesSkeleton } from "@/components/skeletons"
 
-// const data = ''
+export default function Notes() {
+    const [data, setData] = useState<NoteProps | null>(null)
+    const [isLoading, setIsLoading] = useState(true);
+    const [isAdding, setIsAdding] = useState(false);
+    const [isComplete, setIsComplete] = useState(false);
 
-export default async function Notes() {
-    //   const data = await getApi('/ranking-leader?limit=10', { cache: 'no-store' })
+    useEffect(() => {
+        const fetchData = async () => {
+            setIsLoading(true)
+            try {
+                const response = await getApi('/notes', { cache: 'no-store' })
+                setData(response);
+            } finally {
+                setIsLoading(false);
+            }
+        }
 
+        fetchData();
+    }, [])
 
-    if (!data) {
-        return <EmptyMessage />
+    useEffect(() => {
+
+        console.log('isComplete...', isComplete)
+
+        if (!isComplete) return;
+        const fetchData = async () => {
+            setIsLoading(true)
+            try {
+                const response = await getApi('/notes', { cache: 'no-store' })
+                setData(response);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+
+        fetchData();
+    }, [isComplete])
+
+    const resetComplete = () => {
+        setIsComplete(false)
+    }
+
+    const handleCancel = () => {
+        setIsAdding(false)
+        resetComplete();
+    }
+
+    const handleComplete = () => {
+        setIsAdding(false)
+        setIsComplete(true)
+    }
+
+    const handleAddNotes = () => {
+        setIsAdding(true)
+        resetComplete();
+    }
+
+    if (isLoading) {
+        return <div><NotesSkeleton /></div>
+    }
+
+    if ((!data || !data.active) && !isAdding) {
+        return <EmptyMessage handleAdd={handleAddNotes} />
     }
 
     return (
@@ -32,12 +84,10 @@ export default async function Notes() {
                         <span className="font-semibold leading-none tracking-tight">Mural de recados</span>
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="px-6">
-                    <Messages data={data.message} />
+                <CardContent className="px-6 overflow-auto max-h-[220px]">
+                    {data && <Messages data={data} handleCancel={handleCancel} handleComplete={handleComplete} resetComplete={resetComplete}/>}
                 </CardContent>
             </Card>
-
-
         </>
     )
 }

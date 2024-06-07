@@ -234,7 +234,7 @@ export function PieRowSkeleton() {
     <tr className="flex justify-center items-center w-full border-b border-gray-100 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
       <td className="relative overflow-hidden whitespace-nowrap py-3 pl-6 pr-3">
         <div className="md:hidden flex items-end gap-3 bg-white">
-        <div className="h-32 w-32 rounded-full bg-gray-100"></div>
+          <div className="h-32 w-32 rounded-full bg-gray-100"></div>
         </div>
         <div className="hidden lg:flex items-end gap-3">
           <div className="h-48 w-48 rounded-full bg-gray-100"></div>
@@ -254,6 +254,33 @@ export function PieChartSkeleton() {
         <div className="flex items-center pb-2 pt-6">
           <div className="h-5 w-5 rounded-full bg-gray-200" />
           <div className="ml-2 h-4 w-20 rounded-md bg-gray-200" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NotesRow() {
+  return (
+    <div className="flex gap-2">
+      <div className="h-5 w-5 rounded-full bg-gray-200" />
+      <div className="ml-2 h-4 w-32 md:w-96 rounded-md bg-gray-200" />
+    </div>
+  )
+}
+export function NotesSkeleton() {
+  return (
+    <div className={`${shimmer} relative w-full overflow-hidden md:col-span-4`}>
+      <div className="rounded-xl bg-gray-100 p-4">
+        <div className="flex items-center pb-2">
+          <div className="h-5 w-5 rounded-full bg-gray-200" />
+          <div className="ml-2 h-4 w-20 rounded-md bg-gray-200" />
+        </div>
+        <div className="rounded-md bg-white p-4 flex flex-col justify-center items-center gap-2">
+          <NotesRow />
+          <NotesRow />
+          <NotesRow />
+          <NotesRow />
         </div>
       </div>
     </div>

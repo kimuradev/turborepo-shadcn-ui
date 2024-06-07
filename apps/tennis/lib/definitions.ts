@@ -162,3 +162,11 @@ export type SubscribedPlayersProps = {
 }
 
 export type PaymentStatus =   'paid' | 'pending' | 'irregular'
+
+export type NoteProps = {
+    id: number,
+    message: string,
+    active: boolean,
+    created_at: Date,
+    updated_at: Date,
+}
