@@ -7,8 +7,6 @@ import RankingLeader from "./ranking-leader"
 import CurrentTournament from "./current-tournament"
 import GameScheduled from "./game-scheduled"
 import Link from "next/link"
-import { Pin } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/components/ui/card"
 import Notes from "./notes"
 import TournamentSubscription from "./tournament-subscription"
 

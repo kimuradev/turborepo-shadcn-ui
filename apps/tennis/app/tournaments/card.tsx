@@ -81,8 +81,7 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                     <p className="text-orange-700">Inscrição bloqueada. Regularizar pagamento</p>
                 </div>
             )
-        }
-        else {
+        } else if (signed) {
             return (
                 <Button variant="default" className={clsx(
                     `text-xs`,
@@ -93,6 +92,9 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                     Me inscrever
                 </Button>
             )
+        } 
+        else {
+            return <p className="text-green-700 pl-2">Efetuar login para inscrição.</p>
         }
     }
 
@@ -103,7 +105,7 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                     {link !== '/tournaments/ab-doubles' ? (
                         <TournamentPayment email={profile.user} status={subscription?.payment_status} tournamentId={id} year={year} isActive={subscription && !started && subscriptionIsOpen && signed && !isAdmin} />
                     ) : (
-                        <div className="py-4 invisible" />
+                        <div className="py-4 invisible"/>
                     )}
                     <Image src={headerSrcImg} width={250} height={140} alt={contentSrcImg.alt} />
                 </CardHeader>
