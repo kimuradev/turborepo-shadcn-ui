@@ -69,13 +69,13 @@ export default function GameTable({ data }: GameTable) {
                 game_id: 2,
                 schedule: '2024-06-13T22:30:00.000Z',
                 player1: { name: 'Perdedor 1' },
-                player2: { name: 'Adriano/Walter' },
+                player2: { name: 'Adriano/Marcelo' },
             },
             {
                 id: 3,
                 game_id: 3,
                 schedule: '2024-06-13T23:30:00.000Z',
-                player1: { name: 'Adriano/Walter' },
+                player1: { name: 'Adriano/Marcelo' },
                 player2: { name: 'Vencedor 1' },
             },
         ]
