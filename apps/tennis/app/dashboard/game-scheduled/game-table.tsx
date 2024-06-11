@@ -49,7 +49,7 @@ export default function GameTable({ data }: GameTable) {
             {
                 id: 3,
                 game_id: 3,
-                schedule: '2024-06-12T00:30:00.000Z',
+                schedule: '2024-06-12T23:30:00.000Z',
                 player1: { name: 'Nilton/Karin' },
                 player2: { name: 'Vencedor 1' },
             },
@@ -74,7 +74,7 @@ export default function GameTable({ data }: GameTable) {
             {
                 id: 3,
                 game_id: 3,
-                schedule: '2024-06-13T00:30:00.000Z',
+                schedule: '2024-06-13T23:30:00.000Z',
                 player1: { name: 'Adriano/Walter' },
                 player2: { name: 'Vencedor 1' },
             },
@@ -99,7 +99,7 @@ export default function GameTable({ data }: GameTable) {
             {
                 id: 3,
                 game_id: 3,
-                schedule: '2024-06-14T00:30:00.000Z',
+                schedule: '2024-06-14T23:30:00.000Z',
                 player1: { name: 'Tiago/Rogerinho' },
                 player2: { name: 'Vencedor 1' },
             },
