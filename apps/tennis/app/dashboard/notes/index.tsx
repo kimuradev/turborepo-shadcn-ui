@@ -31,9 +31,6 @@ export default function Notes() {
     }, [])
 
     useEffect(() => {
-
-        console.log('isComplete...', isComplete)
-
         if (!isComplete) return;
         const fetchData = async () => {
             setIsLoading(true)
