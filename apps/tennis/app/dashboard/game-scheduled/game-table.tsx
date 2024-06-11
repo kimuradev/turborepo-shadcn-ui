@@ -20,14 +20,14 @@ type GameTable = {
 }
 
 export default function GameTable({ data }: GameTable) {
-    if (!data.length) {
-        return (
-            <div className="flex flex-col justify-center items-center mt-6">
-                <CalendarX className="w-[50px] h-[50px] stroke-primary mb-4" />
-                <p className="text-sm text-muted-foreground">Nenhum jogo marcado no momento. </p>
-            </div>
-        )
-    }
+    // if (!data.length) {
+    //     return (
+    //         <div className="flex flex-col justify-center items-center mt-6">
+    //             <CalendarX className="w-[50px] h-[50px] stroke-primary mb-4" />
+    //             <p className="text-sm text-muted-foreground">Nenhum jogo marcado no momento. </p>
+    //         </div>
+    //     )
+    // }
 
     // TODO: REMOVE IT AFTER DUPLAS TOURNAMENTS
     const newData = [{
@@ -158,12 +158,10 @@ export default function GameTable({ data }: GameTable) {
     // Sort the mergedData array by scheduleDate
     const sortedData = sortBy(mergedData, ['scheduleDate']);
 
-
     return (
         <div className="overflow-auto max-h-[400px] w-full">
             <ShareButton data={sortedData} />
             {sortedData.map((game: any) => {
-                // console.log('game: ', game)
                 return (
                     <div className="flex flex-col gap-1" key={game.id}>
                         <div className="bg-secondary font-bold px-2 py-1 rounded">{getFormattedDate(game.scheduleDate)}</div>
