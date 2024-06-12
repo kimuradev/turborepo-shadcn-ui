@@ -16,14 +16,14 @@ export default function Dashboard() {
             <div>
                 <Notes />
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
-                    <DashboardCard
+                    {/* <DashboardCard
                         title="Torneio com inscrição aberta"
                         description="Período de inscrição: 06/06 à 09/06"
                         className="relative">
                         <Suspense fallback={<CardSkeleton />}>
                             <TournamentSubscription />
                         </Suspense>
-                    </DashboardCard>
+                    </DashboardCard> */}
                     <DashboardCard title="Torneio ativo" className="relative">
                         <Suspense fallback={<CardSkeleton />}>
                             <CurrentTournament />

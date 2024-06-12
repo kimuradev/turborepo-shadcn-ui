@@ -30,31 +30,31 @@ export default function GameTable({ data }: GameTable) {
     // }
 
     // TODO: REMOVE IT AFTER DUPLAS TOURNAMENTS
-    const newData = [{
-        scheduleDate: '2024-06-11', games: [
-            {
-                id: 1,
-                game_id: 1,
-                schedule: '2024-06-11T21:30:00.000Z',
-                player1: { name: 'Kimura/Clebis' },
-                player2: { name: 'Jose/Marco' },
-            },
-            {
-                id: 2,
-                game_id: 2,
-                schedule: '2024-06-11T22:30:00.000Z',
-                player1: { name: 'Perdedor 1' },
-                player2: { name: 'Nilton/Karin' },
-            },
-            {
-                id: 3,
-                game_id: 3,
-                schedule: '2024-06-12T23:30:00.000Z',
-                player1: { name: 'Nilton/Karin' },
-                player2: { name: 'Vencedor 1' },
-            },
-        ]
-    },
+    const newData = [
+    //     { scheduleDate: '2024-06-11', games: [
+    //         {
+    //             id: 1,
+    //             game_id: 1,
+    //             schedule: '2024-06-11T21:30:00.000Z',
+    //             player1: { name: 'Kimura/Clebis' },
+    //             player2: { name: 'Jose/Marco' },
+    //         },
+    //         {
+    //             id: 2,
+    //             game_id: 2,
+    //             schedule: '2024-06-11T22:30:00.000Z',
+    //             player1: { name: 'Perdedor 1' },
+    //             player2: { name: 'Nilton/Karin' },
+    //         },
+    //         {
+    //             id: 3,
+    //             game_id: 3,
+    //             schedule: '2024-06-12T23:30:00.000Z',
+    //             player1: { name: 'Nilton/Karin' },
+    //             player2: { name: 'Vencedor 1' },
+    //         },
+    //     ]
+    // },
     {
         scheduleDate: '2024-06-13', games: [
             {
