@@ -5,18 +5,20 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 
-import { TOURNAMENT_ID } from "@/lib/constants";
+import { FINALS_TYPE, PLAYOFF_CLASSIFICATION_TYPE, PLAYOFF_ELIMINATION_TYPE, TOURNAMENT_ID } from "@/lib/constants";
 import { deleteApi, getApi, postApi } from "@/lib/fetch";
 import { useAppContext } from "@/app/context/app-context";
 import { useAuthContext } from "@/app/context/auth-context";
-import Spinner from "@repo/ui/components/ui/spinner";
 import { type TournamentDetailsProps } from "@/lib/definitions";
 import UploadImage from "@/components/upload-image";
 import { Button } from "@ui/components/ui/button";
+import GamesSkeleton from "@/components/skeletons";
+import useToastMessage from "@ui/components/hooks/useToastMessage";
 
 import TournamentTabs from "./tabs";
 import FinalsDetails from "./finals/details";
-import useToastMessage from "@ui/components/hooks/useToastMessage";
+import PlayoffsDetails from "./playoffs/details";
+import { useTournamentDetails } from "./useTournamentDetails";
 
 const BANNER_PATH = 'tournamentId';
 
@@ -35,6 +37,8 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
     const response = await getApi(`/image/${BANNER_PATH}`);
     setBanner(response.data)
   }
+  // @ts-ignore
+  const [{ tournamentType },] = useTournamentDetails({ year, tournament })
 
   useEffect(() => {
     setIsFinals(tournament === TOURNAMENT_ID.FINALS ? true : false);
@@ -49,7 +53,7 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
 
   if (!classes.length && !isFinals) {
     fetchData();
-    return <Spinner />
+    return <GamesSkeleton />
   }
 
   const handleUploadImage = async (imageUrl: string) => {
@@ -75,7 +79,19 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
     } finally {
       setIsBannerLoading(false)
     }
+  }
 
+  const renderDetailCards = () => {
+    switch (tournamentType) {
+      case PLAYOFF_ELIMINATION_TYPE:
+        return <PlayoffsDetails tournament={tournament} year={year} />
+      case FINALS_TYPE:
+        return <FinalsDetails tournament={tournament} year={year} />
+      case PLAYOFF_CLASSIFICATION_TYPE:
+        return <TournamentTabs classes={classes} tournament={tournament} year={year} classId={classId} />
+      default:
+        return <GamesSkeleton />
+    }
   }
 
   return (
@@ -86,16 +102,12 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
 
       {banner && (
         <div className="flex items-center gap-4 mb-4 w-[1200px] h-[100px]">
-          <Image src={banner.url} width={1200} height={100} alt="banner image" className="w-[1200px] h-[100px]"/>
+          <Image src={banner.url} width={1200} height={100} alt="banner image" className="w-[1200px] h-[100px]" />
           {isAdmin && <Button variant="ghost" className="border rounderd" onClick={handleRemoveImage} disabled={isBannerLoading}><Trash2 className="w-4 h-4 stroke-primary" /></Button>}
         </div>
       )}
 
-      {isFinals ? (
-        <FinalsDetails tournament={tournament} year={year} />
-      ) : (
-        <TournamentTabs classes={classes} tournament={tournament} year={year} classId={classId} />
-      )}
+      {renderDetailCards()}
     </div>
   )
 }

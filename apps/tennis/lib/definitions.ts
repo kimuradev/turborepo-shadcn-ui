@@ -73,7 +73,10 @@ export type DialogProps = {
 
 export type CardProps = {
     data: DetailsProps[]
-    classification?: string[] | undefined
+    classification?: string[] | undefined,
+    className?: string,
+    tournament?: string;
+    year?: number | null | undefined;
 }
 
 export type TournamentDetailsProps = {
@@ -83,6 +86,8 @@ export type TournamentDetailsProps = {
 export type DialogResultProps = {
     isOpen: boolean,
     data: any,
+    tournament?: string;
+    year?: number | null | undefined;
     handleCancel: () => void,
 }
 
@@ -104,12 +109,21 @@ export type TournamentResultProps = {
     data: DataProps,
     player1: string,
     player2: string,
+    tournament?: string,
+    year?: number | null | undefined,
     handleCloseDialog: () => void
 }
 
 export type GameWeekProps = {
-    id: string,
+    id: string | undefined,
     week: string[]
+}
+
+export type TournamentTabs = {
+    classes: string[],
+    tournament: string,
+    year?: number | null,
+    classId?: string,
 }
 
 export type TournamentTabsProps = {

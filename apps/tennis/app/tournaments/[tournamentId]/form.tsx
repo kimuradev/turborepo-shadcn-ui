@@ -12,7 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@repo/ui/components/ui/select"
-import { GAME_RESULTS } from '@/lib/constants';
+import { FINALS_TYPE, GAME_RESULTS, PLAYOFF_ELIMINATION_TYPE } from '@/lib/constants';
 import { Button } from '@repo/ui/components/ui/button';
 import { ButtonLoading } from '@repo/ui/components/ui/button-loading';
 import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
@@ -22,17 +22,20 @@ import { putApiWithCredentials } from '@/lib/fetchWithCredentials';
 import { getNameWithAbbreviation } from '@/lib/utils';
 import { RefreshCw } from 'lucide-react';
 import { useAuthContext } from '@/app/context/auth-context';
+import { useTournamentDetails } from './useTournamentDetails';
 
 const WO_WIN_SCORE = "2";
 const WO_LOSE_SCORE = "0";
 
-export default function TournamentResultForm({ data, handleCloseDialog }: TournamentResultProps) {
+export default function TournamentResultForm({ data, tournament, year, handleCloseDialog }: TournamentResultProps) {
     const [isLoading, setIsLoading] = useState(false)
     const { successMessage, errorMessage } = useToastMessage();
     const { updateGameResult, isFinals } = useAppContext();
     const { isAdmin } = useAuthContext();
     const [isWOChecked, setIsWOChecked] = useState(false);
     const [isSorted, setIsSorted] = useState(false);
+    // @ts-ignore
+    const [{ tournamentType },] = useTournamentDetails({ year, tournament });
 
     const formSchema = z.object({
         wo: z.boolean().default(false).optional(),
@@ -94,6 +97,17 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
         }
     }
 
+    const getUrl = () => {
+        switch (tournamentType) {
+            case PLAYOFF_ELIMINATION_TYPE:
+              return '/games/playoffs'
+            case FINALS_TYPE:
+              return '/games/finals'
+            default:
+              return '/games'
+          }
+    }
+
     const handlePayload = async (values: any) => {
         let response;
         const payload = {
@@ -105,7 +119,7 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
             round: data.round,
             classId: data.class_id,
         }
-        const url = isFinals ? '/games/finals' : '/games';
+        const url = getUrl();
         const player: any = getWoPlayerScore(woPlayer || '')
 
         if (isSorted) {

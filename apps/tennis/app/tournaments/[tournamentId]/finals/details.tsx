@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-import Spinner from "@repo/ui/components/ui/spinner";
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { CLASSIFICATION, FINALS_CLASS_ID } from "@/lib/constants";
 import { type FinalsDetailsProps } from "@/lib/definitions";
-import { getApi } from "@/lib/fetch";
 import { useAppContext } from "@/app/context/app-context";
+import GamesSkeleton from "@/components/skeletons";
+import { getApi } from "@/lib/fetch";
 
 import GameWeek from "../game-week";
 import Card from "../card";
@@ -36,7 +36,7 @@ export default function FinalsDetails({ tournament, year }: FinalsDetailsProps) 
   }, [])
 
   if (isLoading) {
-    return <Spinner />
+    return <GamesSkeleton />
   }
 
   return (

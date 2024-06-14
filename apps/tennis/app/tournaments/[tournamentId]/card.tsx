@@ -11,7 +11,7 @@ import TournamentDatePicker from "../datepicker"
 import { getNameWithAbbreviation } from "@/lib/utils"
 import { DATE_TIME_FORMAT, GAME_FLOW_SORTED, GAME_FLOW_WO } from "@/lib/constants"
 
-export default function Card({ data, classification }: CardProps) {
+export default function Card({ data, classification, className, tournament, year }: CardProps) {
     const { signed, isAdmin } = useAuthContext();
     const [dialog, setDialog] = useState({
         isLoading: false,
@@ -74,56 +74,58 @@ export default function Card({ data, classification }: CardProps) {
     return (
         <>
             {data.map((game: any, index) => (
-                <div key={game.game_number}
-                    className={`flex flex-col items-center ${game.round === 'final' ? 'border' : cardBackground(game.type)} w-60 rounded-sm m-4 p-1 ${enableHover(game)}} w-[270px]`}
-                >
-                    
-                    <TournamentDatePicker id={game.id} schedule={game.schedule} isDisabled={!enableToEditCard(game)}/>
+                <div className={`${className} relative`}>
+                    <div key={game.game_number}
+                        className={`flex flex-col items-center ${game.round === 'final' ? 'border' : cardBackground(game.type)} w-60 rounded-sm m-4 p-1 ${enableHover(game)}} w-[270px]`}
+                    >
 
-                    <div className="flex justify-around p-2 w-full" onClick={() => enableOpenForm(game)}>
-                        <div className="flex flex-col justify-center items-center">
-                            <p className="mr-2 text-xs text-muted-foreground">#{game.game_number}</p>
-                            {classification && <p className="mr-2 mt-2 text-xs text-muted-foreground">{classification[index]}</p>}
-                        </div>
-                        <div className="flex flex-col justify-around">
-                            <div className="flex items-center">
-                                <div className="w-[20px]">
-                                    <Image src={BrazilFlag} width={20} height={15} alt="Brasil" />
-                                </div>
-                                <div className="pl-2 w-[170px]">
-                                    <p className="text-xs truncate">{getNameWithAbbreviation(game.player1)}</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center">
-                                <div className="w-[20px]">
-                                    <Image src={BrazilFlag} width={20} height={15} alt="Brasil" />
-                                </div>
-                                <div className="pl-2 w-[170px]">
-                                    <p className="text-xs truncate">{getNameWithAbbreviation(game.player2)}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-col justify-center items-center gap-2">
-                            <div className="flex w-6 h-6 bg-slate-100 rounded justify-center items-center">
-                                <p>{getPlayerScore({ flow: game.flow, score: game.player1_score })}</p>
-                            </div>
-                            <div className="flex w-6 h-6 bg-slate-100 rounded justify-center items-center">
-                                <p>{getPlayerScore({ flow: game.flow, score: game.player2_score })}</p>
-                            </div>
-                        </div>
-                    </div>
+                        <TournamentDatePicker id={game.id} schedule={game.schedule} isDisabled={!enableToEditCard(game)} />
 
-                    <div className="text-xs text-muted-foreground">
-                        {game.flow === GAME_FLOW_WO && (
-                            <span className="italic">* W.O.</span>
-                        )}
-                        {game.flow === GAME_FLOW_SORTED && (
-                            <span className="italic">* Sorteado {format(game.updated_at, DATE_TIME_FORMAT)}</span>
-                        )}
+                        <div className="flex justify-around p-2 w-full" onClick={() => enableOpenForm(game)}>
+                            <div className="flex flex-col justify-center items-center">
+                                <p className="mr-2 text-xs text-muted-foreground">#{game.game_number}</p>
+                                {classification && <p className="mr-2 mt-2 text-xs text-muted-foreground">{classification[index]}</p>}
+                            </div>
+                            <div className="flex flex-col justify-around">
+                                <div className="flex items-center">
+                                    <div className="w-[20px]">
+                                        <Image src={BrazilFlag} width={20} height={15} alt="Brasil" />
+                                    </div>
+                                    <div className="pl-2 w-[170px]">
+                                        <p className="text-xs truncate">{getNameWithAbbreviation(game.player1)}</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-[20px]">
+                                        <Image src={BrazilFlag} width={20} height={15} alt="Brasil" />
+                                    </div>
+                                    <div className="pl-2 w-[170px]">
+                                        <p className="text-xs truncate">{getNameWithAbbreviation(game.player2)}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-col justify-center items-center gap-2">
+                                <div className="flex w-6 h-6 bg-slate-100 rounded justify-center items-center">
+                                    <p>{getPlayerScore({ flow: game.flow, score: game.player1_score })}</p>
+                                </div>
+                                <div className="flex w-6 h-6 bg-slate-100 rounded justify-center items-center">
+                                    <p>{getPlayerScore({ flow: game.flow, score: game.player2_score })}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="text-xs text-muted-foreground">
+                            {game.flow === GAME_FLOW_WO && (
+                                <span className="italic">* W.O.</span>
+                            )}
+                            {game.flow === GAME_FLOW_SORTED && (
+                                <span className="italic">* Sorteado {format(game.updated_at, DATE_TIME_FORMAT)}</span>
+                            )}
+                        </div>
                     </div>
                 </div>
             ))}
-            <DialogResult isOpen={dialog.isOpen} data={dialog.data} handleCancel={handleCancel} />
+            <DialogResult isOpen={dialog.isOpen} data={dialog.data} handleCancel={handleCancel} tournament={tournament} year={year}/>
         </>
     )
 }

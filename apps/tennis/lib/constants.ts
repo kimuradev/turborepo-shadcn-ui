@@ -38,6 +38,18 @@ export const SHIRT_SIZE = [
 
 export const YEARS = ['2024', '2025'];
 
+export const FINALS_CLASS_ID = 7;
+export const PLAYOFFS_CLASS_ID = 8;
+export const PLAYOFF_CLASSIFICATION_TYPE = 'playoff-classification';
+export const PLAYOFF_ELIMINATION_TYPE = 'playoff-elimination';
+export const FINALS_TYPE = 'finals';
+
+export const TOURNAMENT_TYPE = [
+    { value: PLAYOFF_CLASSIFICATION_TYPE, label: 'Mata-mata (classificatório)' },
+    { value: PLAYOFF_ELIMINATION_TYPE, label: 'Mata-mata (eliminatório)' },
+    { value: FINALS_TYPE, label: 'Finals (Grupo A x Grupo B)' }
+];
+
 export const TOURNAMENT_ID = {
     AB: 'ab',
     AO: 'ao',
@@ -90,10 +102,7 @@ export const CLASSIFICATION = [
 export const RANKING_TAB = "general" 
 
 export const DATE_FORMAT = "dd/MM/yyyy"
-
 export const DATE_TIME_FORMAT = "dd/MM/yyyy HH:mm:ss"
-
-export const FINALS_CLASS_ID = 7;
 
 export const ROLE_ADMIN = 'admin';
 

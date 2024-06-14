@@ -207,3 +207,176 @@ button[data-state='active'] {
   }
   
 }
+
+/* ROUND 8 */
+
+
+.round-default.playoffs-quarter-finals {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+
+.round-default.playoffs-semi-finals {
+  padding-top: 220px;
+  padding-bottom: 220px;
+}
+
+
+.round-default.playoffs-finals {
+  padding-top: 520px;
+  padding-bottom: 520px;
+}
+
+
+/* ROUND 16 */
+
+
+.round-16.playoffs-eighth-finals {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+
+.round-16.playoffs-quarter-finals {
+  padding-top: 210px;
+  padding-bottom: 210px;
+}
+
+
+.round-16.playoffs-semi-finals {
+  padding-top: 520px;
+  padding-bottom: 520px;
+}
+
+
+.round-16.playoffs-finals {
+  padding-top: 1120px;
+  padding-bottom: 1120px;
+}
+
+
+/* ROUND 32 */
+
+
+.round-32.playoffs-sixteenth-finals {
+  padding-top: 75px;
+  padding-bottom: 70px;
+}
+
+
+.round-32.playoffs-eighth-finals {
+  padding-top: 215px;
+  padding-bottom: 220px;
+}
+
+
+.round-32.playoffs-quarter-finals {
+  padding-top: 510px;
+  padding-bottom: 510px;  
+}
+
+
+.round-32.playoffs-semi-finals {
+  padding-top: 1095px;
+  padding-bottom: 1095px;
+}
+
+
+.round-32.playoffs-finals {
+  padding-top: 2260px;
+  padding-bottom: 2260px;
+}
+
+
+/* ROUND 64 */
+
+
+.round-64.playoffs-32-finals {
+  padding-top: 75px;
+  padding-bottom: 70px;
+}
+
+
+.round-64.playoffs-sixteenth-finals {
+  padding-top: 215px;
+  padding-bottom: 220px;
+}
+
+
+.round-64.playoffs-eighth-finals {
+  padding-top: 510px;
+  padding-bottom: 510px;  
+}
+
+
+.round-64.playoffs-quarter-finals {
+  padding-top: 1095px;
+  padding-bottom: 1095px;
+}
+
+
+.round-64.playoffs-semi-finals {
+  padding-top: 2260px;
+  padding-bottom: 2260px;
+}
+
+
+.round-64.playoffs-finals {
+  padding-top: 4600px;
+  padding-bottom: 4600px;
+}
+
+
+.playoffs-card-before {
+    content: '';
+    width: 1rem;
+    height: 50%;
+    border: 2px solid #d7d9dc;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    border-left: 0;
+    position: absolute;
+    left: -1rem;
+}
+
+
+.playoffs-card-after {
+    content: '';
+    width: 1rem;
+    height: 1px;
+    background: #d7d9dc;
+    position: absolute;
+    left: 0;
+}
+
+
+.isFirst.round-default::before,
+.isFirst.round-default::after,
+.isFirst.round-16::before,
+.isFirst.round-16::after,
+.isFirst.round-32::before,
+.isFirst.round-32::after,
+.isFirst.round-64::before,
+.isFirst.round-64::after
+{
+  content: none;
+}
+
+
+.round-default::before,
+.round-16::before,
+.round-32::before,
+.round-64::before {
+    @apply playoffs-card-before;
+    top: 25%;
+}
+
+
+.round-default::after,
+.round-16::after,
+.round-32::after,
+.round-64::after {
+    @apply playoffs-card-after;
+    top: 50%;
+}
