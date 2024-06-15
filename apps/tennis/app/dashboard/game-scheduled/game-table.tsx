@@ -55,56 +55,56 @@ export default function GameTable({ data }: GameTable) {
     //         },
     //     ]
     // },
-    {
-        scheduleDate: '2024-06-13', games: [
-            {
-                id: 1,
-                game_id: 1,
-                schedule: '2024-06-13T21:30:00.000Z',
-                player1: { name: 'Navarro/Susin' },
-                player2: { name: 'Vlademir/Floriano' },
-            },
-            {
-                id: 2,
-                game_id: 2,
-                schedule: '2024-06-13T22:30:00.000Z',
-                player1: { name: 'Perdedor 1' },
-                player2: { name: 'Adriano/Marcelo' },
-            },
-            {
-                id: 3,
-                game_id: 3,
-                schedule: '2024-06-13T23:30:00.000Z',
-                player1: { name: 'Adriano/Marcelo' },
-                player2: { name: 'Vencedor 1' },
-            },
-        ]
-    },
-    {
-        scheduleDate: '2024-06-14', games: [
-            {
-                id: 1,
-                game_id: 1,
-                schedule: '2024-06-14T21:30:00.000Z',
-                player1: { name: 'Robinson/Claudinei' },
-                player2: { name: 'Angelo/Makoto' },
-            },
-            {
-                id: 2,
-                game_id: 2,
-                schedule: '2024-06-14T22:30:00.000Z',
-                player1: { name: 'Perdedor 1' },
-                player2: { name: 'Tiago/Rogerinho' },
-            },
-            {
-                id: 3,
-                game_id: 3,
-                schedule: '2024-06-14T23:30:00.000Z',
-                player1: { name: 'Tiago/Rogerinho' },
-                player2: { name: 'Vencedor 1' },
-            },
-        ]
-    },
+    // {
+    //     scheduleDate: '2024-06-13', games: [
+    //         {
+    //             id: 1,
+    //             game_id: 1,
+    //             schedule: '2024-06-13T21:30:00.000Z',
+    //             player1: { name: 'Navarro/Susin' },
+    //             player2: { name: 'Vlademir/Floriano' },
+    //         },
+    //         {
+    //             id: 2,
+    //             game_id: 2,
+    //             schedule: '2024-06-13T22:30:00.000Z',
+    //             player1: { name: 'Perdedor 1' },
+    //             player2: { name: 'Adriano/Marcelo' },
+    //         },
+    //         {
+    //             id: 3,
+    //             game_id: 3,
+    //             schedule: '2024-06-13T23:30:00.000Z',
+    //             player1: { name: 'Adriano/Marcelo' },
+    //             player2: { name: 'Vencedor 1' },
+    //         },
+    //     ]
+    // },
+    // {
+    //     scheduleDate: '2024-06-14', games: [
+    //         {
+    //             id: 1,
+    //             game_id: 1,
+    //             schedule: '2024-06-14T21:30:00.000Z',
+    //             player1: { name: 'Robinson/Claudinei' },
+    //             player2: { name: 'Angelo/Makoto' },
+    //         },
+    //         {
+    //             id: 2,
+    //             game_id: 2,
+    //             schedule: '2024-06-14T22:30:00.000Z',
+    //             player1: { name: 'Perdedor 1' },
+    //             player2: { name: 'Tiago/Rogerinho' },
+    //         },
+    //         {
+    //             id: 3,
+    //             game_id: 3,
+    //             schedule: '2024-06-14T23:30:00.000Z',
+    //             player1: { name: 'Tiago/Rogerinho' },
+    //             player2: { name: 'Vencedor 1' },
+    //         },
+    //     ]
+    // },
     {
         scheduleDate: '2024-06-15', games: [
             {
