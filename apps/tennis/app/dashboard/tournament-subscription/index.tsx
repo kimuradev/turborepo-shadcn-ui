@@ -20,15 +20,11 @@ export default function TournamentSubscription() {
         try {
             const response = await getApi('/tournaments/subscription-open', { cache: 'no-store' });
 
-            if (isEmpty(profile)) {
-                setData(response)
+            if (!isEmpty(profile) && profile.category !== 'wta') {
+                const filteredData = response.filter((item: any) => !item.key.includes('wta'));
+                setData(filteredData)
             } else {
-                if (profile.category !== 'wta') {
-                    const filteredData = response.filter((item: any) => !item.key.includes('wta'));
-                    setData(filteredData)
-                } else {
-                    setData(response)
-                }
+                setData(response)
             }
         } finally {
             setIsLoading(false);
@@ -36,7 +32,7 @@ export default function TournamentSubscription() {
     }
 
     useEffect(() => {
-        if (profile) {
+        if (!isEmpty(profile)) {
             fetchData();
         }
     }, [profile])
