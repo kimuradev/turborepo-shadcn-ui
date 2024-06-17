@@ -22,6 +22,7 @@ const formUserSchema = z.object({
     cpf: z.string().min(1, { message: "Campo obrigatório" }),
     name: z.string().min(1, { message: "Campo obrigatório" }),
     phone: z.string().min(13, { message: "Campo obrigatório" }).max(14, { message: "Telefone inválido" }),
+    category: z.string().min(1, { message: "Campo obrigatório" }),
     current_password: z.string().min(1, { message: "Campo obrigatório" }),
 })
 
@@ -53,6 +54,7 @@ function EditUserForm({ data, userId }: any) {
             cpf: data?.cpf || "",
             name: data?.name || "",
             phone: data?.phone || "",
+            category: data?.category || "",
             current_password: ""
         },
     })

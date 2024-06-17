@@ -69,9 +69,9 @@ export async function forgotUser(formData: FormData) {
     }
 }
 
-export async function updateUserPassword({ user_id, name, phone, current_password }: { user_id: string, name: string, phone: string, current_password: string }) {
+export async function updateUserPassword({ user_id, name, phone, category, current_password }: { user_id: string, name: string, phone: string, category: string, current_password: string }) {
     try {
-        const response = await postApi('/users/update', { user_id, name, phone, current_password }, { cache: 'no-store' });
+        const response = await postApi('/users/update', { user_id, name, phone, category, current_password }, { cache: 'no-store' });
 
         if (!response.success) {
             throw new Error(response.message);

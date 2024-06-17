@@ -148,7 +148,8 @@ export type ProfileProps = {
     cpf?: string,
     email?: string,
     name?: string,
-    phone?: string
+    phone?: string,
+    category?: string
 }
 
 export type SubscribedPlayersProps = {

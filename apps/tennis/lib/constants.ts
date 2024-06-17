@@ -6,6 +6,7 @@ import AO from '@/public/static/ao-rotate.jpg';
 import RG from '@/public/static/rg-rotate.jpg';
 import RGCircle from '@/public/static/rg-circle.png';
 import Wimbledon from '@/public/static/wimbledon-rotate.jpg';
+import WimbledonWTA from '@/public/static/wta-wimbledon.jpg';
 import WimbledonCircle from '@/public/static/wimb-circle.png';
 import US from '@/public/static/us-open-rotate.jpg';
 import USCircle from '@/public/static/us-circle.png';
@@ -45,7 +46,8 @@ export const TOURNAMENT_ID = {
     WIMBLEDON: 'wimbledon',
     US: 'usopen',
     FINALS: 'finals',
-    DOUBLES: 'ab-doubles'
+    DOUBLES: 'ab-doubles',
+    WIMBLEDON_WTA: 'wimbledon-wta',
 }
 
 const TOURNAMENT_NAMES = {
@@ -55,7 +57,8 @@ const TOURNAMENT_NAMES = {
     WIMBLEDON: 'AB Wimbledon',
     US: 'AB US Open',
     FINALS: 'AB Finals',
-    DOUBLES: 'AB Duplas'
+    DOUBLES: 'AB Duplas',
+    WIMBLEDON_WTA: 'AB Wimbledon WTA',
 }
 
 export const TOURNAMENTS = [
@@ -64,9 +67,12 @@ export const TOURNAMENTS = [
     { value: TOURNAMENT_ID.WIMBLEDON, headerSrcImg: Wimbledon, contentSrcImg: { src: WimbledonCircle, alt: TOURNAMENT_NAMES.WIMBLEDON }, bgColor: 'bg-green-50', link: `/tournaments/${TOURNAMENT_ID.WIMBLEDON}`},
     { value: TOURNAMENT_ID.US, headerSrcImg: US, contentSrcImg: { src: USCircle, alt: TOURNAMENT_NAMES.US }, bgColor: 'bg-blue-50', link: `/tournaments/${TOURNAMENT_ID.US}`},
     { value: TOURNAMENT_ID.FINALS, headerSrcImg: Finals, contentSrcImg: { src: FinalsCircle, alt: TOURNAMENT_NAMES.FINALS }, bgColor: 'bg-blue-200', link: `/tournaments/${TOURNAMENT_ID.FINALS}` },
+    
     { value: TOURNAMENT_ID.AB, headerSrcImg: AB, contentSrcImg: { src: ABCircle, alt: TOURNAMENT_NAMES.AB }, bgColor: 'bg-white', link: `/tournaments/${TOURNAMENT_ID.AB}`},
     { value: TOURNAMENT_ID.DOUBLES, headerSrcImg: ABDoubles, contentSrcImg: { src: ABCircle, alt: TOURNAMENT_NAMES.DOUBLES }, bgColor: 'bg-white', link: `/tournaments/${TOURNAMENT_ID.DOUBLES}`},
     // { value:  'ab-duplas', subtitle: 'Janeiro', headerSrcImg: Finals, contentSrcImg: { src: FinalsCircle, alt: TOURNAMENT_NAMES.FINALS }, bgColor: 'bg-blue-200', link: '/tournaments/finals'},
+
+    { value: TOURNAMENT_ID.WIMBLEDON_WTA, headerSrcImg: WimbledonWTA, contentSrcImg: { src: WimbledonCircle, alt: TOURNAMENT_NAMES.WIMBLEDON }, bgColor: 'bg-red-100', link: `/tournaments/${TOURNAMENT_ID.WIMBLEDON_WTA}`},
 ]
 
 export const TOURNAMENT_DICTIONARY = [
@@ -75,8 +81,14 @@ export const TOURNAMENT_DICTIONARY = [
     { id: TOURNAMENT_ID.US, value: TOURNAMENT_NAMES.US },
     { id: TOURNAMENT_ID.WIMBLEDON, value: TOURNAMENT_NAMES.WIMBLEDON },
     { id: TOURNAMENT_ID.FINALS, value: TOURNAMENT_NAMES.FINALS },
+    { id: TOURNAMENT_ID.WIMBLEDON_WTA, value: TOURNAMENT_NAMES.WIMBLEDON_WTA },
     { id: TOURNAMENT_ID.AB, value: TOURNAMENT_NAMES.AB },
     { id: TOURNAMENT_ID.DOUBLES, value: TOURNAMENT_NAMES.DOUBLES },
+]
+
+export const TOURNAMENT_CATEGORY = [
+    { value: 'atp', label: 'ATP' },
+    { value: 'wta', label: 'WTA' },
 ]
 
 export const GAME_RESULTS = [

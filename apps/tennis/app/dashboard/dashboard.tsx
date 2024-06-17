@@ -20,14 +20,14 @@ export default function Dashboard() {
                         title="Torneio com inscrição aberta"
                         description="Período de inscrição: 14/06 à 23/06"
                         className="relative">
-                        <Suspense fallback={<CardSkeleton />}>
+                        {/* <Suspense fallback={<CardSkeleton />}> */}
                             <TournamentSubscription />
-                        </Suspense>
+                        {/* </Suspense> */}
                     </DashboardCard>
                     <DashboardCard title="Torneio ativo" className="relative">
-                        <Suspense fallback={<CardSkeleton />}>
+                        {/* <Suspense fallback={<CardSkeleton />}> */}
                             <CurrentTournament />
-                        </Suspense>
+                        {/* </Suspense> */}
                     </DashboardCard>
                     <DashboardCard title="Jogos da rodada" className="relative">
                         <Suspense fallback={<GameScheduleSkeleton />}>
