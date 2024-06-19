@@ -20,7 +20,7 @@ function TournamentForm({ form, formAction } : any) {
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        {TOURNAMENT_DICTIONARY.map((tournament: { id: number | string, value: string }) => (
+                                        {[{ id: 'none', value: 'Nenhum' }, ...TOURNAMENT_DICTIONARY].map((tournament: { id: number | string, value: string }) => (
                                             <SelectItem key={tournament.id} value={tournament.id.toString()}>{tournament.value}</SelectItem>
                                         ))}
                                     </SelectContent>

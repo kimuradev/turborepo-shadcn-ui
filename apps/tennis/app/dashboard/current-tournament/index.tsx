@@ -11,9 +11,10 @@ export default async function CurrentTournament() {
         return tournament.value === data?.key;
     })
 
-    if (!data.length || tournamentIndex == -1) {
+    if (!data || tournamentIndex == -1) {
         return (
             <div className="flex flex-col justify-center items-center mt-6">
+                <TournamentModal />
                 <Frown className="w-[50px] h-[50px] stroke-primary mb-4" />
                 <p className="text-sm text-muted-foreground">Nenhum torneio ativo no momento. </p>
             </div>

@@ -200,7 +200,22 @@ export async function editActiveTournament({ id, isActive }: { id: string, isAct
         return { error: err.message };
     }
 
+    revalidatePath('/');
     revalidatePath('/tournaments');
+}
+
+export async function editActiveTournamentSubscription({ tournaments }: { tournaments: any}) {
+    try {
+        const response = await putApiWithCredentials(`/tournaments/subscription-open`, { tournaments });
+       
+        if (!response.success) {
+            throw new Error(response.message);
+        }
+    } catch (err: any) {
+        return { error: err.message };
+    }
+
+    revalidatePath('/');
 }
 
 export async function updateFinanceSettings(data: any) {
