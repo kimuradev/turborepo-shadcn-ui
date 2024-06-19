@@ -12,10 +12,10 @@ import TournamentModal from "./tournament-modal";
 export default async function TournamentSubscription({ data }: { data: any }) {
     const [subscriptionData, setSubscriptionData] = useState([])
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const { profile } = useAuthContext();
+    const { profile, isAdmin } = useAuthContext();
 
     const getData = async () => {
-        if (!isEmpty(profile) && profile.category !== 'wta') {
+        if (!isEmpty(profile) && profile.category !== 'wta' && !isAdmin) {
             setSubscriptionData(data.filter((item: any) => !item.key.includes('wta')));
         } else {
             setSubscriptionData(data);

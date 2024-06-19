@@ -79,8 +79,6 @@ export default function TournamentForm() {
         },
     });
 
-    
-
     const tournamentWatch = form.watch('tournament')
     const yearWatch = form.watch('year')
     const classWatch = form.watch('classId')

@@ -41,7 +41,8 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
     }
 
     const renderSeeTournamentButton = () => {
-        if (link !== '/tournaments/ab-doubles') {
+        // TODO: remove it when we have doubles format
+        if (link !== '/tournaments/ab-doubles' && started ) {
             return (
                 <Link href={`${link}?year=${year}`} >
                     <Button variant="secondary" className="text-xs">
@@ -53,7 +54,7 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
     }
 
     const renderActionButton = () => {
-        if (subscription) {
+        if (signed && subscription) {
             return (
                 <Button variant="default"
                     className={clsx(
@@ -68,7 +69,19 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                 </Button>
             )
         }
-        else if (isPaymentPending) {
+        else if (signed && !isPaymentPending) {
+            return (
+                <Button variant="default" className={clsx(
+                    `text-xs`,
+                    {
+                        'invisible': isAdmin
+                    }
+                )} onClick={handleSubscribe}>
+                    Me inscrever
+                </Button>
+            )
+        } 
+        else if (signed && isPaymentPending) {
             return (
                 <div
                     className={clsx(
@@ -81,21 +94,10 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                     <p className="text-orange-700">Inscrição bloqueada. Regularizar pagamento</p>
                 </div>
             )
-        } else if (signed) {
-            return (
-                <Button variant="default" className={clsx(
-                    `text-xs`,
-                    {
-                        'invisible': isAdmin
-                    }
-                )} onClick={handleSubscribe}>
-                    Me inscrever
-                </Button>
-            )
         } 
         else {
             return <p className="text-green-700 pl-2">Efetuar login para inscrição.</p>
-        }
+        } 
     }
 
     return (

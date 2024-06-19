@@ -13,12 +13,12 @@ export default function EmptySubscription() {
         <>
             {
                 isAdmin && signed && (
-                    <div className="border rounded border-dashed border-primary min-h-[240px] flex items-center justify-center">
+                    <div className="border rounded border-dashed border-primary min-h-[240px] flex items-center justify-center relative">
                         <Button variant="link" onClick={() => setModalIsOpen(true)}>Abrir inscrição de torneio</Button>
+                        <TournamentModal modalIsOpen={modalIsOpen} handleClose={() => setModalIsOpen(false)}/>
                     </div>
                 )
             }
-            <TournamentModal modalIsOpen={modalIsOpen} handleClose={() => setModalIsOpen(false)}/>
         </>
     )
 

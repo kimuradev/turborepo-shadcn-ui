@@ -17,7 +17,7 @@ export default async function Subscription() {
     return (
         <DashboardCard
             title="Torneio com inscrição aberta"
-            description="Período de inscrição: 14/06 à 23/06"
+            description={`Período de inscrição: ${data[0].period}`}
             className="relative">
             <div className="flex flex-col md:flex-row gap-2">
                 <TournamentSubscription data={data} />

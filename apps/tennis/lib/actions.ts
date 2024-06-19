@@ -204,9 +204,9 @@ export async function editActiveTournament({ id, isActive }: { id: string, isAct
     revalidatePath('/tournaments');
 }
 
-export async function editActiveTournamentSubscription({ tournaments }: { tournaments: any}) {
+export async function editActiveTournamentSubscription({ startDate, endDate, tournaments }: { startDate: string, endDate: string, tournaments: any}) {
     try {
-        const response = await putApiWithCredentials(`/tournaments/subscription-open`, { tournaments });
+        const response = await putApiWithCredentials(`/tournaments/subscription-open`, { startDate, endDate, tournaments });
        
         if (!response.success) {
             throw new Error(response.message);
