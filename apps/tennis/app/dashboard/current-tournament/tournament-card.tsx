@@ -4,38 +4,63 @@ import { useEffect, useState } from "react";
 import isEmpty from 'lodash/isEmpty'
 
 import { useAuthContext } from "@/app/context/auth-context";
-import CardTournament from "@/app/tournaments/card";
 import { TOURNAMENTS } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import { CardSkeleton } from "@/components/skeletons";
+import CardTournament from "./card";
 
-function TournamentCard({ data, tournamentIndex }: any) {
+function TournamentCard({ data }: any) {
+    const [currentTournament, setCurrentTournament] = useState<any>([])
     const [isLoading, setIsLoading] = useState(false);
-    const { profile } = useAuthContext();
-    const [subscription, setSubscription] = useState<any>(false);
-    const [isPaymentPending, setIsPaymentPending] = useState(false);
+    const { profile, isAdmin } = useAuthContext();
 
     const fetchData = async () => {
-        setIsLoading(true)
         try {
-            const [response, paymentResponse] = await Promise.all([
-                getApi(`/tournaments/subscribe/${profile.id}?year=${data.year}&tournament=${data.key}`, { cache: 'no-store' }),
-                getApi(`/tournaments/payment-status/${profile.id}`, { cache: 'no-store' })
-            ]);
-            setSubscription(response);
-            setIsPaymentPending(paymentResponse.isPaymentPending)
-        } catch (err) {
-            setSubscription(false)
+            setIsLoading(true)
+            if (isEmpty(profile) || isAdmin) {
+                setCurrentTournament(data);
+                return;
+            }
+
+            if (!isEmpty(profile) && profile.category === 'wta') {
+                await getTournamentSubscription(data);
+            } else {
+                await getTournamentSubscription(data.filter((item: any) => !item.key.includes('wta')))
+            }
         } finally {
             setIsLoading(false)
         }
     }
 
     useEffect(() => {
-        if (isEmpty(profile)) return;
+        fetchData();
+    }, [profile])
 
-        fetchData()
-    }, [profile]);
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const getTournamentSubscription = async (data: any) => {
+        if (profile.id) {
+            const updatedSubscriptions = await Promise.all(data.map(async (item: any) => {
+                const response = await getApi(`/tournaments/subscribe/${profile.id}?year=${item.year}&tournament=${item.key}`, { cache: 'no-store' });
+
+                if (!response) {
+                    return { ...item, isSubscribed: false, paymentStatus: response?.payment_status }
+                }
+                return { ...item, isSubscribed: true, paymentStatus: response?.payment_status};
+            }));
+
+            setCurrentTournament(updatedSubscriptions)
+        }
+    }
+
+    const getTournamentIndex = (tournamentKey: string) => {
+        const tournamentIndex = TOURNAMENTS.findIndex((tournament: any) => {
+            return tournament.value === tournamentKey
+        })
+        return tournamentIndex
+    }
 
     if (isLoading) {
         return <CardSkeleton />
@@ -44,21 +69,24 @@ function TournamentCard({ data, tournamentIndex }: any) {
     return (
         <div className="pl-4">
             <div className='flex flex-wrap gap-6 justify-center items-center'>
-                <CardTournament
-                    key={data.id}
-                    id={data.id}
-                    title={data.name}
-                    subtitle={data.description}
-                    headerSrcImg={TOURNAMENTS[tournamentIndex]?.headerSrcImg || ''}
-                    contentSrcImg={TOURNAMENTS[tournamentIndex]?.contentSrcImg || { src: '', alt: '' }}
-                    bgColor={TOURNAMENTS[tournamentIndex]?.bgColor || ''}
-                    link={TOURNAMENTS[tournamentIndex]?.link || ''}
-                    year={data.year}
-                    subscriptionIsOpen={data.active}
-                    started={data.started}
-                    subscription={subscription}
-                    isPaymentPending={isPaymentPending}
-                />
+                {currentTournament.map((item: any) => (
+                    <CardTournament
+                        key={item.id}
+                        id={item.id}
+                        title={item.name}
+                        subtitle={item.description}
+                        headerSrcImg={TOURNAMENTS[getTournamentIndex(item.key)]?.headerSrcImg || ''}
+                        contentSrcImg={TOURNAMENTS[getTournamentIndex(item.key)]?.contentSrcImg || { src: '', alt: '' }}
+                        bgColor={TOURNAMENTS[getTournamentIndex(item.key)]?.bgColor || ''}
+                        link={TOURNAMENTS[getTournamentIndex(item.key)]?.link || ''}
+                        year={item.year}
+                        subscriptionIsOpen={item.active}
+                        isSubscribed={item.isSubscribed}
+                        started={item.started}
+                        paymentStatus={item.paymentStatus}
+                    />
+                ))
+                }
             </div>
         </div>
     )

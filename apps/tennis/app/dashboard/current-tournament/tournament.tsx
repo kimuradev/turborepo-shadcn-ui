@@ -6,26 +6,43 @@ import { editActiveTournament } from "@/lib/actions";
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 
 import TournamentForm from "./tournament-form";
+import { useEffect, useState } from "react";
 
-const formSchema = z.object({
-    tournament: z.string().min(1, { message: 'Campo obrigatório' }),
-})
+
 
 export default function Tournament({ handleCloseModal }: { handleCloseModal : () => void }) {
     const { successMessage, errorMessage } = useToastMessage();
+    const [isRequired, setIsRequired] = useState(true);
+
+    const formSchema = z.object({
+        description: isRequired? z.string().min(1, { message: 'Campo obrigatório' }) :  z.string(),
+        tournaments: z.array(z.string().min(1, { message: 'Campo obrigatório' })),
+    })
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            tournament: "",
+            description: "",
+            tournaments: [],
         },
     })
+
+    const tournamentWatch = form.watch('tournaments')
+
+    useEffect(() => {
+        if (tournamentWatch.find(item => item === "none")) {
+            setIsRequired(false);
+        } else {
+            setIsRequired(true);
+        }
+
+    }, [tournamentWatch])
    
     async function formAction() {
         const validFields = await form.trigger();
 
         if (validFields) {
-            const response = await editActiveTournament({ id:form.getValues("tournament"), isActive: true });
+            const response = await editActiveTournament({ description: form.getValues("description"), tournaments: form.getValues("tournaments")});
 
             if (response?.error) {
                 errorMessage(response)

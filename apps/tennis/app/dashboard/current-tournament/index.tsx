@@ -1,17 +1,12 @@
 import { getApi } from "@/lib/fetch";
 import TournamentCard from "./tournament-card";
 import TournamentModal from "./tournament-modal";
-import { TOURNAMENTS } from "@/lib/constants";
 import { Frown } from "lucide-react";
 
 export default async function CurrentTournament() {
     const data = await getApi('/tournaments/active', { cache: 'no-store' });
 
-    const tournamentIndex = TOURNAMENTS.findIndex((tournament: any) => {
-        return tournament.value === data?.key;
-    })
-
-    if (!data || tournamentIndex == -1) {
+    if (!data.length) {
         return (
             <div className="flex flex-col justify-center items-center mt-6">
                 <TournamentModal />
@@ -24,7 +19,7 @@ export default async function CurrentTournament() {
     return (
         <>
             <TournamentModal />
-            <TournamentCard data={data} tournamentIndex={tournamentIndex}/>
+            <TournamentCard data={data}/>
         </>
     )
 }

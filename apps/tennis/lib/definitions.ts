@@ -138,7 +138,9 @@ export type CardTournamentProps = {
     year: string,
     subscriptionIsOpen: boolean,
     started: boolean,
-    subscription: any,
+    subscription?: any,
+    paymentStatus?: any,
+    isSubscribed?: boolean,
     isPaymentPending?: boolean
 }
 

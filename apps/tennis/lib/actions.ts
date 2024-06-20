@@ -26,7 +26,7 @@ export async function authenticate(formData: FormData) {
             secure: true,
             sameSite: 'none',
         })
-
+        
         return response;
     } catch (err: any) {
         return { error: err.message };
@@ -189,9 +189,9 @@ export async function addRule(url: string, data: any) {
     revalidatePath('/rules');
 }
 
-export async function editActiveTournament({ id, isActive }: { id: string, isActive: boolean}) {
+export async function editActiveTournament({ description, tournaments }: { description: string, tournaments: any}) {
     try {
-        const response = await putApiWithCredentials(`/tournaments/${id}`, { isActive });
+        const response = await putApiWithCredentials(`/tournaments/activate`, { description, tournaments });
        
         if (!response.success) {
             throw new Error(response.message);

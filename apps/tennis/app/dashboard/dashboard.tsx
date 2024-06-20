@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { BarChartSkeleton, CardSkeleton, GameScheduleSkeleton, RankingLeaderSkeleton } from "@/components/skeletons"
+import { BarChartSkeleton, CardSkeleton, DashboardCardSkeleton, GameScheduleSkeleton, RankingLeaderSkeleton } from "@/components/skeletons"
 
 import MonthlyGames from "./monthly-games"
 import DashboardCard from "./card"
@@ -16,7 +16,7 @@ export default function Dashboard() {
             <div>
                 <Notes />
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mt-4">
-                    <Suspense fallback={<CardSkeleton />}>
+                    <Suspense fallback={<DashboardCardSkeleton />}>
                         <Subscription />
                     </Suspense>
                     <DashboardCard title="Torneio ativo" className="relative flex flex-col">

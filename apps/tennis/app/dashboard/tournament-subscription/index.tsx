@@ -4,7 +4,7 @@ import TournamentSubscription from "./tournament-subscription";
 import EmptySubscription from "./empty-subscription";
 
 export default async function Subscription() {
-    const data = await getApi('/tournaments/subscription-open', { cache: 'no-store' });
+    const data = await getApi('/tournaments/subscription-open');
 
     if (!data.length) {
         return (

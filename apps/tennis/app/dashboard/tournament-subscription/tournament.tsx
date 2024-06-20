@@ -9,7 +9,6 @@ import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 
 import TournamentForm from "./tournament-form";
 
-
 export default function Tournament({ handleCloseModal }: { handleCloseModal : () => void }) {
     const { successMessage, errorMessage } = useToastMessage();
     const [isRequired, setIsRequired] = useState(true);
