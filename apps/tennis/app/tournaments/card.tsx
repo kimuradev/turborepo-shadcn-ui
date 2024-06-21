@@ -1,11 +1,5 @@
-"use client"
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import clsx from 'clsx';
-import { useRouter } from "next/navigation";
-import { Check } from "lucide-react";
 import {
     Card,
     CardContent,
@@ -15,100 +9,13 @@ import {
     CardTitle,
 } from "@repo/ui/components/ui/card"
 import { Button } from "@repo/ui/components/ui/button";
-import { Dialog, DialogContent } from "@repo/ui/components/ui/dialog";
 import { type CardTournamentProps } from "@/lib/definitions";
 
-
-import LoginForm from "../login/login-form";
-import { useAuthContext } from "../context/auth-context";
-import TournamentPayment from "./tournament-payment";
-
-const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, year, subscriptionIsOpen, started, subscription, isPaymentPending }: CardTournamentProps) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const { profile, isAdmin, signed } = useAuthContext();
-    const router = useRouter();
-
-    const handleConfirmLogin = () => {
-        setIsOpen(false)
-    }
-
-    const handleSubscribe = () => {
-        if (!signed) {
-            setIsOpen(true)
-        } else {
-            router.push(`${link}/subscribe?year=${year}`)
-        }
-    }
-
-    const renderSeeTournamentButton = () => {
-        // TODO: remove it when we have doubles format
-        if (link !== '/tournaments/ab-doubles' && started) {
-            return (
-                <Link href={`${link}?year=${year}`} >
-                    <Button variant="secondary" className="text-xs">
-                        Ver torneio
-                    </Button>
-                </Link>
-            )
-        }
-    }
-
-    const renderActionButton = () => {
-        if (signed && subscription) {
-            return (
-                <Button variant="default"
-                    className={clsx(
-                        `"border border-green-200 bg-green-200 gap-2 text-xs`,
-                        {
-                            'invisible': isAdmin
-                        }
-                    )}
-                    onClick={() => { }} disabled>
-                    <Check className="h-4 w-4 stroke-green-500" />
-                    <span className="text-green-700">Inscrito</span>
-                </Button>
-            )
-        }
-        else if (signed && isPaymentPending) {
-            return (
-                <div
-                    className={clsx(
-                        `"p-0 text-xs`,
-                        {
-                            'invisible': isAdmin
-                        }
-                    )}
-                    onClick={() => { }}>
-                    <p className="text-orange-700">Inscrição bloqueada. Regularizar pagamento</p>
-                </div>
-            )
-        }
-        else if (signed && !subscription && !isPaymentPending) {
-            return (
-                <Button variant="default" className={clsx(
-                    `text-xs`,
-                    {
-                        'invisible': isAdmin
-                    }
-                )} onClick={handleSubscribe}>
-                    Me inscrever
-                </Button>
-            )
-        }
-        else {
-            return <p className="text-green-700 pl-2">Efetuar login para inscrição.</p>
-        }
-    }
-
+const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, year, started }: CardTournamentProps) => {
     return (
         <>
             <Card className={`w-[250px] transform transition duration-500 hover:scale-110 ${bgColor}`}>
                 <CardHeader className="flex justify-center items-center m-0 p-0" >
-                    {link !== '/tournaments/ab-doubles' ? (
-                        <TournamentPayment email={profile.user} status={subscription?.payment_status} tournamentId={id} year={year} isActive={subscription && !started && subscriptionIsOpen && signed && !isAdmin} />
-                    ) : (
-                        <div className="py-4 invisible" />
-                    )}
                     <Image src={headerSrcImg} width={250} height={140} alt={contentSrcImg.alt} />
                 </CardHeader>
                 <CardContent className="flex flex-row justify-between">
@@ -118,23 +25,16 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
                         <CardDescription>{subtitle}</CardDescription>
                     </div>
                 </CardContent>
-                {!started && subscriptionIsOpen ? (
-                    <CardFooter className="flex justify-between gap-1">
-                        {renderActionButton()}
-                        {renderSeeTournamentButton()}
-                    </CardFooter>
-                ) : (
-                    <CardFooter className="flex justify-end">
-                        {renderSeeTournamentButton()}
-                    </CardFooter>
-                )}
+                <CardFooter className="flex justify-end">
+                    {started && (
+                        <Link href={`${link}?year=${year}`} >
+                            <Button variant="secondary" className="text-xs">
+                                Ver torneio
+                            </Button>
+                        </Link>
+                    )}
+                </CardFooter>
             </Card >
-
-            <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
-                <DialogContent className="sm:max-w-[425px]">
-                    <LoginForm handleCancel={handleConfirmLogin} />
-                </DialogContent>
-            </Dialog>
         </>
     )
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-import isEmpty from 'lodash/isEmpty';
 
 import {
     Select,
@@ -15,16 +14,12 @@ import { getApi } from '@/lib/fetch';
 import Spinner from '@repo/ui/components/ui/spinner';
 import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 import CardTournament from './card';
-import { useAuthContext } from '../context/auth-context';
 
 export default function Page() {
     const [isLoading, setIsLoading] = useState(false)
-    const [isSubscribeLoading, setIsSubscribeLoading] = useState(false)
-    const [subscription, setSubscription] = useState<any>(false);
     const [data, setData] = useState([])
     const [year, setYear] = useState('')
     const { errorMessage } = useToastMessage()
-    const { profile } = useAuthContext()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,7 +28,7 @@ export default function Page() {
                 const response = await getApi('/tournaments');
 
                 const tournamentData: any = TOURNAMENTS.map(t => {
-                    const tournament = response.find((r: { key : string}) => r.key === t.value);
+                    const tournament = response.find((r: { key: string }) => r.key === t.value);
                     return {
                         ...t,
                         ...tournament
@@ -49,30 +44,6 @@ export default function Page() {
         }
         fetchData();
     }, [])
-
-    const fetchSubscription = async () => {
-        const tournamentActive: any = data.find((t : { active : string}) => t.active);
-        setIsSubscribeLoading(true);
-
-        try {
-            const response = await getApi(`/tournaments/subscribe/${profile.id}?year=${year}&tournament=${tournamentActive?.key}`);
-            setSubscription(response);
-        } catch (err) {
-            setSubscription(false)
-        } finally {
-            setIsSubscribeLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        if (isEmpty(profile)) {
-            setSubscription(false)
-        } else if (isEmpty(year)) {
-            return;
-        } else {
-            fetchSubscription();
-        }
-    }, [profile, year])
 
     const handleSelectChange = (value: string) => {
         setYear(value);
@@ -98,29 +69,23 @@ export default function Page() {
                         </Select>
                     </div>
 
-                    {isSubscribeLoading ? (<Spinner />) : (
-                        <>
-                            {year && !isSubscribeLoading && (
-                                <div className='flex flex-wrap gap-6 justify-center items-center'>
-                                    {data?.map((t: any) => (
-                                        <CardTournament
-                                            key={t.id}
-                                            id={t.id}
-                                            title={t.name}
-                                            subtitle={t.description}
-                                            headerSrcImg={t.headerSrcImg}
-                                            contentSrcImg={t.contentSrcImg}
-                                            bgColor={t.bgColor}
-                                            link={t.link}
-                                            year={t.year}
-                                            subscriptionIsOpen={t.year == year && t.active}
-                                            started={t.started}
-                                            subscription={subscription}
-                                        />
-                                    ))}
-                                </div>
-                            )}
-                        </>
+                    {year && (
+                        <div className='flex flex-wrap gap-6 justify-center items-center'>
+                            {data?.map((t: any) => (
+                                <CardTournament
+                                    key={t.id}
+                                    id={t.id}
+                                    title={t.name}
+                                    subtitle={t.description}
+                                    headerSrcImg={t.headerSrcImg}
+                                    contentSrcImg={t.contentSrcImg}
+                                    bgColor={t.bgColor}
+                                    link={t.link}
+                                    started={t.started}
+                                    year={year}
+                                />
+                            ))}
+                        </div>
                     )}
                 </>
             )}
