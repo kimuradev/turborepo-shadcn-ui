@@ -44,6 +44,18 @@ export type DashboardCardProps = {
     footer?: any
 }
 
+export type DialogRemoveUserProps = {
+    isOpen: boolean,
+    isLoading?: boolean,
+    data: {
+        id: string,
+        email: string,
+        cpf: string
+    }
+    handleCancel: () => void,
+    handleRemoveUser: (response: any) => void
+}
+
 export type DialogRemovePlayerProps = {
     isOpen: boolean,
     isLoading?: boolean,
@@ -55,11 +67,28 @@ export type DialogRemovePlayerProps = {
     handleRemovePlayer: (response: any) => void
 }
 
+export type Users = {
+    id: string
+    email: string,
+    cpf: string
+    checked: boolean
+}
+
 export type Players = {
     id: string
     class: string,
     status: "Ativo" | "Afastado" | "Inativo"
     name: string
+}
+
+export type DialogUserProps = {
+    isOpen: boolean,
+    isLoading?: boolean,
+    data: {
+        id: string,
+        cpf: string,
+        email: string,
+    }
 }
 
 export type DialogProps = {

@@ -149,6 +149,20 @@ export async function removePlayer({ id }: { id: string }) {
     revalidatePath('/players');
 }
 
+export async function removeUser({ id }: { id: string }) {
+    try {
+        const response = await deleteApiWithCredentials(`/users/remove/${id}`);
+
+        if (!response.success) {
+            throw new Error(response.message);
+        }
+    } catch (err: any) {
+        return { error: err.message };
+    }
+
+    revalidatePath('/admin/users/management');
+}
+
 export async function addTournament(url: string, values: any) {
     try {
         const response = await postApiWithCredentials(url, { ...values });

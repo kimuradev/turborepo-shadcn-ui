@@ -30,6 +30,11 @@ export const STATUS_OPTIONS = [
     { value: 'Inativo', label: 'Inativo' },
 ]
 
+export const USER_STATUS_OPTIONS = [
+    { value: true, label: 'Verificado' },
+    { value: false, label: 'Não verificado' },
+]
+
 export const SHIRT_SIZE = [
     { value: 'P', label: 'P' },
     { value: 'M', label: 'M' },
