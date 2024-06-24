@@ -59,11 +59,13 @@ export default function TournamentTabs({ classes, tournament, year, classId }: T
 
     return (
         <Tabs defaultValue={DEFAULT_CLASS} className="w-[400px]">
-            <TabsList>
-                {classes.map((c: any) => (
-                    <TabsTrigger key={c.id} value={c.id.toString()} onClick={() => handleClickTab(c.id)}>{c.name}</TabsTrigger>
-                ))}
-            </TabsList>
+            {!tournament.includes('wta') && (
+                <TabsList>
+                    {classes.map((c: any) => (
+                        <TabsTrigger key={c.id} value={c.id.toString()} onClick={() => handleClickTab(c.id)}>{c.name}</TabsTrigger>
+                    ))}
+                </TabsList>
+            )}
 
             {classes.map((c: any) => (
                 <TabsContent key={c.id} value={c.id.toString()}>
