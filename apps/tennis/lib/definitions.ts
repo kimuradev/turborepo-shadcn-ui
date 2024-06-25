@@ -164,6 +164,7 @@ export type CardTournamentProps = {
     },
     bgColor: string,
     link: string,
+    tournamentId?: string,
     year: string,
     subscriptionIsOpen?: boolean,
     started?: boolean,

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Users } from "lucide-react";
 import {
     Card,
     CardContent,
@@ -11,7 +12,8 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { type CardTournamentProps } from "@/lib/definitions";
 
-const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, year, started }: CardTournamentProps) => {
+const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, tournamentId, year, started }: CardTournamentProps) => {
+
     return (
         <>
             <Card className={`w-[250px] transform transition duration-500 hover:scale-110 ${bgColor}`}>
@@ -25,13 +27,24 @@ const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor,
                         <CardDescription>{subtitle}</CardDescription>
                     </div>
                 </CardContent>
-                <CardFooter className="flex justify-end">
+                <CardFooter className="flex justify-between">
                     {started && (
-                        <Link href={`${link}?year=${year}`} >
-                            <Button variant="secondary" className="text-xs">
-                                Ver torneio
-                            </Button>
-                        </Link>
+                        <>
+                            <Link href={`/tournaments/subscriptions/?tournamentId=${tournamentId}&year=${year}`} >
+                                <Button variant="link" className="text-xs p-2">
+                                    <div className="flex items-center justify-center gap-2">
+                                        <Users className="h-4 w-4 stroke-primary" />
+                                        <span className="text-primary">Ver Inscritos</span>
+                                    </div>
+                                </Button>
+                            </Link>
+
+                            <Link href={`${link}?year=${year}`} >
+                                <Button variant="secondary" className="text-xs">
+                                    Ver torneio
+                                </Button>
+                            </Link>
+                        </>
                     )}
                 </CardFooter>
             </Card >
