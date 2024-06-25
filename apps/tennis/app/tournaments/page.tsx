@@ -22,6 +22,8 @@ export default function Page() {
     const { errorMessage } = useToastMessage()
 
     useEffect(() => {
+        if (!year) return; 
+
         const fetchData = async () => {
             setIsLoading(true);
             try {
