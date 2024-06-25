@@ -82,6 +82,7 @@ export default function Page() {
                                     bgColor={t.bgColor}
                                     link={t.link}
                                     started={t.started}
+                                    subscriptionIsOpen={t.subscription_open}
                                     tournamentId={t.value}
                                     year={year}
                                 />

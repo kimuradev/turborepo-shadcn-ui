@@ -80,7 +80,6 @@ function TournamentCard({ data }: any) {
                         bgColor={TOURNAMENTS[getTournamentIndex(item.key)]?.bgColor || ''}
                         link={TOURNAMENTS[getTournamentIndex(item.key)]?.link || ''}
                         year={item.year}
-                        subscriptionIsOpen={item.active}
                         isSubscribed={item.isSubscribed}
                         started={item.started}
                         paymentStatus={item.paymentStatus}

@@ -12,7 +12,7 @@ import {
 import { Button } from "@repo/ui/components/ui/button";
 import { type CardTournamentProps } from "@/lib/definitions";
 
-const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, tournamentId, year, started }: CardTournamentProps) => {
+const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, subscriptionIsOpen, tournamentId, year, started }: CardTournamentProps) => {
 
     return (
         <>
@@ -28,8 +28,8 @@ const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor,
                     </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                    {started && (
-                        <>
+                    {
+                        (started || subscriptionIsOpen) && (
                             <Link href={`/tournaments/subscriptions/?tournamentId=${tournamentId}&year=${year}`} >
                                 <Button variant="link" className="text-xs p-2">
                                     <div className="flex items-center justify-center gap-2">
@@ -38,7 +38,10 @@ const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor,
                                     </div>
                                 </Button>
                             </Link>
-
+                        )
+                    }
+                    {started && (
+                        <>
                             <Link href={`${link}?year=${year}`} >
                                 <Button variant="secondary" className="text-xs">
                                     Ver torneio
