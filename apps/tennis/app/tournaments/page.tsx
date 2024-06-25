@@ -11,7 +11,7 @@ import {
 } from "@repo/ui/components/ui/select"
 import { TOURNAMENTS, YEARS } from '@/lib/constants';
 import { getApi } from '@/lib/fetch';
-import Spinner from '@repo/ui/components/ui/spinner';
+import { TournamentCardsSkeleton } from '@/components/skeletons';
 import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 import CardTournament from './card';
 
@@ -25,7 +25,7 @@ export default function Page() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await getApi('/tournaments');
+                const response = await getApi(`/tournaments?year=${year}`);
 
                 const tournamentData: any = TOURNAMENTS.map(t => {
                     const tournament = response.find((r: { key: string }) => r.key === t.value);
@@ -43,7 +43,7 @@ export default function Page() {
             }
         }
         fetchData();
-    }, [])
+    }, [year])
 
     const handleSelectChange = (value: string) => {
         setYear(value);
@@ -53,22 +53,22 @@ export default function Page() {
         <div>
             <h2 className="font-bold text-lg mb-10">Torneios</h2>
 
-            {isLoading ? (<Spinner />) : (
-                <>
-                    <div className="flex flex-col gap-1.5 mb-8 ">
-                        <p className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'>Selecione o ano do torneio:</p>
-                        <Select onValueChange={handleSelectChange} value={year}>
-                            <SelectTrigger className="w-[180px]">
-                                <SelectValue placeholder="Ano..." />
-                            </SelectTrigger>
-                            <SelectContent >
-                                {[...YEARS].map((year: string) => (
-                                    <SelectItem key={year} value={year} >{year}</SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
+            <div className="flex flex-col gap-1.5 mb-8 ">
+                <p className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'>Selecione o ano do torneio:</p>
+                <Select onValueChange={handleSelectChange} value={year}>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Ano..." />
+                    </SelectTrigger>
+                    <SelectContent >
+                        {[...YEARS].map((year: string) => (
+                            <SelectItem key={year} value={year} >{year}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
 
+            {isLoading ? (<TournamentCardsSkeleton />) : (
+                <>
                     {year && (
                         <div className='flex flex-wrap gap-6 justify-center items-center'>
                             {data?.map((t: any) => (

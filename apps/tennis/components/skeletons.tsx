@@ -34,6 +34,25 @@ export function DashboardCardSkeleton() {
   );
 }
 
+export function TournamentCardsSkeleton() {
+  return (
+    <>
+      <div className="md:hidden flex flex-col md:flex-row items-center justify-center truncate rounded-xl bg-white px-4 py-8 gap-3">
+        <CardSkeleton />
+      </div>
+      <div className="hidden md:flex flex-col md:flex-row flex-wrap items-center justify-center truncate rounded-xl bg-white px-4 py-8 gap-3">
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
+    </>
+  );
+}
+
 export function CardGamesSkeleton() {
   return (
     <div
