@@ -1,11 +1,15 @@
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
-import { TOURNAMENT_DICTIONARY } from "@/lib/constants";
-import SaveButton from './tournament-button';
+import { TOURNAMENT_DICTIONARY, YEARS } from "@/lib/constants";
 import { Checkbox } from "@ui/components/ui/checkbox";
 import { Input } from "@ui/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/components/ui/select";
+import SaveButton from './tournament-button';
 
 function TournamentForm({ form, formAction }: any) {
     const items = [{ id: 'none', value: 'Nenhum' }, ...TOURNAMENT_DICTIONARY];
+    const tournamentWatch = form.watch('tournaments');
+    const isItemDisabled = tournamentWatch.some((item: string) => item === 'none');
+
     return (
         <Form {...form}>
             <form action={async () => await formAction()} className="space-y-8">
@@ -17,7 +21,7 @@ function TournamentForm({ form, formAction }: any) {
                         <FormItem>
                             <FormLabel>De: </FormLabel>
                             <FormControl>
-                                <Input placeholder="12/06" {...field} />
+                                <Input placeholder="12/06" {...field} disabled={isItemDisabled}/>
                             </FormControl>
                             <FormDescription>
                                 Digite a data de início das inscrições
@@ -34,7 +38,7 @@ function TournamentForm({ form, formAction }: any) {
                         <FormItem>
                             <FormLabel>Até: </FormLabel>
                             <FormControl>
-                                <Input placeholder="20/06" {...field} />
+                                <Input placeholder="20/06" {...field} disabled={isItemDisabled}/>
                             </FormControl>
                             <FormDescription>
                                 Digite a data de término das inscrições
@@ -92,6 +96,33 @@ function TournamentForm({ form, formAction }: any) {
                                     }}
                                 />
                             ))}
+                            <FormMessage />
+                        </FormItem>
+
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="year"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Selecione o ano do torneio: </FormLabel>
+                            <FormControl>
+                                <Select onValueChange={field.onChange} value={field.value} disabled={isItemDisabled}>
+                                    <FormControl>
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Ano..." />
+                                        </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                        {YEARS.map((year: string) => (
+                                            <SelectItem key={year} value={year}>{year}</SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </FormControl>
+
                             <FormMessage />
                         </FormItem>
                     )}

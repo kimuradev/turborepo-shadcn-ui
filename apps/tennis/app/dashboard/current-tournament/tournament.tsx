@@ -17,6 +17,7 @@ export default function Tournament({ handleCloseModal }: { handleCloseModal : ()
     const formSchema = z.object({
         description: isRequired? z.string().min(1, { message: 'Campo obrigatório' }) :  z.string(),
         tournaments: z.array(z.string().min(1, { message: 'Campo obrigatório' })),
+        year: isRequired ? z.string().min(1, { message: 'Campo obrigatório' }) : z.string(),
     })
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -24,6 +25,7 @@ export default function Tournament({ handleCloseModal }: { handleCloseModal : ()
         defaultValues: {
             description: "",
             tournaments: [],
+            year: ''
         },
     })
 
@@ -42,7 +44,11 @@ export default function Tournament({ handleCloseModal }: { handleCloseModal : ()
         const validFields = await form.trigger();
 
         if (validFields) {
-            const response = await editActiveTournament({ description: form.getValues("description"), tournaments: form.getValues("tournaments")});
+            const response = await editActiveTournament({ 
+                description: form.getValues("description"), 
+                tournaments: form.getValues("tournaments"),
+                year: form.getValues("year")
+            });
 
             if (response?.error) {
                 errorMessage(response)

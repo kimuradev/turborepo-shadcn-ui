@@ -1,11 +1,14 @@
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/components/ui/form";
-import { TOURNAMENT_DICTIONARY } from "@/lib/constants";
-import SaveButton from './tournament-button';
+import { TOURNAMENT_DICTIONARY, YEARS } from "@/lib/constants";
 import { Checkbox } from "@ui/components/ui/checkbox";
 import { Input } from "@ui/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@ui/components/ui/select";
+import SaveButton from './tournament-button';
 
 function TournamentForm({ form, formAction }: any) {
     const items = [{ id: 'none', value: 'Nenhum' }, ...TOURNAMENT_DICTIONARY];
+    const tournamentWatch = form.watch('tournaments');
+    const isItemDisabled = tournamentWatch.some((item: string) => item === 'none');
 
     return (
         <Form {...form}>
@@ -17,7 +20,7 @@ function TournamentForm({ form, formAction }: any) {
                         <FormItem>
                             <FormLabel>Periodo dos jogos</FormLabel>
                             <FormControl>
-                                <Input placeholder="Ex: Junho à Agosto" {...field} />
+                                <Input placeholder="Ex: Junho à Agosto" {...field} disabled={isItemDisabled}/>
                             </FormControl>
                             <FormDescription>
                                 Digite os meses de inicio e fim do torneio.
@@ -79,29 +82,31 @@ function TournamentForm({ form, formAction }: any) {
                         </FormItem>
                     )}
                 />
-                {/* <FormField
+                <FormField
                     control={form.control}
-                    name="tournament"
+                    name="year"
                     render={({ field }) => (
                         <FormItem>
+                            <FormLabel>Selecione o ano do torneio: </FormLabel>
                             <FormControl>
-                                <Select onValueChange={field.onChange} value={field.value}>
+                                <Select onValueChange={field.onChange} value={field.value} disabled={isItemDisabled}>
                                     <FormControl>
-                                        <SelectTrigger >
-                                            <SelectValue placeholder="Torneios..." />
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Ano..." />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        {[{ id: 'none', value: 'Nenhum' }, ...TOURNAMENT_DICTIONARY].map((tournament: { id: number | string, value: string }) => (
-                                            <SelectItem key={tournament.id} value={tournament.id.toString()}>{tournament.value}</SelectItem>
+                                        {YEARS.map((year: string) => (
+                                            <SelectItem key={year} value={year}>{year}</SelectItem>
                                         ))}
                                     </SelectContent>
                                 </Select>
                             </FormControl>
+
                             <FormMessage />
                         </FormItem>
                     )}
-                /> */}
+                />
                 <SaveButton />
             </form>
         </Form>

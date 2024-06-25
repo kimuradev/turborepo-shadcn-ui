@@ -203,9 +203,9 @@ export async function addRule(url: string, data: any) {
     revalidatePath('/rules');
 }
 
-export async function editActiveTournament({ description, tournaments }: { description: string, tournaments: any}) {
+export async function editActiveTournament({ description, tournaments, year }: { description: string, tournaments: any, year: string}) {
     try {
-        const response = await putApiWithCredentials(`/tournaments/activate`, { description, tournaments });
+        const response = await putApiWithCredentials(`/tournaments/activate`, { description, tournaments, year });
        
         if (!response.success) {
             throw new Error(response.message);
@@ -215,12 +215,11 @@ export async function editActiveTournament({ description, tournaments }: { descr
     }
 
     revalidatePath('/');
-    revalidatePath('/tournaments');
 }
 
-export async function editActiveTournamentSubscription({ startDate, endDate, tournaments }: { startDate: string, endDate: string, tournaments: any}) {
+export async function editActiveTournamentSubscription({ startDate, endDate, tournaments, year }: { startDate: string, endDate: string, tournaments: any, year: string}) {
     try {
-        const response = await putApiWithCredentials(`/tournaments/subscription-open`, { startDate, endDate, tournaments });
+        const response = await putApiWithCredentials(`/tournaments/subscription-open`, { startDate, endDate, tournaments, year });
        
         if (!response.success) {
             throw new Error(response.message);
