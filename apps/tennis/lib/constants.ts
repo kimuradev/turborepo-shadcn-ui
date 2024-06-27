@@ -104,7 +104,8 @@ export const CLASSIFICATION = [
     '1/2', '3/4', '5/6', '7/8', '9/10', '11/12', '13/14', '15/16'
 ]
 
-export const RANKING_TAB = "general" 
+export const RANKING_TAB_GENERAL = "general" 
+export const RANKING_TAB_WTA = "wta" 
 
 export const DATE_FORMAT = "dd/MM/yyyy"
 
