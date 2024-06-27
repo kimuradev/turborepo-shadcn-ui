@@ -15,6 +15,7 @@ import { Button } from "@repo/ui/components/ui/button"
 
 import { useAuthContext } from "@/app/context/auth-context";
 import { type Users } from "@/lib/definitions";
+import { getFormattedDate } from "@/lib/utils";
 
 export function useUserTable({ setDialog }: { setDialog : any }) {
   const { signed, isAdmin } = useAuthContext();
@@ -63,6 +64,42 @@ export function useUserTable({ setDialog }: { setDialog : any }) {
         )
       },
       cell: ({ row }) => row.getValue("checked") ? 'Verificado' : 'Não verificado',
+    },
+    {
+      accessorKey: "created_at",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "desc")}
+          >
+            Data de criação
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+      },
+      cell: ({ row }) => {
+        const date: any = row.getValue("created_at");
+        return date ? getFormattedDate(date, 'dd/MM/yyyy HH:mm:ss'): '-';
+      },
+    },
+    {
+      accessorKey: "updated_at",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "desc")}
+          >
+            Data de autenticação
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+      },
+      cell: ({ row }) => {
+        const date: any = row.getValue("updated_at");
+        return date ? getFormattedDate(date, 'dd/MM/yyyy HH:mm:ss'): '-';
+      }
     },
 
     {

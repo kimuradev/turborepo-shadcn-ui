@@ -107,6 +107,6 @@ export function getNameWithAbbreviation(name: string) {
   return abbreviation.trim();
 }
 
-export const getFormattedDate = (date: string) => {
-  return format(parseISO(date), 'dd/MM/yyyy - eee', { locale: ptBR })
+export const getFormattedDate = (date: string, dateFormat:string = 'dd/MM/yyyy - eee' ) => {
+  return format(parseISO(date), dateFormat, { locale: ptBR })
 }
