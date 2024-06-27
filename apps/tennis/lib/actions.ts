@@ -163,6 +163,20 @@ export async function removeUser({ id }: { id: string }) {
     revalidatePath('/admin/users/management');
 }
 
+export async function removeTournament({ key, year, classId }: { key: string, year: string, classId: string}) {
+    try {
+        const response = await putApiWithCredentials(`/tournaments/remove-game-tournament`, { key, year, classId });
+
+        if (!response.success) {
+            throw new Error(response.message);
+        }
+    } catch (err: any) {
+        return { error: err.message };
+    }
+
+    revalidatePath('/admin/tournaments/management');
+}
+
 export async function addTournament(url: string, values: any) {
     try {
         const response = await postApiWithCredentials(url, { ...values });

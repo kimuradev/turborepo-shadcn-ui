@@ -18,10 +18,11 @@ const navigation = [
 
 const adminNavigation = [
     // { link: '/admin/players', label: 'Cadastrar Jogadores', icon: <BookOpen className='w-4 h-4 mr-2' /> },
-    { link: '/admin/tournaments', label: 'Organizar Torneio', icon: <CalendarDays className='w-4 h-4 mr-2' /> },
-    { link: '/admin/users/management', label: 'Gerenciar usuário', icon: <UserCog className='w-4 h-4 mr-2' /> },
+    { link: '/admin/tournaments', label: 'Organizar Torneio', icon: <Trophy className='w-4 h-4 mr-2' /> },
     // { link: '/users/register', label: 'Registrar usuário', icon: <UserCog className='w-4 h-4 mr-2' /> },
     { link: '/admin/finance', label: 'Financeiro', icon: <CircleDollarSign className='w-4 h-4 mr-2' /> },
+    { link: '/admin/tournaments/management', label: 'Gerenciar torneio', icon: <CalendarDays className='w-4 h-4 mr-2' /> },
+    { link: '/admin/users/management', label: 'Gerenciar usuário', icon: <UserCog className='w-4 h-4 mr-2' /> },
     { link: '/admin/settings', label: 'Configurações', icon: <Settings className='w-4 h-4 mr-2' /> }
 ];
 

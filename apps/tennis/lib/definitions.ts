@@ -56,6 +56,18 @@ export type DialogRemoveUserProps = {
     handleRemoveUser: (response: any) => void
 }
 
+export type DialogRemoveTournamentProps = {
+    isOpen: boolean,
+    isLoading?: boolean,
+    data: {
+        key: string,
+        name: string,
+        year: string,
+        classId: string
+    }
+    handleCancel: () => void,
+}
+
 export type DialogRemovePlayerProps = {
     isOpen: boolean,
     isLoading?: boolean,
@@ -74,6 +86,14 @@ export type Users = {
     checked: boolean
 }
 
+export type Tournaments = {
+    key: string
+    name: string,
+    year: string
+    classId?: string
+}
+
+
 export type Players = {
     id: string
     class: string,
@@ -88,6 +108,17 @@ export type DialogUserProps = {
         id: string,
         cpf: string,
         email: string,
+    }
+}
+
+export type DialogTournamentProps = {
+    isOpen: boolean,
+    isLoading?: boolean,
+    data: {
+        key: string,
+        name: string,
+        year: string,
+        classId: string,
     }
 }
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 
-import { RANKING_TAB_GENERAL, RANKING_TAB_WTA } from "@/lib/constants";
+import { RANKING_TAB_GENERAL, RANKING_TAB_WTA, YEARS_OPTIONS } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import { Ranking } from "./table/columns";
 import RankingList from "./ranking-list";
@@ -30,10 +30,7 @@ const select = {
         columnId: 'year',
         placeholder: 'Ano...',
         defaultValue: new Date().getFullYear().toString(),
-        options: [
-            { value: '2024', label: '2024' },
-            { value: '2025', label: '2025' }
-        ]
+        options: YEARS_OPTIONS
     }
 }
 

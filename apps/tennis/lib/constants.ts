@@ -35,11 +35,21 @@ export const USER_STATUS_OPTIONS = [
     { value: false, label: 'Não verificado' },
 ]
 
+export const TOURNAMENT_STATUS_OPTIONS = [
+    { value: true, label: 'Em andamento' },
+    { value: false, label: 'Finalizado' },
+]
+
 export const SHIRT_SIZE = [
     { value: 'P', label: 'P' },
     { value: 'M', label: 'M' },
     { value: 'G', label: 'G' },
     { value: 'GG', label: 'GG' },
+]
+
+export const YEARS_OPTIONS = [
+    { value: '2024', label: '2024' },
+    { value: '2025', label: '2025' }
 ]
 
 export const YEARS = ['2024', '2025'];
