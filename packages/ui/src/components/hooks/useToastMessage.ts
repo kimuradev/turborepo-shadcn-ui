@@ -22,7 +22,14 @@ export default function useToastMessage() {
 
 
     const errorMessage = (response?: any) => {
-        if (response?.error) {
+        if (response?.message) {
+            toast({
+                title: "Ops!",
+                description: response?.message,
+                variant: "destructive"
+            })
+            return;
+        } else if (response?.error) {
             toast({
                 title: "Ops!",
                 description: response?.error.split('Error: ')[1] || "Algo de errado aconteceu. Tente novamente mais tarde.",
