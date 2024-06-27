@@ -29,8 +29,6 @@ export default function RemoveTournamentForm({ data, handleCancel }: RemoveTourn
     const { successMessage, errorMessage } = useToastMessage();
     const { classes } = useAppContext();
 
-    console.log('data: ', data)
-
     const formSchema = z.object({
         classId: z.string().min(1, { message: 'Campo obrigatório' }),
     })

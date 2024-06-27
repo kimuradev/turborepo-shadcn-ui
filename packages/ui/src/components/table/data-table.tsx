@@ -144,7 +144,7 @@ export function DataTable<TData, TValue>({
               table.setPageSize(Number(e.target.value))
             }}
           >
-            {[10, 20, 30, 40, 50].map(pageSize => (
+            {[10, 25, 50, 100].map(pageSize => (
               <option key={pageSize} value={pageSize}>
                 Mostrar {pageSize}
               </option>
@@ -152,7 +152,7 @@ export function DataTable<TData, TValue>({
           </select>
         </div>
         <div className="hidden lg:block">
-          <span className="text-sm text-muted-foreground">Total de jogadores: {data.length}</span>
+          <span className="text-sm text-muted-foreground">Total de items: {data.length}</span>
         </div>
         <div>
           <Button
