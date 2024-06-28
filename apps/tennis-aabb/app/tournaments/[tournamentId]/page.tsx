@@ -4,23 +4,23 @@ import TournamentDetails from "./details";
 export async function generateStaticParams() {
   return [
     {
-      tournamentId: TOURNAMENT_ID.AB,
+      tournamentId: TOURNAMENT_ID.AABB,
     },
-    {
-      tournamentId: TOURNAMENT_ID.AO,
-    },
-    {
-      tournamentId: TOURNAMENT_ID.RG,
-    },
-    {
-      tournamentId: TOURNAMENT_ID.WIMBLEDON,
-    },
-    {
-      tournamentId: TOURNAMENT_ID.US,
-    },
-    {
-      tournamentId: TOURNAMENT_ID.FINALS,
-    },
+    // {
+    //   tournamentId: TOURNAMENT_ID.AO,
+    // },
+    // {
+    //   tournamentId: TOURNAMENT_ID.RG,
+    // },
+    // {
+    //   tournamentId: TOURNAMENT_ID.WIMBLEDON,
+    // },
+    // {
+    //   tournamentId: TOURNAMENT_ID.US,
+    // },
+    // {
+    //   tournamentId: TOURNAMENT_ID.FINALS,
+    // },
   ];
 }
 

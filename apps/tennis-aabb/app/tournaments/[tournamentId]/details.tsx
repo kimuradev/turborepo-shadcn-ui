@@ -37,7 +37,7 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
   }
 
   useEffect(() => {
-    setIsFinals(tournament === TOURNAMENT_ID.FINALS ? true : false);
+    // setIsFinals(tournament === TOURNAMENT_ID.FINALS ? true : false);
 
     fetchBanner();
   }, [])

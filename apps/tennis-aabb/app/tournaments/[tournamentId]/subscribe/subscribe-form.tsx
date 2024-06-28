@@ -182,8 +182,9 @@ export default function SubscribeForm({ tournament, year }: { tournament: { id: 
                         </FormItem>
                     )}
                 />
-
-                {tournament.id === TOURNAMENT_ID.AO && (
+                
+                {/* {tournament.id === TOURNAMENT_ID.AO && ( */}
+                {tournament.id === TOURNAMENT_ID.AABB && (
                     <FormField
                         control={form.control}
                         name="shirt"

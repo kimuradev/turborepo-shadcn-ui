@@ -224,7 +224,7 @@ export default function TournamentForm() {
                                 <FormLabel>Selecione o torneio: </FormLabel>
                                 <FormControl>
                                     <Select onValueChange={(value) => {
-                                        setIsFinals(value === TOURNAMENT_ID.FINALS)
+                                        // setIsFinals(value === TOURNAMENT_ID.FINALS)
                                         return field.onChange(value)
                                     }}
                                         value={field.value} >
