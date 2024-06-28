@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 
-import { RANKING_TAB_GENERAL, RANKING_TAB_WTA, YEARS_OPTIONS } from "@/lib/constants";
+import { RANKING_TAB_GENERAL, RANKING_TAB_WTA, WTA, YEARS_OPTIONS } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import { Ranking } from "./table/columns";
 import RankingList from "./ranking-list";
@@ -13,7 +13,7 @@ import { columns as generalColumns } from "./table/columns-general"
 
 const rankingTabs = [
     { id: 'general', name: 'Geral' },
-    { id: 'wta', name: 'WTA' },
+    { id: WTA, name: 'WTA' },
     { id: 'yearly', name: 'Detalhado' },
 ]
 

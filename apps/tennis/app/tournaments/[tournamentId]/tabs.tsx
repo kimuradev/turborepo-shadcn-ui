@@ -7,7 +7,7 @@ import GamesSkeleton from "@/components/skeletons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs"
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { useAppContext } from "@/app/context/app-context";
-import { CLASSIFICATION } from "@/lib/constants";
+import { CLASSIFICATION, WTA } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import { type TournamentTabsProps } from "@/lib/definitions";
 
@@ -59,7 +59,7 @@ export default function TournamentTabs({ classes, tournament, year, classId }: T
 
     return (
         <Tabs defaultValue={DEFAULT_CLASS} className="w-[400px]">
-            {!tournament.includes('wta') && (
+            {!tournament.includes(WTA) && (
                 <TabsList>
                     {classes.map((c: any) => (
                         <TabsTrigger key={c.id} value={c.id.toString()} onClick={() => handleClickTab(c.id)}>{c.name}</TabsTrigger>

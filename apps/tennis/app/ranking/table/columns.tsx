@@ -5,6 +5,7 @@ import { ArrowUpDown } from "lucide-react"
 import AOCircle from '@/public/static/ao-circle.png';
 import RGCircle from '@/public/static/rg-circle.png';
 import WimbledonCircle from '@/public/static/wimb-circle.png';
+import WimbledonCircleWTA from '@/public/static/wimb-circle-WTA.png';
 import USCircle from '@/public/static/us-circle.png';
 import FinalsCircle from '@/public/static/finals-circle.png';
 
@@ -92,6 +93,13 @@ export const columns: ColumnDef<Ranking>[] = [
                                 return (
                                     <div className='flex flex-col justify-center items-center'>
                                         <Image src={WimbledonCircle} width={30} height={30} alt="Wimbledon" placeholder='blur' />
+                                        <span className='text-xs text-muted-foreground pt-1'>{t.points} pts</span>
+                                    </div>
+                                )
+                            case 'wimbledon-wta':
+                                return (
+                                    <div className='flex flex-col justify-center items-center'>
+                                        <Image src={WimbledonCircleWTA} width={30} height={30} alt="Wimbledon WTA" placeholder='blur' />
                                         <span className='text-xs text-muted-foreground pt-1'>{t.points} pts</span>
                                     </div>
                                 )

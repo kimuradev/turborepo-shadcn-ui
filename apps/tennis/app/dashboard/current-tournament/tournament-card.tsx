@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import isEmpty from 'lodash/isEmpty'
 
 import { useAuthContext } from "@/app/context/auth-context";
-import { TOURNAMENTS } from "@/lib/constants";
+import { TOURNAMENTS, WTA } from "@/lib/constants";
 import { getApi } from "@/lib/fetch";
 import { CardSkeleton } from "@/components/skeletons";
 import CardTournament from "./card";
@@ -22,10 +22,10 @@ function TournamentCard({ data }: any) {
                 return;
             }
 
-            if (!isEmpty(profile) && profile.category === 'wta') {
+            if (!isEmpty(profile) && profile.category === WTA) {
                 await getTournamentSubscription(data);
             } else {
-                await getTournamentSubscription(data.filter((item: any) => !item.key.includes('wta')))
+                await getTournamentSubscription(data.filter((item: any) => !item.key.includes(WTA)))
             }
         } finally {
             setIsLoading(false)

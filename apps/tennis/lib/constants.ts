@@ -8,12 +8,16 @@ import RGCircle from '@/public/static/rg-circle.png';
 import Wimbledon from '@/public/static/wimbledon-rotate.jpg';
 import WimbledonWTA from '@/public/static/wta-wimbledon.jpg';
 import WimbledonCircle from '@/public/static/wimb-circle.png';
+import WimbledonCircleWTA from '@/public/static/wimb-circle-WTA.png';
 import US from '@/public/static/us-open-rotate.jpg';
 import USCircle from '@/public/static/us-circle.png';
 import Finals from '@/public/static/finals-rotate.png';
 import FinalsCircle from '@/public/static/finals-circle.png';
 
 export const COOKIE_NAME = 'token';
+
+export const ATP = 'atp';
+export const WTA = 'wta';
 
 export const URL = {
     dashboard: '/',
@@ -87,7 +91,7 @@ export const TOURNAMENTS = [
     { value: TOURNAMENT_ID.DOUBLES, headerSrcImg: ABDoubles, contentSrcImg: { src: ABCircle, alt: TOURNAMENT_NAMES.DOUBLES }, bgColor: 'bg-white', link: `/tournaments/${TOURNAMENT_ID.DOUBLES}`},
     // { value:  'ab-duplas', subtitle: 'Janeiro', headerSrcImg: Finals, contentSrcImg: { src: FinalsCircle, alt: TOURNAMENT_NAMES.FINALS }, bgColor: 'bg-blue-200', link: '/tournaments/finals'},
 
-    { value: TOURNAMENT_ID.WIMBLEDON_WTA, headerSrcImg: WimbledonWTA, contentSrcImg: { src: WimbledonCircle, alt: TOURNAMENT_NAMES.WIMBLEDON }, bgColor: 'bg-red-100', link: `/tournaments/${TOURNAMENT_ID.WIMBLEDON_WTA}`},
+    { value: TOURNAMENT_ID.WIMBLEDON_WTA, headerSrcImg: WimbledonWTA, contentSrcImg: { src: WimbledonCircleWTA, alt: TOURNAMENT_NAMES.WIMBLEDON }, bgColor: 'bg-red-100', link: `/tournaments/${TOURNAMENT_ID.WIMBLEDON_WTA}`},
 ]
 
 export const TOURNAMENT_DICTIONARY = [
@@ -102,8 +106,8 @@ export const TOURNAMENT_DICTIONARY = [
 ]
 
 export const TOURNAMENT_CATEGORY = [
-    { value: 'atp', label: 'ATP' },
-    { value: 'wta', label: 'WTA' },
+    { value: ATP, label: 'ATP' },
+    { value: WTA, label: 'WTA' },
 ]
 
 export const GAME_RESULTS = [
