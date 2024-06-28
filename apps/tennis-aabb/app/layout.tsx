@@ -15,12 +15,12 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const viewport: Viewport = {
-  themeColor: '#FF6633',
+  themeColor: '#006699',
 }
 
 export const metadata: Metadata = {
   title: 'AABB Tênis',
-  description: 'Torneio de tênis Associação Brasil',
+  description: 'Torneio de tênis',
 }
 
 export default function RootLayout({
