@@ -1,9 +1,9 @@
 {
-  "name": "ab-tenis",
+  "name": "aabb-tenis",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3002",
+    "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0"
