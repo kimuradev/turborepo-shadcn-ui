@@ -138,6 +138,11 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
         try {
             const response = await handlePayload(values)
 
+            if (!response.success) {
+                errorMessage(response)
+                return;
+            }
+
             form.reset();
 
             successMessage({
