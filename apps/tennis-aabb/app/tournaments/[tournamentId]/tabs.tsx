@@ -54,6 +54,7 @@ export default function TournamentTabs({ classes, tournament, year, classId }: T
 
     const sixteenth = data.filter((game: any) => game.round === "Sixteenthfinal");
     const eightth = orderBy(data.filter((game: any) => game.round === "Eighthfinal"), ['id', 'type'], ['asc', 'desc']);
+    const quarter = data.filter((game: any) => game.round === "Quarterfinal")
     const semi = data.filter((game: any) => game.round === "Semifinal")
     const final = data.filter((game: any) => game.round === "final");
 
@@ -82,6 +83,9 @@ export default function TournamentTabs({ classes, tournament, year, classId }: T
                                             </div>
                                             <div className="flex flex-col gap-3">
                                                 <Card data={eightth} />
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <Card data={quarter} />
                                             </div>
                                             <div className="flex flex-col gap-2">
                                                 <Card data={semi} />

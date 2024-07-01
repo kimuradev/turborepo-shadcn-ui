@@ -60,17 +60,17 @@ export default function Card({ data, classification }: CardProps) {
         }
     }
 
-    const enableToEditCard = (game: any) => (((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
+    const enableToEditCard = (game: any) => (signed && isAdmin && ((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
         || (signed && isAdmin && ((game.player1_score !== null && game.player2_score !== null))))
 
     const enableHover = (game: any) => {
-        if (((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
+        if (signed && isAdmin && ((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
             || (signed && isAdmin && ((game.player1_score !== null && game.player2_score !== null)))) return 'hover:cursor-pointer hover:scale-110 '
         return '';
     }
 
     const enableOpenForm = (game: any) => {
-        if (((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
+        if (signed && isAdmin && ((game.player1_id && game.player2_id) && (!game.player1_score && !game.player2_score))
             || (signed && isAdmin && ((game.player1_score !== null && game.player2_score !== null)))) return handleOpenDialog(game);
         return {}
     }
@@ -161,7 +161,7 @@ export default function Card({ data, classification }: CardProps) {
                 </div>
             ))}
             <DialogResult isOpen={dialog.isOpen} data={dialog.data} handleCancel={handleCancel} />
-            <RemoveResultModal isOpenModal={dialog.isRemoveModalOpen} data={dialog.removeData} handleCancelModal={handleCloseRemoveResultModal}/>
+            <RemoveResultModal isOpenModal={dialog.isRemoveModalOpen} data={dialog.removeData} handleCancelModal={handleCloseRemoveResultModal} />
         </>
     )
 }

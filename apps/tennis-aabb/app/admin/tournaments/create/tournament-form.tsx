@@ -180,12 +180,14 @@ export default function TournamentForm() {
         const classId = form.getValues("classId").toString()
 
         if (validFields) {
-            if (isFinals) {
-                const values = { ...form.getValues(), classId: FINALS_CLASS_ID }
-                response = await addTournament('/games/finals-generator', values)
-            } else {
-                response = await addTournament('/games/generator', form.getValues())
-            }
+            // if (isFinals) {
+            //     const values = { ...form.getValues(), classId: FINALS_CLASS_ID }
+            //     response = await addTournament('/games/finals-generator', values)
+            // } else {
+            //     response = await addTournament('/games/generator', form.getValues())
+            // }
+
+            response = await addTournament('/games/aabb-generator', form.getValues())
 
             if (response?.error) {
                 errorMessage(response);

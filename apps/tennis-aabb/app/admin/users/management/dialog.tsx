@@ -12,7 +12,7 @@ import {
 } from "@repo/ui/components/ui/dialog";
 import { ButtonLoading } from "@repo/ui/components/ui/button-loading";
 import { type DialogRemoveUserProps } from "@/lib/definitions";
-import { removeUser } from "@/lib/actions";
+import { removeUserAABB } from "@/lib/actions";
 
 export default function DialogRemoveUser({ isOpen = false, data, handleCancel, handleRemoveUser }: DialogRemoveUserProps) {
   return (
@@ -30,7 +30,7 @@ export default function DialogRemoveUser({ isOpen = false, data, handleCancel, h
         </DialogDescription>
         <DialogFooter>
           <form action={async () => {
-            const response = await removeUser({ id : data.id })
+            const response = await removeUserAABB({ id : data.id })
             handleRemoveUser(response);
           }}>
             <DialogButtons handleCancel={handleCancel} />

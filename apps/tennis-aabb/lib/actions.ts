@@ -52,6 +52,26 @@ export async function registerUser(formData: FormData) {
     }
 }
 
+export async function registerUserAABB(formData: FormData) {
+    const name = formData.get('name');
+    const cpf = formData.get('cpf');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+
+    try {
+        const response = await postApi('/users/create-aabb', { name, cpf, email, phone }, { cache: 'no-store' });
+
+        if (!response.success) {
+            throw new Error(response.message);
+        }
+
+        return response;
+
+    } catch (err: any) {
+        return { error: err.message };
+    }
+}
+
 export async function forgotUser(formData: FormData) {
     const email = formData.get('email');
 
@@ -152,6 +172,20 @@ export async function removePlayer({ id }: { id: string }) {
 export async function removeUser({ id }: { id: string }) {
     try {
         const response = await deleteApiWithCredentials(`/users/remove/${id}`);
+
+        if (!response.success) {
+            throw new Error(response.message);
+        }
+    } catch (err: any) {
+        return { error: err.message };
+    }
+
+    revalidatePath('/admin/users/management');
+}
+
+export async function removeUserAABB({ id }: { id: string }) {
+    try {
+        const response = await deleteApiWithCredentials(`/users/remove-aabb/${id}`);
 
         if (!response.success) {
             throw new Error(response.message);
