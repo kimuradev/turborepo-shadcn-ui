@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@repo/ui/co
 import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
 import { authenticate } from '@/lib/actions';
 import { useAuthContext } from '../context/auth-context';
+import { IS_TRIAL_MODE } from '@/lib/constants';
 
 const formSchema = z.object({
     email: z.string().nonempty('Campo obrigatório'),
@@ -40,7 +41,7 @@ function LoginForm({ handleCancel }: { handleCancel: () => void }) {
                 errorMessage(response)
                 return;
             }
-            
+
             setProfile(response)
 
             successMessage({
@@ -88,20 +89,24 @@ function LoginForm({ handleCancel }: { handleCancel: () => void }) {
                         )}
                     />
                     <div className='flex justify-between'>
-                        <Link href='/users/forgot'>
-                            <span className='p-0 text-sm text-primary' onClick={handleCancel}>Esqueci minha senha</span>
-                        </Link>
+                        {!IS_TRIAL_MODE && (
+                            <Link href='/users/forgot'>
+                                <span className='p-0 text-sm text-primary' onClick={handleCancel}>Esqueci minha senha</span>
+                            </Link>
+                        )}
 
                         <LoginButton />
                     </div>
                 </form>
             </Form>
-            <div>
-                <span className='text-sm text-muted-foreground'>Ainda não tem cadastro? </span>
-                <Link href='/users/register'>
-                    <span className='p-0 text-sm text-primary font-semibold' onClick={handleCancel}>Registrar</span>
-                </Link>
-            </div>
+            {!IS_TRIAL_MODE && (
+                <div>
+                    <span className='text-sm text-muted-foreground'>Ainda não tem cadastro? </span>
+                    <Link href='/users/register'>
+                        <span className='p-0 text-sm text-primary font-semibold' onClick={handleCancel}>Registrar</span>
+                    </Link>
+                </div>
+            )}
         </>
     )
 }

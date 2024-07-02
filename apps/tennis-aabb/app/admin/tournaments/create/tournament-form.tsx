@@ -22,7 +22,7 @@ import { Button } from "@repo/ui/components/ui/button";
 import { useEffect, useState } from "react";
 import { ButtonLoading } from "@repo/ui/components/ui/button-loading";
 import { useAppContext } from "@/app/context/app-context";
-import { FINALS_CLASS_ID, TOURNAMENT_DICTIONARY, TOURNAMENT_ID, YEARS } from "@/lib/constants";
+import {  IS_TRIAL_MODE, TOURNAMENT_DICTIONARY, YEARS } from "@/lib/constants";
 import { addTournament } from "@/lib/actions";
 import useToastMessage from "@repo/ui/components/hooks/useToastMessage";
 import { getApi } from "@/lib/fetch";
@@ -53,7 +53,7 @@ export default function TournamentForm() {
     const formSchema = z.object({
         tournament: z.string().nonempty('Campo obrigatório'),
         year: z.string().nonempty('Campo obrigatório'),
-        seed: isFinals ? z.string() : z.enum(["true", "false"], {
+        seed: isFinals || IS_TRIAL_MODE ? z.string() : z.enum(["true", "false"], {
             errorMap: (issue, ctx) => ({ message: 'Campo obrigatório' })
         }),
         classId: isFinals ? z.string() : z.string().nonempty('Campo obrigatório'),
@@ -75,7 +75,7 @@ export default function TournamentForm() {
             year: '',
             classId: '',
             players: [],
-            seed: ''
+            seed: 'false'
         },
     });
 
@@ -89,7 +89,7 @@ export default function TournamentForm() {
             try {
                 const playersResponse = await getApi('/players', { cache: 'no-store' });
 
-                const options = playersResponse.map((player: { id: string, name: string}) => ({
+                const options = playersResponse.map((player: { id: string, name: string }) => ({
                     value: player.id,
                     label: player.name
                 }))
@@ -301,24 +301,26 @@ export default function TournamentForm() {
                                 )}
                             />
 
-                            <SubscribedPlayers players={subscribedPlayers} tournament={tournamentWatch} year={yearWatch}/>
+                            <SubscribedPlayers players={subscribedPlayers} tournament={tournamentWatch} year={yearWatch} />
 
                             <FormField
                                 control={form.control}
                                 name="seed"
                                 render={({ field }) => (
                                     <FormItem className="space-y-3">
-                                        <FormLabel>Com cabeça de chave?</FormLabel>
+                                        <FormLabel className={IS_TRIAL_MODE ? 'opacity-50' : ''}>Com cabeça de chave?</FormLabel>
                                         <FormControl>
                                             <RadioGroup
+                                                defaultValue="false"
                                                 onValueChange={field.onChange}
                                                 className="flex flex-col space-y-1"
+                                                disabled={IS_TRIAL_MODE}
                                             >
                                                 <FormItem className="flex items-center space-x-3 space-y-0 ">
                                                     <FormControl>
                                                         <RadioGroupItem value="true" />
                                                     </FormControl>
-                                                    <FormLabel className="font-normal cursor-pointer">
+                                                    <FormLabel className={IS_TRIAL_MODE ? 'font-normal opacity-50 cursor-default' : 'font-normal  cursor-pointer'}>
                                                         Sim
                                                     </FormLabel>
                                                 </FormItem>
@@ -326,7 +328,7 @@ export default function TournamentForm() {
                                                     <FormControl>
                                                         <RadioGroupItem value="false" />
                                                     </FormControl>
-                                                    <FormLabel className="font-normal cursor-pointer">
+                                                    <FormLabel className={IS_TRIAL_MODE ? 'font-normal opacity-50 cursor-default' : 'font-normal cursor-pointer'}>
                                                         Não
                                                     </FormLabel>
                                                 </FormItem>

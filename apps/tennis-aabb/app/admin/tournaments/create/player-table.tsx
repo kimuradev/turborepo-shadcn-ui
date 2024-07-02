@@ -12,6 +12,7 @@ import Tag from "@repo/ui/components/ui/tag";
 import { Switch } from "@repo/ui/components/ui/switch";
 import { postApiWithCredentials } from '@/lib/fetchWithCredentials';
 import useToastMessage from '@repo/ui/components/hooks/useToastMessage';
+import { IS_TRIAL_MODE } from '@/lib/constants';
 
 function PlayerTable({ players, isLoading, tournament, year }: { players: any, isLoading: boolean, tournament: string, year: string }) {
     const [playerData, setPlayerData] = useState([]);
@@ -91,9 +92,9 @@ function PlayerTable({ players, isLoading, tournament, year }: { players: any, i
             <TableHeader>
                 <TableRow>
                     <TableHead className="w-[300px]">Jogador</TableHead>
-                    <TableHead className="text-center">Pontos</TableHead>
+                    {/* <TableHead className="text-center">Pontos</TableHead> */}
                     <TableHead className="text-center">Pagamento</TableHead>
-                    <TableHead className="text-right">Já foi pago?</TableHead>
+                    <TableHead className={`${IS_TRIAL_MODE ? 'text-right opacity-50' : 'text-right'}`}>Já foi pago?</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -104,7 +105,7 @@ function PlayerTable({ players, isLoading, tournament, year }: { players: any, i
                                 <p className="truncate">{player.player_name}</p>
                             </div>
                         </TableCell>
-                        <TableCell className="text-center">{player.points}</TableCell>
+                        {/* <TableCell className="text-center">{player.points}</TableCell> */}
                         <TableCell >
                             {
                                 renderPayment({ playerPaymentStatus: player.payment_status, adminPaymentStatus: player.admin_payment_status })
@@ -112,6 +113,7 @@ function PlayerTable({ players, isLoading, tournament, year }: { players: any, i
                         </TableCell>
                         <TableCell className="flex justify-end">
                             <Switch
+                                disabled={IS_TRIAL_MODE}
                                 checked={player.payment_status === 'paid' && player.admin_payment_status === 'paid'}
                                 onCheckedChange={(value) => handleChangePayment(value, player)}
                             />

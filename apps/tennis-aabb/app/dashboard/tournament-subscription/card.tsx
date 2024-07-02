@@ -68,7 +68,8 @@ const CardTournament = ({ id, title, subtitle, headerSrcImg, contentSrcImg, bgCo
             )
         } 
         else {
-            return <p className="text-green-700 pl-2">Efetuar login para inscrição.</p>
+            // return <p className="text-green-700 pl-2">Efetuar login para inscrição.</p>
+            return null
         } 
     }
 

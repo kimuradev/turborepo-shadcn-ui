@@ -152,12 +152,12 @@ export default function Card({ data, classification }: CardProps) {
                         )}
                     </div>
 
-                    {isAdmin && game.round !== 'final' && game.player1_score !== null && game.player2_score !== null && (
+                    {/* {isAdmin && game.round !== 'final' && game.player1_score !== null && game.player2_score !== null && (
                         <Button variant="link" className="text-xs flex gap-2" onClick={() => handleRemoveResultModal(game)}>
                             <Trash2 className="h-4 w-4 stroke-primary" />
                             <span>Remover resultado</span>
                         </Button>
-                    )}
+                    )} */}
                 </div>
             ))}
             <DialogResult isOpen={dialog.isOpen} data={dialog.data} handleCancel={handleCancel} />

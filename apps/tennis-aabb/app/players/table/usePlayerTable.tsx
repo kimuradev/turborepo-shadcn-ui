@@ -18,6 +18,7 @@ import { Button } from "@repo/ui/components/ui/button"
 import { formatPhoneNumber } from "@/lib/utils";
 import { useAuthContext } from "@/app/context/auth-context";
 import { type Players } from "@/lib/definitions";
+import { IS_TRIAL_MODE } from "@/lib/constants";
 
 export function usePlayerTable() {
   const router = useRouter();
@@ -54,6 +55,8 @@ export function usePlayerTable() {
         const phoneNumber = row.getValue('phone')
 
         if (!phoneNumber) { return '-' }
+
+        if (!isAdmin) return 'XX XXXX-XXXXX'
 
         return (
           <Link href={`https://wa.me/${phoneNumber.replace(/\D/g, '')}`} target="_blank" className="hover:text-primary underline" >
@@ -107,13 +110,24 @@ export function usePlayerTable() {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Ações</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="cursor-pointer"
-                  onClick={() => { router.push(`/admin/players/${row.original.id}`) }}
-                >
-                  <UserCog className="h-4 w-4" />
-                  <span className="pl-4">Editar</span>
-                </DropdownMenuItem>
+                {IS_TRIAL_MODE ? (
+                  <DropdownMenuItem
+                    className="opacity-50 cursor-default"
+                    onClick={() => { }}
+                  >
+                    <UserCog className="h-4 w-4" />
+                    <span className="pl-4">Editar</span>
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuItem
+                    className="cursor-pointer"
+                    onClick={() => { router.push(`/admin/players/${row.original.id}`) }}
+                  >
+                    <UserCog className="h-4 w-4" />
+                    <span className="pl-4">Editar</span>
+                  </DropdownMenuItem>
+                )}
+
                 {/* Disable it temporarely */}
                 {/* <DropdownMenuItem
                       onClick={() => { handleDelete(row.original.id, row.original.name) }}

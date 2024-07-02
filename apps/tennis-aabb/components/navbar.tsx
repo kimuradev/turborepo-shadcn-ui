@@ -8,6 +8,7 @@ import { useAuthContext } from '@/app/context/auth-context';
 import { URL } from '@/lib/constants';
 import { FinanceNavigation } from '@/app/admin/finance/navigation';
 import { TournamentNavigation } from '@/app/admin/tournaments/navigation';
+import { UserNavigation } from '@/app/admin/users/navigation';
 
 const navigation = [
     { link: URL.dashboard, label: 'Home', icon: <Home className='w-4 h-4 mr-2' /> },
@@ -20,10 +21,10 @@ const navigation = [
 const adminNavigation = [
     // { link: '/admin/players', label: 'Cadastrar Jogadores', icon: <BookOpen className='w-4 h-4 mr-2' /> },
     { link: '/admin/tournaments', label: 'Organizar Torneio', icon: <Trophy className='w-4 h-4 mr-2' /> },
-    { link: '/users/register', label: 'Registrar usuário', icon: <UserCog className='w-4 h-4 mr-2' /> },
+    { link: '/admin/users', label: 'Gerenciar jogadores', icon: <UserCog className='w-4 h-4 mr-2' /> },
     // { link: '/admin/finance', label: 'Financeiro', icon: <CircleDollarSign className='w-4 h-4 mr-2' /> },
     // { link: '/admin/tournaments/management', label: 'Gerenciar torneio', icon: <CalendarDays className='w-4 h-4 mr-2' /> },
-    { link: '/admin/users/management', label: 'Gerenciar usuário', icon: <UserCog className='w-4 h-4 mr-2' /> },
+    // { link: '/admin/users/management', label: 'Gerenciar usuário', icon: <UserCog className='w-4 h-4 mr-2' /> },
     // { link: '/admin/settings', label: 'Configurações', icon: <Settings className='w-4 h-4 mr-2' /> }
 ];
 
@@ -66,6 +67,14 @@ function Navbar() {
                                         return (
                                             <li key={item.label} className='pl-4'>
                                                 <TournamentNavigation />
+                                            </li>
+                                        )
+                                    }
+
+                                    if (item.link === '/admin/users') {
+                                        return (
+                                            <li key={item.label} className='pl-4'>
+                                                <UserNavigation />
                                             </li>
                                         )
                                     }

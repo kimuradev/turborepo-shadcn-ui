@@ -105,7 +105,8 @@ export default function TournamentResultForm({ data, handleCloseDialog }: Tourna
             round: data.round,
             classId: data.class_id,
         }
-        const url = isFinals ? '/games/finals' : '/games';
+        // const url = isFinals ? '/games/finals' : '/games';
+        const url = '/games-aabb';
         const player: any = getWoPlayerScore(woPlayer || '')
 
         if (isSorted) {

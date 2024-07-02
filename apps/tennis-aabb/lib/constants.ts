@@ -1,21 +1,7 @@
 import AABB from '@/public/static/quadra_aabb.png';
 import AABBCircle from '@/public/static/AABB-circle.png';
 
-import AOCircle from '@/public/static/ao-circle.png';
-import AB from '@/public/static/AB-rotate.png';
-import ABDoubles from '@/public/static/AB-DOUBLES.jpg';
-import ABCircle from '@/public/static/ab-circle.png';
-import AO from '@/public/static/ao-rotate.jpg';
-import RG from '@/public/static/rg-rotate.jpg';
-import RGCircle from '@/public/static/rg-circle.png';
-import Wimbledon from '@/public/static/wimbledon-rotate.jpg';
-import WimbledonWTA from '@/public/static/wta-wimbledon.jpg';
-import WimbledonCircle from '@/public/static/wimb-circle.png';
-import WimbledonCircleWTA from '@/public/static/wimb-circle-WTA.png';
-import US from '@/public/static/us-open-rotate.jpg';
-import USCircle from '@/public/static/us-circle.png';
-import Finals from '@/public/static/finals-rotate.png';
-import FinalsCircle from '@/public/static/finals-circle.png';
+export const IS_TRIAL_MODE = true;
 
 export const COOKIE_NAME = 'token';
 
