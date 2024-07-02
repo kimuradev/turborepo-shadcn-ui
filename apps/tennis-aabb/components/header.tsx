@@ -9,7 +9,7 @@ function Header() {
             <div className='flex items-center'>
                 <NavbarMobile />
                 <Link href="/">
-                    <h1 className="text-xl font-bold hover:text-white">AABB tênis</h1>
+                    <h1 className="text-xl font-bold text-white hover:text-black">AABB tênis</h1>
                 </Link>
             </div>
             <Login />

@@ -9,6 +9,7 @@ import GameScheduled from "./game-scheduled"
 import Link from "next/link"
 import Notes from "./notes"
 import Subscription from "./tournament-subscription"
+import { IS_TRIAL_MODE } from "@/lib/constants"
 
 export default function Dashboard() {
     return (
@@ -32,8 +33,11 @@ export default function Dashboard() {
                     <DashboardCard
                         title="Líderes do ranking"
                         description={`Top 10 - Geral`}
+                        className={`${IS_TRIAL_MODE ? 'opacity-50 cursor-default' : ''}`}
                         footer={
-                            <Link href='/ranking' className="text-primary">Ver ranking completo</Link>
+                            <>
+                                {IS_TRIAL_MODE ? (<Link href='#' className="text-primary cursor-default">Ver ranking completo</Link>) : (<Link href='/ranking' className="text-primary">Ver ranking completo</Link>)}
+                            </>
                         }>
                         <Suspense fallback={<RankingLeaderSkeleton />}>
                             <RankingLeader />

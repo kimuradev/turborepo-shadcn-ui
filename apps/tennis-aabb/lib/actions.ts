@@ -52,11 +52,11 @@ export async function registerUser(formData: FormData) {
     }
 }
 
-export async function registerUserAABB(formData: FormData) {
-    const name = formData.get('name');
-    const cpf = formData.get('cpf');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
+export async function registerUserAABB({ name, cpf, email, phone }: any) {
+    // const name = formData.get('name');
+    // const cpf = formData.get('cpf');
+    // const email = formData.get('email');
+    // const phone = formData.get('phone');
 
     try {
         const response = await postApi('/users/create-aabb', { name, cpf, email, phone }, { cache: 'no-store' });
@@ -208,7 +208,8 @@ export async function removeTournament({ key, year, classId }: { key: string, ye
         return { error: err.message };
     }
 
-    revalidatePath('/admin/tournaments/management');
+    revalidatePath('/admin/tournaments/remove');
+    
 }
 
 export async function addTournament(url: string, values: any) {

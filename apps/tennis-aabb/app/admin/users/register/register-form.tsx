@@ -55,7 +55,11 @@ function RegisterForm() {
         const validFields = await form.trigger();
 
         if (validFields) {
-            const response = await registerUserAABB(formData);
+
+            // const values = form.getValues();
+            // console.log('values: ', values)
+
+            const response = await registerUserAABB({...form.getValues()});
 
             if (response?.error) {
                 errorMessage(response)
