@@ -28,7 +28,7 @@ export function Profile({ handleLogout }: { handleLogout: () => {} }) {
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-8 w-8">
-                        <AvatarFallback>{getInitialLetterName(profile.name || 'Associação Brasil')}</AvatarFallback>
+                        <AvatarFallback>{getInitialLetterName(profile.name || 'Associação Banco do Brasil')}</AvatarFallback>
                     </Avatar>
                 </Button>
             </DropdownMenuTrigger>
