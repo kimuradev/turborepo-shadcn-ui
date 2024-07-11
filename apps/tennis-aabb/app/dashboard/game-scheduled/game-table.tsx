@@ -31,6 +31,23 @@ export default function GameTable({ data }: GameTable) {
         return format(zonedDate, 'HH:mm', { timeZone });
     }
 
+    const getCurrentClass = (classId: number) => {
+        switch (classId) {
+            case 1:
+                return 'Classe A'
+            case 2:
+                return 'Classe B'
+            case 3:
+                return 'Classe C'
+            case 4:
+                return 'Classe D'
+            case 5:
+                return 'Classe E'
+            default:
+                break;
+        }
+    }
+
     return (
         <div className="overflow-auto max-h-[400px] w-full">
             <ShareButton data={data} />
@@ -38,9 +55,9 @@ export default function GameTable({ data }: GameTable) {
                 return (
                     <div className="flex flex-col gap-1" key={game.id}>
                         <div className="bg-secondary font-bold px-2 py-1 rounded">{getFormattedDate(game.scheduleDate)}</div>
-                        {game.games.map((item: { schedule: string, player1: { name: string }, player2: { name: string } }) => {
+                        {game.games.map((item: { schedule: string, player1: { name: string }, player2: { name: string }, class_id: number }) => {
                             return (
-                                <div className="text-sm px-4 py-1" key={item.schedule}>{formatHourTimezone(item.schedule)} - {getNameWithAbbreviation(item.player1?.name)} x {getNameWithAbbreviation(item.player2?.name)}</div>
+                                <div className="text-sm px-4 py-1" key={item.schedule}>{formatHourTimezone(item.schedule)} - {getNameWithAbbreviation(item.player1?.name)} x {getNameWithAbbreviation(item.player2?.name)} ({getCurrentClass(item.class_id)})</div>
                             )
                         }
                         )}
