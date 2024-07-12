@@ -89,24 +89,24 @@ function LoginForm({ handleCancel }: { handleCancel: () => void }) {
                         )}
                     />
                     <div className='flex justify-between'>
-                        {!IS_TRIAL_MODE && (
+                        {/* {!IS_TRIAL_MODE && (
                             <Link href='/users/forgot'>
                                 <span className='p-0 text-sm text-primary' onClick={handleCancel}>Esqueci minha senha</span>
                             </Link>
-                        )}
+                        )} */}
 
                         <LoginButton />
                     </div>
                 </form>
             </Form>
-            {!IS_TRIAL_MODE && (
+            {/* {!IS_TRIAL_MODE && (
                 <div>
                     <span className='text-sm text-muted-foreground'>Ainda não tem cadastro? </span>
                     <Link href='/users/register'>
                         <span className='p-0 text-sm text-primary font-semibold' onClick={handleCancel}>Registrar</span>
                     </Link>
                 </div>
-            )}
+            )} */}
         </>
     )
 }

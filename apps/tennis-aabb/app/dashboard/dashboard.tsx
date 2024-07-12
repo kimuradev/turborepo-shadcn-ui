@@ -30,7 +30,7 @@ export default function Dashboard() {
                             <GameScheduled />
                         </Suspense>
                     </DashboardCard>
-                    <DashboardCard
+                    {/* <DashboardCard
                         title="Líderes do ranking"
                         description={`Top 10 - Geral`}
                         className={`${IS_TRIAL_MODE ? 'opacity-50 cursor-default' : ''}`}
@@ -42,7 +42,7 @@ export default function Dashboard() {
                         <Suspense fallback={<RankingLeaderSkeleton />}>
                             <RankingLeader />
                         </Suspense>
-                    </DashboardCard>
+                    </DashboardCard> */}
                     <DashboardCard title="Jogos realizados/mês" className="flex flex-col p-0" >
                         <Suspense fallback={<BarChartSkeleton />}>
                             <MonthlyGames />
