@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 
-import { TOURNAMENT_ID } from "@/lib/constants";
 import { deleteApi, getApi, postApi } from "@/lib/fetch";
 import { useAppContext } from "@/app/context/app-context";
 import { useAuthContext } from "@/app/context/auth-context";
@@ -75,11 +74,10 @@ export default function TournamentDetails({ tournament }: TournamentDetailsProps
     } finally {
       setIsBannerLoading(false)
     }
-
   }
 
   return (
-    <div>
+    <div className="relative">
       <h2 className="text-sm text-muted-foreground mb-6">Ano: {year}</h2>
 
       {isAdmin && <UploadImage handleUploadImage={handleUploadImage} />}

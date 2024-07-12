@@ -134,6 +134,9 @@ export type DialogProps = {
 export type CardProps = {
     data: DetailsProps[]
     classification?: string[] | undefined
+    className?: string, 
+    tournament?: string, 
+    year?: number | null | undefined ,
 }
 
 export type TournamentDetailsProps = {
@@ -168,7 +171,7 @@ export type TournamentResultProps = {
 }
 
 export type GameWeekProps = {
-    id: string,
+    id: string | undefined,
     week: string[]
 }
 
@@ -182,6 +185,7 @@ export type TournamentTabsProps = {
 export type FinalsDetailsProps = {
     tournament: string,
     year?: number | null,
+    classId? : number | null,
 }
 
 export type CardTournamentProps = {

@@ -70,6 +70,7 @@
     "react-phone-number-input": "^3.3.9",
     "react-scroll": "^1.9.0",
     "react-stately": "^3.29.1",
+    "react-to-print": "^2.15.1",
     "recharts": "^2.9.0",
     "sharp": "^0.32.6",
     "tailwind-merge": "^1.14.0",
