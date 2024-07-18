@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+// @ts-ignore
+import * as html2pdf from 'html2pdf.js';
 
 import GamesSkeleton from "@/components/skeletons";
 
@@ -23,8 +25,32 @@ type PlayoffsDetailsProps = {
 export default function PlayoffsDetails({ classes, games, isLoading, tournament, year, classId }: PlayoffsDetailsProps) {
   const componentRef = useRef();
 
+  const generatePDF = (printIframe: any) => {
+    const document = printIframe.contentDocument;
+    if (document) {
+      const html = document.getElementById("cards-list");
+      const opt = {
+        filename: "download.pdf",
+        margin: [0, 5],
+        html2canvas:  { scale: 2, width: 1700},
+        jsPDF: {
+          // pagebreak: { mode: 'avoid-all' },
+          orientation: 'l',
+          unit: 'mm',
+          format: 'a4',
+          // putOnlyUsedFonts: true,
+          // floatPrecision: 16 // or "smart", default is 16,,
+        }
+      }
+      html2pdf(html, opt).getPdf(true)
+    }
+  }
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current ? componentRef.current : null,
+    print: async (printIframe: HTMLIFrameElement) => {
+      await generatePDF(printIframe);
+    },
   });
 
   if (isLoading) {

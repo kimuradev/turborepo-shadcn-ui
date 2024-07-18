@@ -37,12 +37,12 @@ const CardList = forwardRef((props: CardListProps, ref: any) => {
 
     function getClassName (classId: number) {
         const foundClass = classes.find((c: any) => c.id === classId)
-        return foundClass ? foundClass.name : 'N/A';
+        return foundClass ? <span className='text-muted-foreground font-semibold text-center whitespace-nowrap'>{foundClass.name}</span> : 'N/A';
     }
 
     return (
-        <div className="flex items-center mx-4" ref={ref} >
-            <div className="hidden print:flex bg-gray-100 h-[1100px] justify-center items-center p-2 text-nowrap">
+        <div id="cards-list" className="flex items-center mx-4" ref={ref} >
+            <div className="flex bg-gray-100 h-[1100px] justify-center items-center p-2 text-nowrap">
                 {getClassName(parseInt(classId, 10))}
             </div>
             {uniqueRounds.map((round: any, index) => (

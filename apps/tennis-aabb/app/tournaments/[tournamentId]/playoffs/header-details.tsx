@@ -16,7 +16,7 @@ export default function HeaderDetails({ games }: any) {
     }
 
     return (
-        <div className={`flex mt-4 mb-4 gap-8 ml-4 w-[1600px] `}>
+        <div className={`flex mt-4 mb-4 gap-8 ml-4 w-[1600px] pl-[100px] `}>
             {uniqueRounds.map((round: any) => (
                 <div className="flex justify-center w-[270px] "  >
                     <span className="text-muted-foreground font-semibold text-center whitespace-nowrap">{getValueFromKey(round)}</span>
