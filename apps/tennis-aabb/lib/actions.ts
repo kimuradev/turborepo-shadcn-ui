@@ -52,14 +52,14 @@ export async function registerUser(formData: FormData) {
     }
 }
 
-export async function registerUserAABB({ name, cpf, email, phone }: any) {
+export async function registerUserAABB({ name, cpf, email, phone, classe, shirt }: any) {
     // const name = formData.get('name');
     // const cpf = formData.get('cpf');
     // const email = formData.get('email');
     // const phone = formData.get('phone');
 
     try {
-        const response = await postApi('/users/create-aabb', { name, cpf, email, phone }, { cache: 'no-store' });
+        const response = await postApi('/users/create-aabb', { name, cpf, email, phone, classe, shirt }, { cache: 'no-store' });
 
         if (!response.success) {
             throw new Error(response.message);

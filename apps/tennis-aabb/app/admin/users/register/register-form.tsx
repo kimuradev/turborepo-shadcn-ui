@@ -15,12 +15,16 @@ import { Separator } from '@ui/components/ui/separator';
 import { Input } from '@ui/components/ui/input';
 import { formatCpf } from '@/lib/utils';
 import { PhoneInput } from '@ui/components/ui/phone-input';
+import { CLASS_OPTIONS, SHIRT_SIZE } from '@/lib/constants';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui/components/ui/select';
 
 const formSchema = z.object({
     name: z.string().min(1, { message: "Campo obrigatório" }),
     cpf: z.string().min(1, { message: "Campo obrigatório" }),
     phone: z.string().optional(),
     email: z.string().optional(),
+    classe: z.string().min(1, { message: "Campo obrigatório" }),
+    shirt: z.string().optional(),
     // password: z.string().min(1, { message: "Campo obrigatório" }),
     // confirm_password: z.string().min(1, { message: "Campo obrigatório" })
 })
@@ -46,6 +50,8 @@ function RegisterForm() {
             cpf: "",
             phone: "",
             email: "",
+            classe: "",
+            shirt: ""
             // password: "",
             // confirm_password: ""
         },
@@ -59,7 +65,7 @@ function RegisterForm() {
             // const values = form.getValues();
             // console.log('values: ', values)
 
-            const response = await registerUserAABB({...form.getValues()});
+            const response = await registerUserAABB({ ...form.getValues() });
 
             if (response?.error) {
                 errorMessage(response)
@@ -134,6 +140,33 @@ function RegisterForm() {
                                         </FormItem>
                                     )}
                                 />
+
+                                <FormField
+                                    control={form.control}
+                                    name="classe"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Classe</FormLabel>
+                                            <Select onValueChange={field.onChange} value={field.value} >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Selecione a classe" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    {CLASS_OPTIONS.map(classe => (
+                                                        <SelectItem key={classe.value} value={classe.value}>{classe.label}</SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
+                                            <FormDescription>
+                                                Selecione o tamanho da sua camiseta e bermuda.
+                                            </FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
                                 <FormField
                                     control={form.control}
                                     name="phone"
@@ -162,6 +195,32 @@ function RegisterForm() {
                                             </FormControl>
                                             <FormDescription>
                                                 Digite um e-mail válido. Esse será seu e-mail para login.
+                                            </FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="shirt"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Camiseta e bermuda</FormLabel>
+                                            <Select onValueChange={field.onChange} value={field.value} >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Selecione o tamanho" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    {SHIRT_SIZE.map(status => (
+                                                        <SelectItem key={status.value} value={status.value}>{status.label}</SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
+                                            <FormDescription>
+                                                Selecione o tamanho da sua camiseta e bermuda.
                                             </FormDescription>
                                             <FormMessage />
                                         </FormItem>

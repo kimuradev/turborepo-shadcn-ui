@@ -42,6 +42,14 @@ export const SHIRT_SIZE = [
     { value: 'GG', label: 'GG' },
 ]
 
+export const CLASS_OPTIONS = [
+    { value: '1', label: 'Classe A' },
+    { value: '2', label: 'Classe B' },
+    { value: '3', label: 'Classe C' },
+    { value: '4', label: 'Classe D' },
+    { value: '5', label: 'Classe E' },
+]
+
 export const YEARS_OPTIONS = [
     { value: '2024', label: '2024' },
     // { value: '2025', label: '2025' }
