@@ -20,7 +20,7 @@ export default async function Subscription() {
             title="Torneio com inscrição aberta"
             description={`Período de inscrição: ${data[0].period}`}
             className="relative"
-            footer={<Link href='#' className="text-primary cursor-default">Ver inscritos</Link>}
+            footer={<Link href={`/players/subscribed?tournamentId=${data[0].key}&year=${data[0].year}`} className="text-primary cursor-pointer">Ver inscritos</Link>}
         >
             <div className="flex flex-col md:flex-row gap-2">
                 <TournamentSubscription data={data} />

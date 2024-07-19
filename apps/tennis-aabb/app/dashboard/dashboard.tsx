@@ -20,7 +20,8 @@ export default function Dashboard() {
                     <Suspense fallback={<DashboardCardSkeleton />}>
                         <Subscription />
                     </Suspense>
-                    <DashboardCard title="Torneio ativo" className="relative flex flex-col">
+                    <DashboardCard title="Torneio ativo" className="relative flex flex-col"
+                        footer={<Link href={`/players/subscribed?tournamentId=aabb&year=2024`} className="text-primary cursor-pointer">Ver inscritos</Link>}>
                         <Suspense fallback={<CardSkeleton />}>
                             <CurrentTournament />
                         </Suspense>
