@@ -1,9 +1,9 @@
 {
-  "name": "ab-tenis",
+  "name": "aabb-tenis",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3002",
+    "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0"
@@ -58,6 +58,7 @@
     "date-fns": "^3.0.6",
     "date-fns-tz": "^3.1.3",
     "firebase": "^10.11.1",
+    "html2pdf.js": "0.9.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.287.0",
     "moment": "^2.30.1",
@@ -70,6 +71,7 @@
     "react-phone-number-input": "^3.3.9",
     "react-scroll": "^1.9.0",
     "react-stately": "^3.29.1",
+    "react-to-print": "^2.15.1",
     "recharts": "^2.9.0",
     "sharp": "^0.32.6",
     "tailwind-merge": "^1.14.0",

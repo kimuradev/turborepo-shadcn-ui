@@ -31,20 +31,18 @@ export default function GameTable({ data }: GameTable) {
         return format(zonedDate, 'HH:mm', { timeZone });
     }
 
-    const getCurrentClass = (classId: number, isWta: boolean) => {
+    const getCurrentClass = (classId: number) => {
         switch (classId) {
             case 1:
-                return isWta ? 'WTA - Classe Slam' : 'Classe Slam';
+                return 'Classe A'
             case 2:
-                return isWta ? 'WTA - Classe 1000' : 'Classe 1000';
+                return 'Classe B'
             case 3:
-                return isWta ? 'WTA - Classe 500' : 'Classe 500';
+                return 'Classe C'
             case 4:
-                return isWta ? 'WTA - Classe 250' : 'Classe 250';
+                return 'Classe D'
             case 5:
-                return isWta ? 'WTA - Classe 125' : 'Classe 125';
-            case 6:
-                return isWta ? 'WTA - Classe 70' : 'Classe 70';
+                return 'Classe E'
             default:
                 break;
         }
@@ -53,14 +51,13 @@ export default function GameTable({ data }: GameTable) {
     return (
         <div className="overflow-auto max-h-[400px] w-full">
             <ShareButton data={data} />
-
             {data.map((game: any) => {
                 return (
                     <div className="flex flex-col gap-1" key={game.id}>
                         <div className="bg-secondary font-bold px-2 py-1 rounded">{getFormattedDate(game.scheduleDate)}</div>
-                        {game.games.map((item: { schedule: string, player1: { name: string }, player2: { name: string }, class_id: number, is_wta: boolean }) => {
+                        {game.games.map((item: { schedule: string, player1: { name: string }, player2: { name: string }, class_id: number }) => {
                             return (
-                                <div className="text-sm px-4 py-1" key={item.schedule}>{formatHourTimezone(item.schedule)} - {getNameWithAbbreviation(item.player1?.name)} x {getNameWithAbbreviation(item.player2?.name)} ({getCurrentClass(item.class_id, item.is_wta)})</div>
+                                <div className="text-sm px-4 py-1" key={item.schedule}>{formatHourTimezone(item.schedule)} - {getNameWithAbbreviation(item.player1?.name)} x {getNameWithAbbreviation(item.player2?.name)} ({getCurrentClass(item.class_id)})</div>
                             )
                         }
                         )}
