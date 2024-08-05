@@ -1,7 +1,7 @@
 import AABB from '@/public/static/quadra_aabb.png';
 import AABBCircle from '@/public/static/AABB-circle.png';
 
-export const IS_TRIAL_MODE = false;
+export const IS_TRIAL_MODE = true;
 
 export const PLAYOFFS_CLASS_ID = 8;
 
