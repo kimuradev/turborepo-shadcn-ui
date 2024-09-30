@@ -13,11 +13,11 @@ import { Button } from "@repo/ui/components/ui/button";
 import { type CardTournamentProps } from "@/lib/definitions";
 
 const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor, link, subscriptionIsOpen, tournamentId, year, started }: CardTournamentProps) => {
-
     return (
         <>
             <Card className={`w-[250px] transform transition duration-500 hover:scale-110 ${bgColor}`}>
                 <CardHeader className="flex justify-center items-center m-0 p-0" >
+                    <div className="py-4 invisible" />
                     <Image src={headerSrcImg} width={250} height={140} alt={contentSrcImg.alt} />
                 </CardHeader>
                 <CardContent className="flex flex-row justify-between">
@@ -49,6 +49,7 @@ const CardTournament = ({ title, subtitle, headerSrcImg, contentSrcImg, bgColor,
                             </Link>
                         </>
                     )}
+                     <div className="py-4 invisible" />
                 </CardFooter>
             </Card >
         </>
