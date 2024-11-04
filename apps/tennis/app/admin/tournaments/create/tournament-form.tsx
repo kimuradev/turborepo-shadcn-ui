@@ -119,7 +119,9 @@ export default function TournamentForm() {
         }))
 
         try {
-            const response = await getApi(`/players/ranking?tournamentId=${tournamentWatch}&year=${yearWatch}&classId=${classWatch}`);
+            const response = await getApi(`/players/ranking?tournamentId=${tournamentWatch}&year=${yearWatch}&classId=${classWatch}`, { cache: 'no-store' });
+
+            console.log('response: ', response)
 
             form.setValue('players', response)
 
@@ -142,7 +144,7 @@ export default function TournamentForm() {
         }))
 
         try {
-            const response = await getApi(`/players/subscribed-tournament?tournamentId=${tournamentWatch}&year=${yearWatch}`);
+            const response = await getApi(`/players/subscribed-tournament?tournamentId=${tournamentWatch}&year=${yearWatch}`, { cache: 'no-store' });
 
             setSubscribedPlayers((state) => ({
                 ...state,
@@ -156,8 +158,40 @@ export default function TournamentForm() {
         }
     }
 
+    const fetchPlayersByFinalTournament = async () => {
+        setPlayers((state) => ({
+            ...state,
+            isLoading: true
+        }))
+
+        try {
+            const response = await getApi(`/players/subscribed-tournament?tournamentId=${tournamentWatch}&year=${yearWatch}`, { cache: 'no-store' });
+
+            const options = response.map((player: { player_id: string, player_name: string}) => ({
+                value: player.player_id,
+                label: player.player_name
+            }))
+
+            form.setValue('players', options)
+
+            setPlayers((state) => ({
+                ...state,
+                options: options
+            }))
+
+        } finally {
+            setPlayers((state) => ({
+                ...state,
+                isLoading: false
+            }))
+        }
+    }
+
     useEffect(() => {
-        if (tournamentWatch && yearWatch) {
+        if (tournamentWatch === 'finals' && yearWatch) {
+            fetchPlayersByFinalTournament()
+        }
+        else if (tournamentWatch && yearWatch) {
             fetchPlayersByTournament()
         }
 
